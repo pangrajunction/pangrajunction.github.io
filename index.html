@@ -1,990 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pangra Junction – Your Everyday Junction</title>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --rubber:   #1C1410;
-      --tread:    #2E2118;
-      --rust:     #B84C1E;
-      --amber:    #D4721A;
-      --wood:     #8B5E3C;
-      --cream:    #F5ECD7;
-      --warm-off: #EDE0C4;
-      --muted:    #9A7E62;
-      --spoke:    #C4A882;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Lora', serif;
-      background: var(--cream);
-      color: var(--rubber);
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* CUSTOM CURSOR */
-    .cursor {
-      width: 18px; height: 18px;
-      border: 2px solid var(--rust);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, background 0.2s;
-      mix-blend-mode: multiply;
-    }
-
-    /* TIRE TREAD PATTERN via SVG bg */
-    .tread-bg {
-      background-color: var(--rubber);
-      background-image:
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 18px,
-          rgba(255,255,255,0.03) 18px,
-          rgba(255,255,255,0.03) 20px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 40px,
-          rgba(255,255,255,0.02) 40px,
-          rgba(255,255,255,0.02) 44px
-        );
-    }
-
-    .wood-bg {
-      background-color: var(--wood);
-      background-image:
-        repeating-linear-gradient(
-          92deg,
-          transparent,
-          transparent 3px,
-          rgba(0,0,0,0.08) 3px,
-          rgba(0,0,0,0.08) 4px
-        );
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2.5rem;
-      background: rgba(28,20,16,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid var(--rust);
-    }
-
-    .nav-logo {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.06em;
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .nav-logo .dot {
-      width: 10px; height: 10px;
-      background: var(--rust);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-
-    nav a {
-      text-decoration: none;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--spoke);
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--amber); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      position: relative;
-      overflow: hidden;
-      padding-top: 64px;
-    }
-
-    .hero-main {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      min-height: calc(100vh - 64px);
-    }
-
-    .hero-left {
-      background: var(--cream);
-      padding: 5rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* diagonal cut */
-    .hero-left::after {
-      content: '';
-      position: absolute;
-      right: -50px; top: 0; bottom: 0;
-      width: 100px;
-      background: var(--cream);
-      clip-path: polygon(0 0, 0 100%, 100% 100%);
-      z-index: 3;
-    }
-
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.7s ease both;
-    }
-
-    .hero-title {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: clamp(3.5rem, 6vw, 6.5rem);
-      line-height: 0.92;
-      color: var(--rubber);
-      margin-bottom: 0.5rem;
-      animation: fadeUp 0.7s 0.1s ease both;
-    }
-
-    .hero-title .accent {
-      color: var(--rust);
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 0.55em;
-      display: block;
-      letter-spacing: 0.02em;
-      margin-top: 0.3rem;
-    }
-
-    .hero-desc {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 360px;
-      margin: 1.8rem 0 2.5rem;
-      animation: fadeUp 0.7s 0.2s ease both;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.3s ease both;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.2s;
-      cursor: none;
-    }
-
-    .btn-solid {
-      background: var(--rust);
-      color: #fff;
-      border: 2px solid var(--rust);
-    }
-
-    .btn-solid:hover { background: var(--amber); border-color: var(--amber); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--rubber);
-      border: 2px solid var(--rubber);
-    }
-
-    .btn-ghost:hover { background: var(--rubber); color: var(--cream); }
-
-    /* TIRE WHEEL — hero right */
-    .hero-right {
-      background: var(--tread);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          90deg,
-          transparent, transparent 22px,
-          rgba(255,255,255,0.025) 22px, rgba(255,255,255,0.025) 24px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          transparent, transparent 48px,
-          rgba(255,255,255,0.02) 48px, rgba(255,255,255,0.02) 52px
-        );
-    }
-
-    .wheel-wrap {
-      position: relative;
-      width: 300px; height: 300px;
-    }
-
-    .wheel-outer {
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      border: 28px solid var(--rubber);
-      box-shadow:
-        0 0 0 6px var(--rust),
-        0 0 0 10px rgba(212,114,26,0.3),
-        inset 0 0 40px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: spin-slow 14s linear infinite;
-      position: relative;
-    }
-
-    /* tread nubs on tire */
-    .wheel-outer::before {
-      content: '';
-      position: absolute;
-      inset: -38px;
-      border-radius: 50%;
-      border: 10px dashed rgba(184,76,30,0.4);
-    }
-
-    .wheel-hub {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: var(--tread);
-      border: 4px solid var(--spoke);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      animation: spin-slow 14s linear infinite reverse;
-    }
-
-    /* spokes */
-    .wheel-hub::before,
-    .wheel-hub::after {
-      content: '';
-      position: absolute;
-      background: var(--spoke);
-      border-radius: 2px;
-    }
-
-    .wheel-hub::before {
-      width: 3px; height: 100px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .wheel-hub::after {
-      width: 100px; height: 3px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .hub-center {
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      background: var(--rust);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-      box-shadow: 0 0 20px rgba(184,76,30,0.5);
-      animation: spin-slow 14s linear infinite;
-    }
-
-    .hub-center span {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 0.5rem;
-      color: #fff;
-      letter-spacing: 0.05em;
-      text-align: center;
-      line-height: 1.2;
-    }
-
-    .hero-right-text {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 0; right: 0;
-      text-align: center;
-    }
-
-    .hero-right-text p {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* MARQUEE */
-    .band {
-      background: var(--rust);
-      padding: 0.85rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .band-track {
-      display: inline-flex;
-      gap: 2.5rem;
-      animation: marquee 16s linear infinite;
-    }
-
-    .band-item {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #fff;
-    }
-
-    .band-sep { color: rgba(255,255,255,0.4); font-size: 1rem; }
-
-    /* ABOUT */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .about-visual {
-      background: var(--tread);
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-visual::after {
-      content: 'PANGRA';
-      position: absolute;
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 8rem;
-      color: rgba(255,255,255,0.03);
-      letter-spacing: 0.1em;
-      white-space: nowrap;
-      bottom: 1rem;
-      left: 1rem;
-    }
-
-    /* mini tire stack decoration */
-    .tire-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .mini-tire {
-      border-radius: 50%;
-      border: 12px solid var(--rubber);
-      box-shadow: 0 0 0 3px var(--rust);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .mini-tire.lg { width: 150px; height: 150px; }
-    .mini-tire.md { width: 110px; height: 110px; }
-    .mini-tire.sm { width: 80px; height: 80px; }
-
-    .mini-tire-inner {
-      border-radius: 50%;
-      background: var(--tread);
-      border: 2px solid var(--spoke);
-      width: 60%; height: 60%;
-    }
-
-    .about-text {
-      padding: 5rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--warm-off);
-    }
-
-    .label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      line-height: 1.1;
-      color: var(--rubber);
-      margin-bottom: 1.5rem;
-    }
-
-    .section-body {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--muted);
-    }
-
-    .divider {
-      width: 48px; height: 3px;
-      background: var(--rust);
-      margin: 1.5rem 0;
-      border-radius: 2px;
-    }
-
-    /* MENU */
-    .menu-section {
-      padding: 6rem 3rem;
-      background: var(--rubber);
-      color: var(--cream);
-    }
-
-    .menu-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .menu-header .label { color: var(--amber); }
-
-    .menu-header .section-title {
-      color: var(--cream);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-    }
-
-    .menu-tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .tab-btn {
-      padding: 0.55rem 1.3rem;
-      border: 1.5px solid rgba(196,168,130,0.25);
-      background: transparent;
-      color: var(--spoke);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      cursor: none;
-      transition: all 0.2s;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--rust);
-      border-color: var(--rust);
-      color: #fff;
-    }
-
-    .menu-panel { display: none; }
-    .menu-panel.active { display: block; }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 1px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.1rem 1.5rem;
-      background: var(--tread);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: background 0.2s;
-      gap: 1rem;
-    }
-
-    .menu-item:hover { background: rgba(184,76,30,0.15); }
-
-    .item-name {
-      font-size: 0.88rem;
-      color: rgba(245,236,215,0.85);
-      font-family: 'Lora', serif;
-    }
-
-    .item-price {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.88rem;
-      color: var(--amber);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    /* CONTACT */
-    .contact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .contact-left {
-      padding: 6rem 4rem;
-      background: var(--warm-off);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .contact-items {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-
-    .c-icon {
-      width: 44px; height: 44px;
-      background: var(--rust);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .c-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-
-    .c-val {
-      font-size: 1rem;
-      color: var(--rubber);
-      line-height: 1.6;
-    }
-
-    .c-val a { color: var(--rubber); text-decoration: none; }
-    .c-val a:hover { color: var(--rust); }
-
-    .contact-right {
-      background: var(--tread);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem;
-      position: relative;
-      overflow: hidden;
-      min-height: 400px;
-    }
-
-    .contact-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          90deg,
-          transparent, transparent 20px,
-          rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 22px
-        );
-    }
-
-    .contact-card {
-      background: rgba(245,236,215,0.06);
-      border: 1px solid rgba(196,168,130,0.2);
-      border-radius: 4px;
-      padding: 2.5rem;
-      text-align: center;
-      max-width: 280px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-card-title {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 1.6rem;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-card-sub {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .contact-card-divider {
-      width: 40px; height: 2px;
-      background: var(--rust);
-      margin: 1.5rem auto;
-    }
-
-    .contact-card-tagline {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--spoke);
-      line-height: 1.7;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--rubber);
-      border-top: 2px solid var(--rust);
-      padding: 1.8rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-logo {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 1rem;
-      color: var(--cream);
-      letter-spacing: 0.06em;
-    }
-
-    .footer-copy {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(0.85); }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav ul { display: none; }
-      .hero-main { grid-template-columns: 1fr; }
-      .hero-right { min-height: 300px; }
-      .hero-left { padding: 4rem 1.8rem 3rem; }
-      .about { grid-template-columns: 1fr; }
-      .about-text { padding: 3rem 1.8rem; }
-      .about-visual { min-height: 260px; }
-      .menu-section { padding: 4rem 1.2rem; }
-      .contact { grid-template-columns: 1fr; }
-      .contact-left { padding: 3.5rem 1.8rem; }
-      .contact-right { min-height: 260px; }
-      footer { flex-direction: column; text-align: center; }
-      body { cursor: auto; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pangra Junction</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lora:wght@400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --bg:#F5ECD7;
+  --dark:#1C1410;
+  --card:#2E2118;
+  --accent:#B84C1E;
+  --muted:#9A7E62;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Lora',serif;
+  background:var(--bg);
+  color:var(--dark);
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:14px 20px;
+  background:rgba(28,20,16,0.92);
+  backdrop-filter:blur(10px);
+  z-index:999;
+}
+
+nav a{
+  color:white;
+  font-family:'DM Mono';
+  font-size:12px;
+  margin:0 8px;
+  text-decoration:none;
+}
+nav a:hover{color:var(--accent);}
+
+/* HERO (FIXED 3D + CLEAN) */
+.hero{
+  height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  perspective:1200px;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:-40px;
+  background:url('images/hero.jpg') center/cover;
+  filter:brightness(0.55);
+  transform:scale(1.2);
+  animation:zoom 14s ease-in-out infinite alternate;
+}
+
+.hero-content{
+  position:relative;
+  color:white;
+  animation:float 6s ease-in-out infinite;
+}
+
+.hero h1{
+  font-size:4.2rem;
+  font-family:'Archivo Black';
+}
+
+.hero p{
+  margin-top:10px;
+  color:#ddd;
+}
+
+@keyframes zoom{
+  from{transform:scale(1.1);}
+  to{transform:scale(1.25);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* SECTIONS */
+section{
+  padding:70px 20px;
+  max-width:1100px;
+  margin:auto;
+  opacity:0;
+  transform:translateY(40px) rotateX(5deg);
+  transition:0.7s ease;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0) rotateX(0);
+}
+
+h2{
+  font-family:'Archivo Black';
+  margin-bottom:20px;
+}
+
+/* CONTROLS */
+.controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+input{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+button{
+  padding:10px 14px;
+  border:none;
+  border-radius:8px;
+  background:#1C1410;
+  color:white;
+  font-family:'DM Mono';
+  cursor:pointer;
+}
+
+button:hover{background:var(--accent);}
+
+/* MENU */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:12px;
+}
+
+.menu-item{
+  background:var(--card);
+  color:white;
+  padding:16px;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* MAP */
+iframe{
+  width:100%;
+  height:400px;
+  border:none;
+  border-radius:12px;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:12px;
+}
+
+.gallery img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.gallery img:hover{transform:scale(1.05);}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  background:#25D366;
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  font-size:22px;
+  text-decoration:none;
+  z-index:999;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="cursor" id="cursor"></div>
+<!-- NAV -->
+<nav>
+  <div style="color:white;font-family:'Archivo Black'">Pangra Junction</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#menu">Menu</a>
+    <a href="#location">Map</a>
+  </div>
+</nav>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">
-      <div class="dot"></div>
-      Pangra Junction
-    </div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1 data-en="Pangra Junction" data-np="पाङ्ग्रा जङ्क्सन">Pangra Junction</h1>
+    <p data-en="Your premium café experience in Kathmandu"
+       data-np="काठमाडौंको प्रिमियम क्याफे अनुभव">
+       Your premium café experience in Kathmandu
+    </p>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-main">
-      <div class="hero-left">
-        <p class="hero-tag">☕ Kathmandu · Est. Junction</p>
-        <h1 class="hero-title">
-          Pangra
-          <span class="accent">your everyday junction</span>
-          Junction
-        </h1>
-        <p class="hero-desc">Tire-inspired vibes, warm chiya, and a hangout spot unlike any other in Kathmandu. Pull up a seat — it used to be a tire.</p>
-        <div class="hero-btns">
-          <a href="#menu" class="btn btn-solid">View Menu</a>
-          <a href="#contact" class="btn btn-ghost">Find Us</a>
-        </div>
-      </div>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p data-en="A tire-inspired café in Kathmandu serving food, chiya, snacks and chill vibes."
+     data-np="काठमाडौंको टायर-थीम क्याफे जहाँ खाना, चिया र आरामदायी माहोल पाइन्छ।">
+     A tire-inspired café in Kathmandu serving food, chiya, snacks and chill vibes.
+  </p>
+</section>
 
-      <div class="hero-right">
-        <div class="wheel-wrap">
-          <div class="wheel-outer">
-            <div class="wheel-hub">
-              <div class="hub-center">
-                <span>PJ</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-right-text">
-          <p>Tire-inspired · Kathmandu</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- GALLERY -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+  </div>
+</section>
 
-  <!-- MARQUEE -->
-  <div class="band">
-    <div class="band-track">
-      <span class="band-item">Mo:Mo</span><span class="band-sep">⊙</span>
-      <span class="band-item">Chiya</span><span class="band-sep">⊙</span>
-      <span class="band-item">Chatpate</span><span class="band-sep">⊙</span>
-      <span class="band-item">Hookah</span><span class="band-sep">⊙</span>
-      <span class="band-item">Breakfast</span><span class="band-sep">⊙</span>
-      <span class="band-item">Good Vibes</span><span class="band-sep">⊙</span>
-      <span class="band-item">Tire Seats</span><span class="band-sep">⊙</span>
-      <span class="band-item">Mo:Mo</span><span class="band-sep">⊙</span>
-      <span class="band-item">Chiya</span><span class="band-sep">⊙</span>
-      <span class="band-item">Chatpate</span><span class="band-sep">⊙</span>
-      <span class="band-item">Hookah</span><span class="band-sep">⊙</span>
-      <span class="band-item">Breakfast</span><span class="band-sep">⊙</span>
-      <span class="band-item">Good Vibes</span><span class="band-sep">⊙</span>
-      <span class="band-item">Tire Seats</span><span class="band-sep">⊙</span>
-    </div>
+<!-- MENU -->
+<section id="menu">
+  <h2>Menu</h2>
+
+  <div class="controls">
+    <input id="search" placeholder="Search / खोज्नुहोस्">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('np')">नेपाली</button>
   </div>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-visual">
-      <div class="tire-stack">
-        <div class="mini-tire lg"><div class="mini-tire-inner"></div></div>
-        <div class="mini-tire md"><div class="mini-tire-inner"></div></div>
-        <div class="mini-tire sm"><div class="mini-tire-inner"></div></div>
-      </div>
-    </div>
-    <div class="about-text">
-      <p class="label">Who We Are</p>
-      <h2 class="section-title">More than a café.<br>It's a vibe.</h2>
-      <div class="divider"></div>
-      <p class="section-body">Pangra Junction is Kathmandu's most unique hangout spot — where tire-inspired aesthetics meet comfort food and warm chiya. Our seats are literally tire-inspired, giving the whole place a raw, cozy, industrial character you won't find anywhere else.<br><br>Whether you're here for a quick breakfast, a long evening with friends over hookah, or just a meaningful break — Pangra Junction is your spot.</p>
-    </div>
-  </section>
+  <div class="menu">
 
-  <!-- MENU -->
-  <section class="menu-section" id="menu">
-    <div class="menu-header">
-      <p class="label">What We Serve</p>
-      <h2 class="section-title">Our Menu</h2>
+    <!-- FULL MENU RESTORED -->
+    <div class="menu-item" data-en="Peanuts Sadhenko" data-np="बदाम सधेको">
+      <span class="name">Peanuts Sadhenko</span><span>Rs 150</span>
     </div>
 
-    <div class="menu-tabs">
-      <button class="tab-btn active" onclick="showTab('snacks', this)">Snacks</button>
-      <button class="tab-btn" onclick="showTab('breakfast', this)">Breakfast</button>
-      <button class="tab-btn" onclick="showTab('beverages', this)">Beverages</button>
-      <button class="tab-btn" onclick="showTab('refreshments', this)">Refreshments</button>
-      <button class="tab-btn" onclick="showTab('hookah', this)">Hookah</button>
+    <div class="menu-item" data-en="Bhatmas Sadhenko" data-np="भटमास सधेको">
+      <span class="name">Bhatmas Sadhenko</span><span>Rs 150</span>
     </div>
 
-    <div class="menu-panel active" id="tab-snacks">
-      <div class="menu-grid">
-        <div class="menu-item"><span class="item-name">Peanuts Sadhenko</span><span class="item-price">Rs 150</span></div>
-        <div class="menu-item"><span class="item-name">Bhatmas Sadhenko</span><span class="item-price">Rs 150</span></div>
-        <div class="menu-item"><span class="item-name">Wai Wai Sadhenko</span><span class="item-price">Rs 60 / 120</span></div>
-        <div class="menu-item"><span class="item-name">Chatpate</span><span class="item-price">Rs 50 / 100</span></div>
-        <div class="menu-item"><span class="item-name">Sausage Chatpate</span><span class="item-price">Rs 150</span></div>
-        <div class="menu-item"><span class="item-name">French Fried</span><span class="item-price">Rs 150</span></div>
-        <div class="menu-item"><span class="item-name">Chips Chilly</span><span class="item-price">Rs 160</span></div>
-        <div class="menu-item"><span class="item-name">Sausage Chilly</span><span class="item-price">Rs 200</span></div>
-        <div class="menu-item"><span class="item-name">Green Salad</span><span class="item-price">Rs 100</span></div>
-        <div class="menu-item"><span class="item-name">Sausage / Buff / Chicken Mo:Mo</span><span class="item-price">Rs 50</span></div>
-        <div class="menu-item"><span class="item-name">Steam / Fried / Chilly Buff Mo:Mo</span><span class="item-price">Rs 140</span></div>
-        <div class="menu-item"><span class="item-name">Chicken Mo:Mo</span><span class="item-price">Rs 160</span></div>
-        <div class="menu-item"><span class="item-name">Jhol Chicken Mo:Mo</span><span class="item-price">Rs 170</span></div>
-        <div class="menu-item"><span class="item-name">Jhol Buff Mo:Mo</span><span class="item-price">Rs 150</span></div>
-      </div>
+    <div class="menu-item" data-en="Wai Wai Sadhenko" data-np="वाईवाई सधेको">
+      <span class="name">Wai Wai Sadhenko</span><span>Rs 120</span>
     </div>
 
-    <div class="menu-panel" id="tab-breakfast">
-      <div class="menu-grid">
-        <div class="menu-item"><span class="item-name">Bread with Omelette</span><span class="item-price">Rs 80</span></div>
-        <div class="menu-item"><span class="item-name">Egg — Boiled / Fried</span><span class="item-price">Rs 30 / 50 / 70</span></div>
-        <div class="menu-item"><span class="item-name">Sausage — Boiled / Fried</span><span class="item-price">Rs 80 / 50</span></div>
-        <div class="menu-item"><span class="item-name">Noodles</span><span class="item-price">Rs 150</span></div>
-        <div class="menu-item"><span class="item-name">Current Combo</span><span class="item-price">Rs 150 / 60</span></div>
-        <div class="menu-item"><span class="item-name">Wai Wai — Boiled / Fried</span><span class="item-price">Rs 80 / 250</span></div>
-        <div class="menu-item"><span class="item-name">Chicken Keema</span><span class="item-price">Rs 230</span></div>
-        <div class="menu-item"><span class="item-name">Current Noodles</span><span class="item-price">Rs 100</span></div>
-      </div>
+    <div class="menu-item" data-en="Chatpate" data-np="चटपटे">
+      <span class="name">Chatpate</span><span>Rs 50</span>
     </div>
 
-    <div class="menu-panel" id="tab-beverages">
-      <div class="menu-grid">
-        <div class="menu-item"><span class="item-name">Hot Milk</span><span class="item-price">Rs 60</span></div>
-        <div class="menu-item"><span class="item-name">Milk Tea</span><span class="item-price">Rs 40</span></div>
-        <div class="menu-item"><span class="item-name">Milk Masala Tea</span><span class="item-price">Rs 55</span></div>
-        <div class="menu-item"><span class="item-name">Special Mataka Tea</span><span class="item-price">Rs 25</span></div>
-        <div class="menu-item"><span class="item-name">Black Tea</span><span class="item-price">Rs 30</span></div>
-        <div class="menu-item"><span class="item-name">Black Masala Tea</span><span class="item-price">Rs 30</span></div>
-        <div class="menu-item"><span class="item-name">Lemon Tea</span><span class="item-price">Rs 30</span></div>
-        <div class="menu-item"><span class="item-name">Ginger Tea</span><span class="item-price">Rs 100</span></div>
-        <div class="menu-item"><span class="item-name">Honey / Ginger</span><span class="item-price">Rs 60</span></div>
-        <div class="menu-item"><span class="item-name">Hot Lemon with Honey / Ginger</span><span class="item-price">Rs 65</span></div>
-        <div class="menu-item"><span class="item-name">Hot Lemon</span><span class="item-price">Rs 80</span></div>
-        <div class="menu-item"><span class="item-name">Black Coffee</span><span class="item-price">Rs 80</span></div>
-        <div class="menu-item"><span class="item-name">Milk Coffee</span><span class="item-price">Rs 80</span></div>
-      </div>
+    <div class="menu-item" data-en="Mo:Mo" data-np="मोमो">
+      <span class="name">Mo:Mo</span><span>Rs 140</span>
     </div>
 
-    <div class="menu-panel" id="tab-refreshments">
-      <div class="menu-grid">
-        <div class="menu-item"><span class="item-name">Coke</span><span class="item-price">Rs 60</span></div>
-        <div class="menu-item"><span class="item-name">Fanta</span><span class="item-price">Rs 35</span></div>
-        <div class="menu-item"><span class="item-name">Fruit Juice</span><span class="item-price">Rs 60</span></div>
-        <div class="menu-item"><span class="item-name">Red Bull</span><span class="item-price">Rs 60</span></div>
-        <div class="menu-item"><span class="item-name">X-Treme</span><span class="item-price">Rs 25</span></div>
-        <div class="menu-item"><span class="item-name">Cold Lemonade</span><span class="item-price">Rs 30</span></div>
-        <div class="menu-item"><span class="item-name">Beer</span><span class="item-price">Rs 150+</span></div>
-      </div>
+    <div class="menu-item" data-en="Chiya" data-np="चिया">
+      <span class="name">Chiya</span><span>Rs 40</span>
     </div>
 
-    <div class="menu-panel" id="tab-hookah">
-      <div class="menu-grid">
-        <div class="menu-item"><span class="item-name">Surya Red / Light Artic</span><span class="item-price">Rs 25</span></div>
-        <div class="menu-item"><span class="item-name">Surya Fusion</span><span class="item-price">Rs 30</span></div>
-        <div class="menu-item"><span class="item-name">Shikhar Ice</span><span class="item-price">Rs 20</span></div>
-        <div class="menu-item"><span class="item-name">Black</span><span class="item-price">Rs 30</span></div>
-        <div class="menu-item"><span class="item-name">Hookah</span><span class="item-price">Rs 300</span></div>
-        <div class="menu-item"><span class="item-name">Hookah and Cigarettes</span><span class="item-price">Rs 100</span></div>
-      </div>
+    <div class="menu-item" data-en="Noodles" data-np="नुडल्स">
+      <span class="name">Noodles</span><span>Rs 150</span>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-left">
-      <p class="label">Get In Touch</p>
-      <h2 class="section-title">Come hang<br>with us.</h2>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="c-icon">📞</div>
-          <div>
-            <p class="c-label">Call Us</p>
-            <p class="c-val">
-              <a href="tel:+9779860909026">9860909026</a><br>
-              <a href="tel:+9779861439046">9861439046</a>
-            </p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">📍</div>
-          <div>
-            <p class="c-label">Location</p>
-            <p class="c-val">Kathmandu, Nepal</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">🕐</div>
-          <div>
-            <p class="c-label">Hours</p>
-            <p class="c-val">Open Daily · Morning till Late</p>
-          </div>
-        </div>
-      </div>
+    <div class="menu-item" data-en="Coke" data-np="कोक">
+      <span class="name">Coke</span><span>Rs 60</span>
     </div>
-    <div class="contact-right">
-      <div class="contact-card">
-        <div class="contact-card-title">Pangra Junction</div>
-        <div class="contact-card-sub">Kathmandu, Nepal</div>
-        <div class="contact-card-divider"></div>
-        <p class="contact-card-tagline">"Your everyday junction for warm tea, delicious food, and meaningful breaks."</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Pangra Junction</div>
-    <div class="footer-copy">© 2025 Pangra Junction · Kathmandu, Nepal</div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
+<!-- MAP -->
+<section id="location">
+  <h2>Location</h2>
+  <iframe src="https://www.google.com/maps?q=P8FX+5VJ+Gopikrishna+Bhatkekopul+Rd+Kathmandu&output=embed"></iframe>
+</section>
 
-    // Menu tabs
-    function showTab(name, btn) {
-      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + name).classList.add('active');
-      btn.classList.add('active');
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg">
+</div>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/9779860909026">💬</a>
+
+<script>
+
+/* SCROLL REVEAL */
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", ()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add("show");
     }
-  </script>
+  });
+});
+
+/* LANGUAGE SYSTEM */
+let lang="en";
+
+function setLang(l){
+  lang=l;
+
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent = (l==="en") ? el.dataset.en : el.dataset.np;
+  });
+
+  document.querySelectorAll(".menu-item .name").forEach((el,i)=>{
+    const parent = el.closest(".menu-item");
+    el.textContent = (l==="en") ? parent.dataset.en : parent.dataset.np;
+  });
+}
+
+/* SEARCH */
+document.getElementById("search").addEventListener("input", e=>{
+  const v = e.target.value.toLowerCase();
+
+  document.querySelectorAll(".menu-item").forEach(item=>{
+    const text = (item.dataset.en + item.dataset.np).toLowerCase();
+    item.style.display = text.includes(v) ? "flex" : "none";
+  });
+});
+
+</script>
+
 </body>
 </html>
