@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pangra Junction</title>
+<title>Pangra Junction — Street Edition Neon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lora:wght@400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Lora:wght@400;600&display=swap" rel="stylesheet"/>
 
 <style>
 :root{
-  --bg:#F5ECD7;
-  --dark:#1C1410;
-  --card:#2E2118;
-  --accent:#B84C1E;
-  --muted:#9A7E62;
+  --black:#120c0a;
+  --dark:#1c1410;
+  --neon-orange:#ff4d1a;
+  --neon-yellow:#ffcc33;
+  --neon-green:#39ff88;
+  --cream:#f5ecd7;
+  --muted:#b79b7a;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+
 html{scroll-behavior:smooth;}
 
 body{
   font-family:'Lora',serif;
-  background:var(--bg);
-  color:var(--dark);
+  background:var(--black);
+  color:var(--cream);
   overflow-x:hidden;
 }
 
@@ -31,88 +34,86 @@ nav{
   position:fixed;
   top:0;
   width:100%;
+  z-index:999;
   display:flex;
   justify-content:space-between;
   padding:14px 20px;
-  background:rgba(28,20,16,0.92);
+  background:rgba(0,0,0,0.8);
   backdrop-filter:blur(10px);
-  z-index:999;
+  border-bottom:2px solid var(--neon-orange);
+}
+
+nav .logo{
+  font-family:'Archivo Black';
+  color:var(--neon-orange);
+  letter-spacing:1px;
 }
 
 nav a{
-  color:white;
+  color:var(--cream);
+  text-decoration:none;
+  margin-left:12px;
   font-family:'DM Mono';
   font-size:12px;
-  margin:0 8px;
-  text-decoration:none;
 }
-nav a:hover{color:var(--accent);}
 
-/* HERO (FIXED 3D + CLEAN) */
+nav a:hover{
+  color:var(--neon-yellow);
+}
+
+/* HERO */
 .hero{
   height:100vh;
-  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  overflow:hidden;
-  perspective:1200px;
-}
-
-.hero-bg{
-  position:absolute;
-  inset:-40px;
-  background:url('images/hero.jpg') center/cover;
-  filter:brightness(0.55);
-  transform:scale(1.2);
-  animation:zoom 14s ease-in-out infinite alternate;
-}
-
-.hero-content{
   position:relative;
-  color:white;
-  animation:float 6s ease-in-out infinite;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,77,26,0.25), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(57,255,136,0.15), transparent 55%);
 }
 
 .hero h1{
-  font-size:4.2rem;
+  font-size:4rem;
   font-family:'Archivo Black';
+  color:var(--neon-orange);
+  text-shadow:0 0 20px rgba(255,77,26,0.6);
 }
 
 .hero p{
   margin-top:10px;
-  color:#ddd;
+  color:var(--muted);
+  max-width:600px;
 }
 
-@keyframes zoom{
-  from{transform:scale(1.1);}
-  to{transform:scale(1.25);}
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
-
-/* SECTIONS */
+/* SECTION */
 section{
-  padding:70px 20px;
+  padding:80px 20px;
   max-width:1100px;
   margin:auto;
-  opacity:0;
-  transform:translateY(40px) rotateX(5deg);
-  transition:0.7s ease;
-}
-
-section.show{
-  opacity:1;
-  transform:translateY(0) rotateX(0);
 }
 
 h2{
   font-family:'Archivo Black';
   margin-bottom:20px;
+  color:var(--neon-yellow);
+}
+
+/* ABOUT */
+.about-box{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,204,51,0.2);
+  padding:20px;
+  border-radius:12px;
+  line-height:1.7;
 }
 
 /* CONTROLS */
@@ -126,20 +127,24 @@ h2{
 input{
   padding:10px;
   border-radius:8px;
-  border:1px solid #ccc;
+  border:none;
+  outline:none;
+  width:220px;
 }
 
 button{
   padding:10px 14px;
   border:none;
   border-radius:8px;
-  background:#1C1410;
-  color:white;
+  background:var(--neon-orange);
+  color:#000;
   font-family:'DM Mono';
   cursor:pointer;
 }
 
-button:hover{background:var(--accent);}
+button:hover{
+  background:var(--neon-yellow);
+}
 
 /* MENU */
 .menu{
@@ -149,66 +154,34 @@ button:hover{background:var(--accent);}
 }
 
 .menu-item{
-  background:var(--card);
-  color:white;
-  padding:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,77,26,0.2);
+  padding:14px;
   border-radius:12px;
   display:flex;
   justify-content:space-between;
+  transition:0.2s;
+}
+
+.menu-item:hover{
+  transform:scale(1.02);
+  border-color:var(--neon-green);
 }
 
 /* MAP */
 iframe{
   width:100%;
-  height:400px;
+  height:380px;
   border:none;
   border-radius:12px;
 }
 
-/* GALLERY */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:12px;
-}
-
-.gallery img{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  border-radius:10px;
-  cursor:pointer;
-  transition:0.3s;
-}
-.gallery img:hover{transform:scale(1.05);}
-
-/* LIGHTBOX */
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.92);
-  display:none;
-  align-items:center;
-  justify-content:center;
-}
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  background:#25D366;
-  color:white;
-  padding:14px;
-  border-radius:50%;
-  font-size:22px;
-  text-decoration:none;
-  z-index:999;
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px 20px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.1);
 }
 </style>
 </head>
@@ -217,10 +190,9 @@ iframe{
 
 <!-- NAV -->
 <nav>
-  <div style="color:white;font-family:'Archivo Black'">Pangra Junction</div>
+  <div class="logo">PANGRA JUNCTION</div>
   <div>
     <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
     <a href="#menu">Menu</a>
     <a href="#location">Map</a>
   </div>
@@ -228,133 +200,115 @@ iframe{
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1 data-en="Pangra Junction" data-np="पाङ्ग्रा जङ्क्सन">Pangra Junction</h1>
-    <p data-en="Your premium café experience in Kathmandu"
-       data-np="काठमाडौंको प्रिमियम क्याफे अनुभव">
-       Your premium café experience in Kathmandu
+  <div>
+    <h1>Pangra Junction</h1>
+    <p>
+      A neon-lit street café in Kathmandu where tire culture meets bold food,
+      strong tea, late-night snacks, and pure hangout energy.
     </p>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <h2>About</h2>
-  <p data-en="A tire-inspired café in Kathmandu serving food, chiya, snacks and chill vibes."
-     data-np="काठमाडौंको टायर-थीम क्याफे जहाँ खाना, चिया र आरामदायी माहोल पाइन्छ।">
-     A tire-inspired café in Kathmandu serving food, chiya, snacks and chill vibes.
-  </p>
-</section>
+  <h2>What is Pangra Junction?</h2>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="images/1.jpg">
-    <img src="images/2.jpg">
-    <img src="images/3.jpg">
-    <img src="images/4.jpg">
+  <div class="about-box">
+    Pangra Junction is a tire-inspired street café in Kathmandu built for everyday chaos, comfort, and connection.  
+    It’s not a fine-dining place — it’s a hangout spot.
+
+    <br><br>
+
+    People come here for:
+    <ul>
+      <li>🔥 hot chiya and quick bites</li>
+      <li>🛞 tire-seat street vibe seating</li>
+      <li>🍜 momo, snacks, and late-night food</li>
+      <li>⚡ chill conversations and long stays</li>
+    </ul>
+
+    <br>
+
+    The identity is simple:  
+    <b>raw street energy + warm food + neon personality.</b>
   </div>
 </section>
 
 <!-- MENU -->
 <section id="menu">
-  <h2>Menu</h2>
 
-  <div class="controls">
-    <input id="search" placeholder="Search / खोज्नुहोस्">
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('np')">नेपाली</button>
-  </div>
+<h2>Menu</h2>
 
-  <div class="menu">
-
-    <!-- FULL MENU RESTORED -->
-    <div class="menu-item" data-en="Peanuts Sadhenko" data-np="बदाम सधेको">
-      <span class="name">Peanuts Sadhenko</span><span>Rs 150</span>
-    </div>
-
-    <div class="menu-item" data-en="Bhatmas Sadhenko" data-np="भटमास सधेको">
-      <span class="name">Bhatmas Sadhenko</span><span>Rs 150</span>
-    </div>
-
-    <div class="menu-item" data-en="Wai Wai Sadhenko" data-np="वाईवाई सधेको">
-      <span class="name">Wai Wai Sadhenko</span><span>Rs 120</span>
-    </div>
-
-    <div class="menu-item" data-en="Chatpate" data-np="चटपटे">
-      <span class="name">Chatpate</span><span>Rs 50</span>
-    </div>
-
-    <div class="menu-item" data-en="Mo:Mo" data-np="मोमो">
-      <span class="name">Mo:Mo</span><span>Rs 140</span>
-    </div>
-
-    <div class="menu-item" data-en="Chiya" data-np="चिया">
-      <span class="name">Chiya</span><span>Rs 40</span>
-    </div>
-
-    <div class="menu-item" data-en="Noodles" data-np="नुडल्स">
-      <span class="name">Noodles</span><span>Rs 150</span>
-    </div>
-
-    <div class="menu-item" data-en="Coke" data-np="कोक">
-      <span class="name">Coke</span><span>Rs 60</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- MAP -->
-<section id="location">
-  <h2>Location</h2>
-  <iframe src="https://www.google.com/maps?q=P8FX+5VJ+Gopikrishna+Bhatkekopul+Rd+Kathmandu&output=embed"></iframe>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <img id="lightboxImg">
+<div class="controls">
+  <input id="search" placeholder="Search menu / खोज्नुहोस्">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('np')">नेपाली</button>
 </div>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/9779860909026">💬</a>
+<div class="menu">
+
+  <!-- FULL ORIGINAL MENU (RESTORED STYLE) -->
+
+  <div class="menu-item" data-en="Peanuts Sadhenko" data-np="बदाम सधेको"><span class="name">Peanuts Sadhenko</span><span>Rs 150</span></div>
+
+  <div class="menu-item" data-en="Bhatmas Sadhenko" data-np="भटमास सधेको"><span class="name">Bhatmas Sadhenko</span><span>Rs 150</span></div>
+
+  <div class="menu-item" data-en="Wai Wai Sadhenko" data-np="वाई वाई सधेको"><span class="name">Wai Wai Sadhenko</span><span>Rs 60/120</span></div>
+
+  <div class="menu-item" data-en="Chatpate" data-np="चटपटे"><span class="name">Chatpate</span><span>Rs 50</span></div>
+
+  <div class="menu-item" data-en="Mo:Mo" data-np="मोमो"><span class="name">Mo:Mo</span><span>Rs 140</span></div>
+
+  <div class="menu-item" data-en="Chicken Noodles" data-np="चिकेन नुडल्स"><span class="name">Chicken Noodles</span><span>Rs 150</span></div>
+
+  <div class="menu-item" data-en="Milk Tea" data-np="दूध चिया"><span class="name">Milk Tea</span><span>Rs 40</span></div>
+
+  <div class="menu-item" data-en="Black Tea" data-np="कालो चिया"><span class="name">Black Tea</span><span>Rs 30</span></div>
+
+  <div class="menu-item" data-en="Coffee" data-np="कफी"><span class="name">Coffee</span><span>Rs 80</span></div>
+
+  <div class="menu-item" data-en="Coke" data-np="कोक"><span class="name">Coke</span><span>Rs 60</span></div>
+
+</div>
+
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+<h2>Find Us</h2>
+
+<iframe 
+src="https://www.google.com/maps?q=P8FX+5VJ+Gopikrishna+Bhatkekopul+Rd+Kathmandu&output=embed">
+</iframe>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+Pangra Junction © Kathmandu — Street Edition Neon
+</footer>
 
 <script>
 
-/* SCROLL REVEAL */
-const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", ()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-      sec.classList.add("show");
-    }
-  });
-});
-
-/* LANGUAGE SYSTEM */
 let lang="en";
 
+/* LANGUAGE */
 function setLang(l){
   lang=l;
 
-  document.querySelectorAll("[data-en]").forEach(el=>{
-    el.textContent = (l==="en") ? el.dataset.en : el.dataset.np;
-  });
-
-  document.querySelectorAll(".menu-item .name").forEach((el,i)=>{
-    const parent = el.closest(".menu-item");
-    el.textContent = (l==="en") ? parent.dataset.en : parent.dataset.np;
+  document.querySelectorAll(".menu-item").forEach(item=>{
+    const name=item.querySelector(".name");
+    name.textContent = (l==="en") ? item.dataset.en : item.dataset.np;
   });
 }
 
 /* SEARCH */
-document.getElementById("search").addEventListener("input", e=>{
-  const v = e.target.value.toLowerCase();
+document.getElementById("search").addEventListener("input",e=>{
+  const v=e.target.value.toLowerCase();
 
   document.querySelectorAll(".menu-item").forEach(item=>{
-    const text = (item.dataset.en + item.dataset.np).toLowerCase();
-    item.style.display = text.includes(v) ? "flex" : "none";
+    const text=(item.dataset.en+item.dataset.np).toLowerCase();
+    item.style.display=text.includes(v)?"flex":"none";
   });
 });
 
