@@ -2,497 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pangra Junction | Your Everyday Junction</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pangra Junction</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 <style>
-
-:root{
---bg:#120c0a;
---card:#1c1412;
---orange:#ff4d1a;
---yellow:#ffcc33;
---green:#39ff88;
---white:#f5f5f5;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:var(--bg);
-color:white;
-font-family:'Lora',serif;
-}
-
-/* NAVBAR */
-
-nav{
-position:sticky;
-top:0;
-z-index:999;
-background:rgba(18,12,10,.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,77,26,.2);
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:16px 8%;
-}
-
-.brand{
-font-family:'Archivo Black',sans-serif;
-color:var(--orange);
-font-size:1.2rem;
-letter-spacing:2px;
-}
-
-.nav-actions{
-display:flex;
-gap:10px;
-}
-
-.lang-btn{
-background:transparent;
-border:1px solid var(--orange);
-color:white;
-padding:10px 15px;
-cursor:pointer;
-border-radius:10px;
-font-family:'DM Mono',monospace;
-transition:.3s;
-}
-
-.lang-btn:hover{
-background:var(--orange);
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:50px 20px;
-
-background:
-radial-gradient(circle at center,
-rgba(255,77,26,.18),
-transparent 40%);
-}
-
-.hero-inner{
-max-width:900px;
-}
-
-/* TIRE LOGO */
-
-.tire-logo{
-display:flex;
-justify-content:center;
-margin-bottom:30px;
-}
-
-.tire-ring{
-width:220px;
-height:220px;
-border-radius:50%;
-
-position:relative;
-
-background:
-repeating-radial-gradient(
-circle,
-#101010 0,
-#101010 12px,
-#1e1e1e 12px,
-#1e1e1e 22px
-);
-
-border:5px solid var(--orange);
-
-box-shadow:
-0 0 20px var(--orange),
-0 0 40px var(--orange),
-inset 0 0 20px rgba(255,77,26,.5);
-}
-
-.tire-ring::before{
-content:"";
-position:absolute;
-inset:30px;
-border-radius:50%;
-border:3px dashed var(--yellow);
-}
-
-.hub{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-
-width:90px;
-height:90px;
-
-border-radius:50%;
-background:var(--bg);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-border:3px solid var(--green);
-
-box-shadow:
-0 0 15px var(--green),
-inset 0 0 10px var(--green);
-}
-
-.hub span{
-font-family:'Archivo Black',sans-serif;
-font-size:2rem;
-color:var(--green);
-text-shadow:0 0 15px var(--green);
-}
-
-/* HERO TEXT */
-
-.hero h1{
-font-family:'Archivo Black',sans-serif;
-font-size:clamp(3rem,8vw,6rem);
-
-letter-spacing:4px;
-color:var(--orange);
-
-text-shadow:
-0 0 10px var(--orange),
-0 0 25px var(--orange),
-0 0 50px var(--orange);
-}
-
-.hero-tag{
-margin-top:15px;
-font-size:1.3rem;
-color:var(--yellow);
-font-family:'DM Mono',monospace;
-}
-
-.hero-sub{
-margin-top:20px;
-font-size:1.15rem;
-line-height:1.8;
-color:#ddd;
-}
-
-/* SEARCH */
-
-.search-wrap{
-margin-top:35px;
-}
-
-#search{
-width:min(500px,90%);
-padding:14px;
-
-border:none;
-outline:none;
-
-border-radius:12px;
-
-font-family:'DM Mono',monospace;
-}
-
-/* SECTION */
-
-section{
-padding:90px 8%;
-}
-
-.section-title{
-font-family:'Archivo Black',sans-serif;
-font-size:2rem;
-margin-bottom:30px;
-color:var(--yellow);
-}
-
-/* ABOUT */
-
-.about{
-max-width:900px;
-line-height:2;
-}
-
-/* MENU */
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:25px;
-}
-
-.menu-card{
-background:var(--card);
-padding:25px;
-border-radius:20px;
-
-border:1px solid rgba(255,77,26,.25);
-
-transition:.3s;
-}
-
-.menu-card:hover{
-transform:translateY(-5px);
-
-box-shadow:
-0 0 25px rgba(255,77,26,.25);
-}
-
-.menu-card h3{
-font-family:'Archivo Black',sans-serif;
-color:var(--orange);
-margin-bottom:15px;
-}
-
-.item{
-display:flex;
-justify-content:space-between;
-padding:10px 0;
-border-bottom:1px dashed rgba(255,255,255,.1);
-}
-
-.price{
-color:var(--green);
-font-family:'DM Mono',monospace;
-}
-
-/* MAP */
-
-iframe{
-width:100%;
-height:450px;
-border:none;
-border-radius:20px;
-}
-
-/* FOOTER */
-
-footer{
-padding:50px 20px;
-text-align:center;
-
-border-top:1px solid rgba(255,77,26,.2);
-}
-
-footer p{
-color:#bbb;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:3rem;
-}
-
-.tire-ring{
-width:170px;
-height:170px;
-}
-
-}
-
+:root{--bg:#120c0a;--card:#1d1411;--o:#ff4d1a;--y:#ffcc33;--g:#39ff88}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Lora,sans-serif}
+nav{position:sticky;top:0;background:#120c0af0;padding:15px 5%;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:'Archivo Black';color:var(--o)}
+.hero{text-align:center;padding:70px 20px}
+.tire{width:220px;height:220px;margin:auto;border-radius:50%;border:6px solid var(--o);display:flex;align-items:center;justify-content:center;background:repeating-radial-gradient(circle,#111 0 12px,#222 12px 22px);box-shadow:0 0 30px var(--o)}
+.hub{width:90px;height:90px;border-radius:50%;border:3px solid var(--g);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';color:var(--g);font-size:2rem}
+h1{font-family:'Archivo Black';color:var(--o);font-size:clamp(3rem,8vw,6rem)}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+input,button{padding:12px;border-radius:10px;border:none}
+.section{max-width:1200px;margin:auto;padding:40px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--card);padding:20px;border-radius:16px}
+.card h2{color:var(--y);font-family:'Archivo Black'}
+.item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #444}
+.price{color:var(--g)}
+iframe{width:100%;height:400px;border:0;border-radius:12px}
+footer{text-align:center;padding:30px}
 </style>
 </head>
 <body>
-
-<nav>
-
-<div class="brand">
-PANGRA JUNCTION
-</div>
-
-<div class="nav-actions">
-<button class="lang-btn" onclick="setLanguage('en')">EN</button>
-<button class="lang-btn" onclick="setLanguage('np')">NP</button>
-</div>
-
-</nav>
-
+<nav><div class="brand">PANGRA JUNCTION</div><div>9861439046 | 9860909026</div></nav>
 <section class="hero">
-
-<div class="hero-inner">
-
-<div class="tire-logo">
-
-<div class="tire-ring">
-
-<div class="hub">
-<span>PJ</span>
-</div>
-
-</div>
-
-</div>
-
+<div class="tire"><div class="hub">PJ</div></div>
 <h1>PANGRA JUNCTION</h1>
-
-<div class="hero-tag">
-YOUR EVERYDAY JUNCTION
+<p style="color:#ffcc33">Your Everyday Junction</p>
+<p>Delicious Food, Warm Tea, Meaningful Breaks</p>
+<div class="controls">
+<input id="search" placeholder="Search menu...">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('np')">NP</button>
 </div>
-
-<div class="hero-sub">
-Delicious food, warm tea, meaningful breaks.
-<br>
-Kathmandu street café culture with a tire-inspired identity.
-</div>
-
-<div class="search-wrap">
-<input id="search" type="text" placeholder="Search menu...">
-</div>
-
-</div>
-
 </section>
 
-<section>
+<section class="section">
+<div class="grid">
 
-<h2 class="section-title">
-ABOUT
-</h2>
-
-<div class="about">
-
-Pangra Junction is a Kathmandu street café built around tire-seat culture,
-warm tea, quick snacks, momo, noodles, and long conversations.
-
-A local hangout spot where people stop for chiya,
-meet friends, take meaningful breaks,
-and enjoy street-style café energy.
-
+<div class="card"><h2>Snacks</h2>
+<div class="item" data-en="Peanuts Sadhenko" data-np="पिनट्स सधेंको"><span>Peanuts Sadhenko</span><span class="price">150</span></div>
+<div class="item" data-en="Bhatmas Sadhenko" data-np="भटमास सधेंको"><span>Bhatmas Sadhenko</span><span class="price">150</span></div>
+<div class="item" data-en="Wai Wai Sadhenko" data-np="वाइवाई सधेंको"><span>Wai Wai Sadhenko</span><span class="price">60/120</span></div>
+<div class="item" data-en="Chatpate" data-np="चटपटे"><span>Chatpate</span><span class="price">50/70</span></div>
+<div class="item"><span>Sausage Chatpate</span><span class="price">150</span></div>
+<div class="item"><span>French Fried</span><span class="price">60/120</span></div>
+<div class="item"><span>Chips Chilly</span><span class="price">150</span></div>
+<div class="item"><span>Sausage Chilly</span><span class="price">180</span></div>
+<div class="item"><span>Green Salad</span><span class="price">100</span></div>
 </div>
 
+<div class="card"><h2>Mo:Mo</h2>
+<div class="item"><span>Buff Mo:Mo</span><span class="price">140</span></div>
+<div class="item"><span>Chicken Mo:Mo</span><span class="price">160</span></div>
+<div class="item"><span>Chol Chicken Mo:Mo</span><span class="price">170</span></div>
+<div class="item"><span>Chol Buff Mo:Mo</span><span class="price">150</span></div>
+</div>
+
+<div class="card"><h2>Beverages</h2>
+<div class="item"><span>Hot Milk</span><span class="price">50</span></div>
+<div class="item"><span>Milk Tea</span><span class="price">25</span></div>
+<div class="item"><span>Milk Masala Tea</span><span class="price">30</span></div>
+<div class="item"><span>Special Mataka Tea</span><span class="price">60</span></div>
+<div class="item"><span>Black Tea</span><span class="price">25</span></div>
+<div class="item"><span>Black Masala Tea</span><span class="price">30</span></div>
+<div class="item"><span>Lemon Tea</span><span class="price">30</span></div>
+<div class="item"><span>Ginger Tea</span><span class="price">30</span></div>
+<div class="item"><span>Hot Lemon With Honey/Ginger</span><span class="price">100</span></div>
+<div class="item"><span>Black Coffee</span><span class="price">80</span></div>
+<div class="item"><span>Milk Coffee</span><span class="price">80</span></div>
+</div>
+
+<div class="card"><h2>Refreshment</h2>
+<div class="item"><span>Coke</span><span class="price">60</span></div>
+<div class="item"><span>Fanta</span><span class="price">35</span></div>
+<div class="item"><span>Fruit Juice</span><span class="price">60</span></div>
+<div class="item"><span>Red Bull</span><span class="price">150</span></div>
+<div class="item"><span>X-Treme</span><span class="price">150</span></div>
+<div class="item"><span>Cold Lemonade</span><span class="price">60</span></div>
+</div>
+
+<div class="card"><h2>Breakfast</h2>
+<div class="item"><span>Bread With Omelette</span><span class="price">80</span></div>
+<div class="item"><span>Sausage Boiled/Fried</span><span class="price">50</span></div>
+<div class="item"><span>Egg Boiled/Fried</span><span class="price">50</span></div>
+<div class="item"><span>Noodles</span><span class="price">60</span></div>
+<div class="item"><span>Current Noodles</span><span class="price">100</span></div>
+<div class="item"><span>Current Combo WaiWai Boiled/Fried</span><span class="price">240</span></div>
+<div class="item"><span>Chicken Keema Noodles</span><span class="price">230</span></div>
+</div>
+
+<div class="card"><h2>Hookah & Cigarettes</h2>
+<div class="item"><span>Hooka</span><span class="price">300</span></div>
+<div class="item"><span>Surya Red/Light Artic</span><span class="price">25</span></div>
+<div class="item"><span>Surya Fusion</span><span class="price">30</span></div>
+<div class="item"><span>Shikhar Ice</span><span class="price">20</span></div>
+<div class="item"><span>Black</span><span class="price">30</span></div>
+</div>
+
+</div>
 </section>
 
-<section>
-
-<h2 class="section-title">
-MENU
-</h2>
-
-<div class="menu-grid">
-
-<!-- MENU ITEMS GO HERE -->
-
-<div class="menu-card">
-<h3>Snacks</h3>
-<p>Insert verified menu items.</p>
-</div>
-
-<div class="menu-card">
-<h3>Mo:Mo</h3>
-<p>Insert verified menu items.</p>
-</div>
-
-<div class="menu-card">
-<h3>Beverages</h3>
-<p>Insert verified menu items.</p>
-</div>
-
-<div class="menu-card">
-<h3>Refreshments</h3>
-<p>Insert verified menu items.</p>
-</div>
-
-<div class="menu-card">
-<h3>Breakfast</h3>
-<p>Insert verified menu items.</p>
-</div>
-
-<div class="menu-card">
-<h3>Hookah & Cigarettes</h3>
-<p>Insert verified menu items.</p>
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="section-title">
-FIND US
-</h2>
-
-<iframe
-src="https://www.google.com/maps?q=P8FX+5VJ+Gopikrishna+Bhatkekopul+Rd+Kathmandu&output=embed">
-</iframe>
-
+<section class="section">
+<h2>Location</h2>
+<iframe src="https://www.google.com/maps?q=P8FX+5VJ+Gopikrishna+Bhatkekopul+Rd+Kathmandu&output=embed"></iframe>
 </section>
 
 <footer>
-
-<p>
-Your everyday junction.
-</p>
-
-<p>
-Delicious food, warm tea, meaningful breaks.
-</p>
-
+<p>📞 9861439046 | 9860909026</p>
+<p>Your Everyday Junction</p>
 </footer>
 
 <script>
-
-function setLanguage(lang){
-
-document.querySelectorAll("[data-en]").forEach(item=>{
-
-if(lang==="np"){
-item.textContent=item.dataset.np;
-}
-else{
-item.textContent=item.dataset.en;
-}
-
+function setLang(lang){
+document.querySelectorAll('.item').forEach(i=>{
+let t=i.dataset[lang];
+if(t){i.children[0].textContent=t;}
 });
-
 }
-
-const search=document.getElementById("search");
-
-search.addEventListener("input",function(){
-
-const q=this.value.toLowerCase();
-
-document.querySelectorAll(".item").forEach(item=>{
-
-const text=item.innerText.toLowerCase();
-
-item.style.display=
-text.includes(q)
-? "flex"
-: "none";
-
+document.getElementById('search').addEventListener('input',function(){
+let q=this.value.toLowerCase();
+document.querySelectorAll('.item').forEach(i=>{
+let text=(i.innerText+' '+(i.dataset.en||'')+' '+(i.dataset.np||'')).toLowerCase();
+i.style.display=text.includes(q)?'flex':'none';
 });
-
 });
-
 </script>
-
-</body>
-</html>
+</body></html>
