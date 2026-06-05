@@ -1,315 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pangra Junction — Street Edition Neon</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Lora:wght@400;600&display=swap" rel="stylesheet"/>
+<title>Pangra Junction | Your Everyday Junction</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-  --black:#120c0a;
-  --dark:#1c1410;
-  --neon-orange:#ff4d1a;
-  --neon-yellow:#ffcc33;
-  --neon-green:#39ff88;
-  --cream:#f5ecd7;
-  --muted:#b79b7a;
+--bg:#120c0a;
+--card:#1c1412;
+--orange:#ff4d1a;
+--yellow:#ffcc33;
+--green:#39ff88;
+--white:#f5f5f5;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth;}
+html{
+scroll-behavior:smooth;
+}
 
 body{
-  font-family:'Lora',serif;
-  background:var(--black);
-  color:var(--cream);
-  overflow-x:hidden;
+background:var(--bg);
+color:white;
+font-family:'Lora',serif;
 }
 
-/* NAV */
+/* NAVBAR */
+
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:999;
-  display:flex;
-  justify-content:space-between;
-  padding:14px 20px;
-  background:rgba(0,0,0,0.8);
-  backdrop-filter:blur(10px);
-  border-bottom:2px solid var(--neon-orange);
+position:sticky;
+top:0;
+z-index:999;
+background:rgba(18,12,10,.95);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,77,26,.2);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:16px 8%;
 }
 
-nav .logo{
-  font-family:'Archivo Black';
-  color:var(--neon-orange);
-  letter-spacing:1px;
+.brand{
+font-family:'Archivo Black',sans-serif;
+color:var(--orange);
+font-size:1.2rem;
+letter-spacing:2px;
 }
 
-nav a{
-  color:var(--cream);
-  text-decoration:none;
-  margin-left:12px;
-  font-family:'DM Mono';
-  font-size:12px;
+.nav-actions{
+display:flex;
+gap:10px;
 }
 
-nav a:hover{
-  color:var(--neon-yellow);
+.lang-btn{
+background:transparent;
+border:1px solid var(--orange);
+color:white;
+padding:10px 15px;
+cursor:pointer;
+border-radius:10px;
+font-family:'DM Mono',monospace;
+transition:.3s;
+}
+
+.lang-btn:hover{
+background:var(--orange);
 }
 
 /* HERO */
+
 .hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:50px 20px;
+
+background:
+radial-gradient(circle at center,
+rgba(255,77,26,.18),
+transparent 40%);
 }
 
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,77,26,0.25), transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(57,255,136,0.15), transparent 55%);
+.hero-inner{
+max-width:900px;
 }
+
+/* TIRE LOGO */
+
+.tire-logo{
+display:flex;
+justify-content:center;
+margin-bottom:30px;
+}
+
+.tire-ring{
+width:220px;
+height:220px;
+border-radius:50%;
+
+position:relative;
+
+background:
+repeating-radial-gradient(
+circle,
+#101010 0,
+#101010 12px,
+#1e1e1e 12px,
+#1e1e1e 22px
+);
+
+border:5px solid var(--orange);
+
+box-shadow:
+0 0 20px var(--orange),
+0 0 40px var(--orange),
+inset 0 0 20px rgba(255,77,26,.5);
+}
+
+.tire-ring::before{
+content:"";
+position:absolute;
+inset:30px;
+border-radius:50%;
+border:3px dashed var(--yellow);
+}
+
+.hub{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
+width:90px;
+height:90px;
+
+border-radius:50%;
+background:var(--bg);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:3px solid var(--green);
+
+box-shadow:
+0 0 15px var(--green),
+inset 0 0 10px var(--green);
+}
+
+.hub span{
+font-family:'Archivo Black',sans-serif;
+font-size:2rem;
+color:var(--green);
+text-shadow:0 0 15px var(--green);
+}
+
+/* HERO TEXT */
 
 .hero h1{
-  font-size:4rem;
-  font-family:'Archivo Black';
-  color:var(--neon-orange);
-  text-shadow:0 0 20px rgba(255,77,26,0.6);
+font-family:'Archivo Black',sans-serif;
+font-size:clamp(3rem,8vw,6rem);
+
+letter-spacing:4px;
+color:var(--orange);
+
+text-shadow:
+0 0 10px var(--orange),
+0 0 25px var(--orange),
+0 0 50px var(--orange);
 }
 
-.hero p{
-  margin-top:10px;
-  color:var(--muted);
-  max-width:600px;
+.hero-tag{
+margin-top:15px;
+font-size:1.3rem;
+color:var(--yellow);
+font-family:'DM Mono',monospace;
+}
+
+.hero-sub{
+margin-top:20px;
+font-size:1.15rem;
+line-height:1.8;
+color:#ddd;
+}
+
+/* SEARCH */
+
+.search-wrap{
+margin-top:35px;
+}
+
+#search{
+width:min(500px,90%);
+padding:14px;
+
+border:none;
+outline:none;
+
+border-radius:12px;
+
+font-family:'DM Mono',monospace;
 }
 
 /* SECTION */
+
 section{
-  padding:80px 20px;
-  max-width:1100px;
-  margin:auto;
+padding:90px 8%;
 }
 
-h2{
-  font-family:'Archivo Black';
-  margin-bottom:20px;
-  color:var(--neon-yellow);
+.section-title{
+font-family:'Archivo Black',sans-serif;
+font-size:2rem;
+margin-bottom:30px;
+color:var(--yellow);
 }
 
 /* ABOUT */
-.about-box{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,204,51,0.2);
-  padding:20px;
-  border-radius:12px;
-  line-height:1.7;
-}
 
-/* CONTROLS */
-.controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-input{
-  padding:10px;
-  border-radius:8px;
-  border:none;
-  outline:none;
-  width:220px;
-}
-
-button{
-  padding:10px 14px;
-  border:none;
-  border-radius:8px;
-  background:var(--neon-orange);
-  color:#000;
-  font-family:'DM Mono';
-  cursor:pointer;
-}
-
-button:hover{
-  background:var(--neon-yellow);
+.about{
+max-width:900px;
+line-height:2;
 }
 
 /* MENU */
-.menu{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:12px;
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
 }
 
-.menu-item{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,77,26,0.2);
-  padding:14px;
-  border-radius:12px;
-  display:flex;
-  justify-content:space-between;
-  transition:0.2s;
+.menu-card{
+background:var(--card);
+padding:25px;
+border-radius:20px;
+
+border:1px solid rgba(255,77,26,.25);
+
+transition:.3s;
 }
 
-.menu-item:hover{
-  transform:scale(1.02);
-  border-color:var(--neon-green);
+.menu-card:hover{
+transform:translateY(-5px);
+
+box-shadow:
+0 0 25px rgba(255,77,26,.25);
+}
+
+.menu-card h3{
+font-family:'Archivo Black',sans-serif;
+color:var(--orange);
+margin-bottom:15px;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px dashed rgba(255,255,255,.1);
+}
+
+.price{
+color:var(--green);
+font-family:'DM Mono',monospace;
 }
 
 /* MAP */
+
 iframe{
-  width:100%;
-  height:380px;
-  border:none;
-  border-radius:12px;
+width:100%;
+height:450px;
+border:none;
+border-radius:20px;
 }
 
 /* FOOTER */
+
 footer{
-  text-align:center;
-  padding:40px 20px;
-  color:var(--muted);
-  border-top:1px solid rgba(255,255,255,0.1);
+padding:50px 20px;
+text-align:center;
+
+border-top:1px solid rgba(255,77,26,.2);
 }
+
+footer p{
+color:#bbb;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+.tire-ring{
+width:170px;
+height:170px;
+}
+
+}
+
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="logo">PANGRA JUNCTION</div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#menu">Menu</a>
-    <a href="#location">Map</a>
-  </div>
+
+<div class="brand">
+PANGRA JUNCTION
+</div>
+
+<div class="nav-actions">
+<button class="lang-btn" onclick="setLanguage('en')">EN</button>
+<button class="lang-btn" onclick="setLanguage('np')">NP</button>
+</div>
+
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div>
-    <h1>Pangra Junction</h1>
-    <p>
-      A neon-lit street café in Kathmandu where tire culture meets bold food,
-      strong tea, late-night snacks, and pure hangout energy.
-    </p>
-  </div>
+<section class="hero">
+
+<div class="hero-inner">
+
+<div class="tire-logo">
+
+<div class="tire-ring">
+
+<div class="hub">
+<span>PJ</span>
 </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>What is Pangra Junction?</h2>
-
-  <div class="about-box">
-    Pangra Junction is a tire-inspired street café in Kathmandu built for everyday chaos, comfort, and connection.  
-    It’s not a fine-dining place — it’s a hangout spot.
-
-    <br><br>
-
-    People come here for:
-    <ul>
-      <li>🔥 hot chiya and quick bites</li>
-      <li>🛞 tire-seat street vibe seating</li>
-      <li>🍜 momo, snacks, and late-night food</li>
-      <li>⚡ chill conversations and long stays</li>
-    </ul>
-
-    <br>
-
-    The identity is simple:  
-    <b>raw street energy + warm food + neon personality.</b>
-  </div>
-</section>
-
-<!-- MENU -->
-<section id="menu">
-
-<h2>Menu</h2>
-
-<div class="controls">
-  <input id="search" placeholder="Search menu / खोज्नुहोस्">
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('np')">नेपाली</button>
 </div>
 
-<div class="menu">
+</div>
 
-  <!-- FULL ORIGINAL MENU (RESTORED STYLE) -->
+<h1>PANGRA JUNCTION</h1>
 
-  <div class="menu-item" data-en="Peanuts Sadhenko" data-np="बदाम सधेको"><span class="name">Peanuts Sadhenko</span><span>Rs 150</span></div>
+<div class="hero-tag">
+YOUR EVERYDAY JUNCTION
+</div>
 
-  <div class="menu-item" data-en="Bhatmas Sadhenko" data-np="भटमास सधेको"><span class="name">Bhatmas Sadhenko</span><span>Rs 150</span></div>
+<div class="hero-sub">
+Delicious food, warm tea, meaningful breaks.
+<br>
+Kathmandu street café culture with a tire-inspired identity.
+</div>
 
-  <div class="menu-item" data-en="Wai Wai Sadhenko" data-np="वाई वाई सधेको"><span class="name">Wai Wai Sadhenko</span><span>Rs 60/120</span></div>
-
-  <div class="menu-item" data-en="Chatpate" data-np="चटपटे"><span class="name">Chatpate</span><span>Rs 50</span></div>
-
-  <div class="menu-item" data-en="Mo:Mo" data-np="मोमो"><span class="name">Mo:Mo</span><span>Rs 140</span></div>
-
-  <div class="menu-item" data-en="Chicken Noodles" data-np="चिकेन नुडल्स"><span class="name">Chicken Noodles</span><span>Rs 150</span></div>
-
-  <div class="menu-item" data-en="Milk Tea" data-np="दूध चिया"><span class="name">Milk Tea</span><span>Rs 40</span></div>
-
-  <div class="menu-item" data-en="Black Tea" data-np="कालो चिया"><span class="name">Black Tea</span><span>Rs 30</span></div>
-
-  <div class="menu-item" data-en="Coffee" data-np="कफी"><span class="name">Coffee</span><span>Rs 80</span></div>
-
-  <div class="menu-item" data-en="Coke" data-np="कोक"><span class="name">Coke</span><span>Rs 60</span></div>
+<div class="search-wrap">
+<input id="search" type="text" placeholder="Search menu...">
+</div>
 
 </div>
 
 </section>
 
-<!-- LOCATION -->
-<section id="location">
-<h2>Find Us</h2>
+<section>
 
-<iframe 
+<h2 class="section-title">
+ABOUT
+</h2>
+
+<div class="about">
+
+Pangra Junction is a Kathmandu street café built around tire-seat culture,
+warm tea, quick snacks, momo, noodles, and long conversations.
+
+A local hangout spot where people stop for chiya,
+meet friends, take meaningful breaks,
+and enjoy street-style café energy.
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+MENU
+</h2>
+
+<div class="menu-grid">
+
+<!-- MENU ITEMS GO HERE -->
+
+<div class="menu-card">
+<h3>Snacks</h3>
+<p>Insert verified menu items.</p>
+</div>
+
+<div class="menu-card">
+<h3>Mo:Mo</h3>
+<p>Insert verified menu items.</p>
+</div>
+
+<div class="menu-card">
+<h3>Beverages</h3>
+<p>Insert verified menu items.</p>
+</div>
+
+<div class="menu-card">
+<h3>Refreshments</h3>
+<p>Insert verified menu items.</p>
+</div>
+
+<div class="menu-card">
+<h3>Breakfast</h3>
+<p>Insert verified menu items.</p>
+</div>
+
+<div class="menu-card">
+<h3>Hookah & Cigarettes</h3>
+<p>Insert verified menu items.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+FIND US
+</h2>
+
+<iframe
 src="https://www.google.com/maps?q=P8FX+5VJ+Gopikrishna+Bhatkekopul+Rd+Kathmandu&output=embed">
 </iframe>
 
 </section>
 
-<!-- FOOTER -->
 <footer>
-Pangra Junction © Kathmandu — Street Edition Neon
+
+<p>
+Your everyday junction.
+</p>
+
+<p>
+Delicious food, warm tea, meaningful breaks.
+</p>
+
 </footer>
 
 <script>
 
-let lang="en";
+function setLanguage(lang){
 
-/* LANGUAGE */
-function setLang(l){
-  lang=l;
+document.querySelectorAll("[data-en]").forEach(item=>{
 
-  document.querySelectorAll(".menu-item").forEach(item=>{
-    const name=item.querySelector(".name");
-    name.textContent = (l==="en") ? item.dataset.en : item.dataset.np;
-  });
+if(lang==="np"){
+item.textContent=item.dataset.np;
+}
+else{
+item.textContent=item.dataset.en;
 }
 
-/* SEARCH */
-document.getElementById("search").addEventListener("input",e=>{
-  const v=e.target.value.toLowerCase();
+});
 
-  document.querySelectorAll(".menu-item").forEach(item=>{
-    const text=(item.dataset.en+item.dataset.np).toLowerCase();
-    item.style.display=text.includes(v)?"flex":"none";
-  });
+}
+
+const search=document.getElementById("search");
+
+search.addEventListener("input",function(){
+
+const q=this.value.toLowerCase();
+
+document.querySelectorAll(".item").forEach(item=>{
+
+const text=item.innerText.toLowerCase();
+
+item.style.display=
+text.includes(q)
+? "flex"
+: "none";
+
+});
+
 });
 
 </script>
