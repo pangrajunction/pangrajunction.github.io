@@ -73,7 +73,6 @@ footer{text-align:center;padding:30px}
   border-radius: 16px;
   display: inline-block;
 }
-/* QR code frame output constraints */
 #qrcode {
   width: 200px;
   height: 200px;
@@ -119,14 +118,12 @@ footer{text-align:center;padding:30px}
 </div>
 </section>
 
-<!-- REAL WORKING DYNAMIC QR CODE DISPLAY MODULE -->
 <div id="qrModal" class="qr-modal" onclick="toggleQR(false)">
   <div class="qr-poster" onclick="event.stopPropagation()">
     <button class="close-qr" onclick="toggleQR(false)">×</button>
     <h3 data-key="main-title">PANGRA JUNCTION</h3>
     <p data-key="sub-title-2">We Make What You Want</p>
     <div class="qr-wrapper-box">
-      <!-- Target placeholder where JavaScript injects actual scannable pixel elements -->
       <div id="qrcode"></div>
     </div>
     <br>
@@ -218,6 +215,15 @@ footer{text-align:center;padding:30px}
 <div class="item"><span data-key="redbull">Red Bull</span><span class="price">150</span></div>
 <div class="item"><span data-key="xtreme">X-Treme</span><span class="price">150</span></div>
 <div class="item"><span data-key="lemonade">Cold Lemonade</span><span class="price">60</span></div>
+</div>
+
+<!-- NEWLY ADDED CIGARETTES SECTION -->
+<div class="card"><h2 data-key="cat-cigarettes">Cigarettes</h2>
+<div class="item"><span data-key="shikhar-ice">Shikhar Ice</span><span class="price">25</span></div>
+<div class="item"><span data-key="surya-red">Surya Red</span><span class="price">30</span></div>
+<div class="item"><span data-key="surya-light">Surya Light</span><span class="price">30</span></div>
+<div class="item"><span data-key="surya-fusion">Surya Fusion</span><span class="price">30</span></div>
+<div class="item"><span data-key="black-cig">Black</span><span class="price">35</span></div>
 </div>
 
 </div></section>
@@ -319,6 +325,12 @@ const translations = {
     "redbull": "Red Bull",
     "xtreme": "X-Treme",
     "lemonade": "Cold Lemonade",
+    "cat-cigarettes": "Cigarettes",
+    "shikhar-ice": "Shikhar Ice",
+    "surya-red": "Surya Red",
+    "surya-light": "Surya Light",
+    "surya-fusion": "Surya Fusion",
+    "black-cig": "Black",
     "title-hours": "Opening Hours",
     "hours-weekday": "Sunday–Friday: 7:00 AM – 8:00 PM",
     "hours-sat": "Saturday: 3:00 PM – 8:00 PM",
@@ -400,6 +412,12 @@ const translations = {
     "redbull": "रेड बुल",
     "xtreme": "एक्स-ट्रीम",
     "lemonade": "चिसो लेमोनेड",
+    "cat-cigarettes": "चुरोट",
+    "shikhar-ice": "शिखर आइस",
+    "surya-red": "सूर्या रेड",
+    "surya-light": "सूर्या लाइट",
+    "surya-fusion": "सूर्या फ्युजन",
+    "black-cig": "ब्ल्याक",
     "title-hours": "खुल्ने समय",
     "hours-weekday": "आइतबार–शुक्रबार: बिहान ७:०० - बेलुका ८:००",
     "hours-sat": "शनिबार: दिउँसो ३:०० - बेलुका ८:००",
@@ -423,10 +441,9 @@ function toggleQR(show) {
   const modal = document.getElementById('qrModal');
   if (show) {
     modal.classList.add('show');
-    // Lazy-generate code block only on active click interaction
     if (!qrcodeInstance) {
       qrcodeInstance = new QRCode(document.getElementById("qrcode"), {
-        text: window.location.href, // Captures exact active destination routing url dynamically
+        text: window.location.href, 
         width: 200,
         height: 200,
         colorDark: "#120c0a",
