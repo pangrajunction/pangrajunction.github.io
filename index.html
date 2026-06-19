@@ -16,9 +16,10 @@ nav{position:sticky;top:0;background:#120c0af0;padding:15px 5%;display:flex;just
 .hub{width:90px;height:90px;border-radius:50%;border:3px solid var(--g);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';color:var(--g);font-size:2rem}
 h1{font-family:'Archivo Black';color:var(--o)}
 .controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-input,button,a.btn{padding:12px;border-radius:10px;border:none;text-decoration:none;font-weight:bold;cursor:pointer}
+input,button,a.btn{padding:12px;border-radius:10px;border:none;text-decoration:none;font-weight:bold;cursor:pointer;transition: transform 0.2s, background-color 0.2s;}
 input{background:#222;color:#fff}
 button,a.btn{background:var(--o);color:#fff}
+button:hover, a.btn:hover{transform: scale(1.05); opacity: 0.9;}
 button.active{background:var(--y);color:#000}
 .section{max-width:1200px;margin:auto;padding:40px 20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
@@ -27,7 +28,7 @@ button.active{background:var(--y);color:#000}
 .item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #444}
 .price{color:var(--g)}
 .hours,.social{text-align:center}
-iframe{width:100%;height:400px;border:0;border-radius:12px}
+iframe{width:100%;height:400px;border:0;border-radius:12px;background: #222;}
 footer{text-align:center;padding:30px}
 </style>
 </head>
@@ -40,7 +41,7 @@ footer{text-align:center;padding:30px}
 <p style="color:#ffcc33" data-key="sub-title-1">Your Everyday Junction</p>
 <p data-key="sub-title-2">Delicious Food, Warm Tea, Meaningful Breaks</p>
 <div class="controls">
-<input id="search" placeholder="Search menu...">
+<input id="search" placeholder="Search menu..." aria-label="Search menu">
 <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
 <button id="btn-np" onclick="setLang('np')">NP</button>
 <a class="btn" href="tel:9861439046" data-key="call-btn">Call Now</a>
@@ -73,7 +74,7 @@ footer{text-align:center;padding:30px}
 <div class="item"><span data-key="laphing">Laphing</span><span class="price">80</span></div>
 <div class="item"><span data-key="laphing-chips">Laphing With Chips</span><span class="price">90</span></div>
 <div class="item"><span data-key="panipuri">Panipuri</span><span class="price">50</span></div>
-<div class="item"><span data-key="french-fries">French Fried</span><span class="price">60/120</span></div>
+<div class="item"><span data-key="french-fries">French Fries</span><span class="price">60/120</span></div>
 <div class="item"><span data-key="chips-chilly">Chips Chilly</span><span class="price">150</span></div>
 <div class="item"><span data-key="sausage-chilly">Sausage Chilly</span><span class="price">180</span></div>
 <div class="item"><span data-key="green-salad">Green Salad</span><span class="price">100</span></div>
@@ -89,8 +90,8 @@ footer{text-align:center;padding:30px}
 <div class="card"><h2 data-key="cat-momo">Mo:Mo</h2>
 <div class="item"><span data-key="buff-momo">Buff Mo:Mo</span><span class="price">140</span></div>
 <div class="item"><span data-key="chicken-momo">Chicken Mo:Mo</span><span class="price">160</span></div>
-<div class="item"><span data-key="jhol-chicken">Chol Chicken Mo:Mo</span><span class="price">170</span></div>
-<div class="item"><span data-key="jhol-buff">Chol Buff Mo:Mo</span><span class="price">150</span></div>
+<div class="item"><span data-key="jhol-chicken">Jhol Chicken Mo:Mo</span><span class="price">170</span></div>
+<div class="item"><span data-key="jhol-buff">Jhol Buff Mo:Mo</span><span class="price">150</span></div>
 <div class="item"><span data-key="fried-momo">Fried Mo:Mo</span><span class="price">180</span></div>
 </div>
 
@@ -125,13 +126,12 @@ footer{text-align:center;padding:30px}
 
 <section class="section social">
 <h2 data-key="title-insta">Instagram</h2>
-<p><a href="https://www.instagram.com/pangra_junction/">@pangra_junction</a></p>
+<p><a href="https://www.instagram.com/pangra_junction/" style="color: var(--y);">@pangra_junction</a></p>
 </section>
 
 <section class="section">
 <h2 data-key="title-location">Location</h2>
-<!-- Fixed maps embed using embed coordinates near Gopikrishna, Kathmandu -->
-<iframe src="https://maps.google.com/maps?q=Gopikrishna%20Bhatkekopul%20Rd%20Kathmandu&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+<iframe src="https://maps.google.com/maps?q=Gopikrishna,%20Kathmandu&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
 </section>
 
 <footer>
@@ -140,7 +140,6 @@ footer{text-align:center;padding:30px}
 </footer>
 
 <script>
-// Language Translations Dictionary
 const translations = {
   en: {
     "main-title": "PANGRA JUNCTION",
@@ -170,7 +169,7 @@ const translations = {
     "laphing": "Laphing",
     "laphing-chips": "Laphing With Chips",
     "panipuri": "Panipuri",
-    "french-fries": "French Fried",
+    "french-fries": "French Fries",
     "chips-chilly": "Chips Chilly",
     "sausage-chilly": "Sausage Chilly",
     "green-salad": "Green Salad",
@@ -182,8 +181,8 @@ const translations = {
     "cat-momo": "Mo:Mo",
     "buff-momo": "Buff Mo:Mo",
     "chicken-momo": "Chicken Mo:Mo",
-    "chol-chicken": "Chol Chicken Mo:Mo",
-    "chol-buff": "Chol Buff Mo:Mo",
+    "jhol-chicken": "Jhol Chicken Mo:Mo",
+    "jhol-buff": "Jhol Buff Mo:Mo",
     "fried-momo": "Fried Mo:Mo",
     "cat-breakfast": "Breakfast & Rice",
     "bread-omelette": "Bread With Omelette",
@@ -249,8 +248,8 @@ const translations = {
     "cat-momo": "मो:मो",
     "buff-momo": "बफ मो:मो",
     "chicken-momo": "चिकन मो:मो",
-    "chol-chicken": "छोल चिकन मो:मो",
-    "chol-buff": "छोल बफ मो:मो",
+    "jhol-chicken": "झोल चिकन मो:मो",
+    "jhol-buff": "झोल बफ मो:मो",
     "fried-momo": "फ्राइड मो:मो",
     "cat-breakfast": "ब्रेकफास्ट र भात",
     "bread-omelette": "ब्रेड र अम्लेट",
@@ -280,15 +279,14 @@ const translations = {
 
 // Search Logic
 document.getElementById('search').addEventListener('input',function(){
-let q=this.value.toLowerCase();
-document.querySelectorAll('.item').forEach(i=>{
-i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none';
-});
+  let q=this.value.toLowerCase();
+  document.querySelectorAll('.item').forEach(i=>{
+    i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none';
+  });
 });
 
 // Translation Engine
 function setLang(lang){
-  // Update texts based on data-key attributes
   document.querySelectorAll('[data-key]').forEach(el => {
     const key = el.getAttribute('data-key');
     if (translations[lang] && translations[lang][key]) {
@@ -296,10 +294,9 @@ function setLang(lang){
     }
   });
   
-  // Update placeholder text of search bar
   document.getElementById('search').placeholder = translations[lang]['search-holder'];
+  document.documentElement.setAttribute('lang', lang === 'np' ? 'ne' : 'en');
 
-  // Toggle active button style classes
   if(lang === 'en') {
     document.getElementById('btn-en').classList.add('active');
     document.getElementById('btn-np').classList.remove('active');
