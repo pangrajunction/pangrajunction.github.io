@@ -3,119 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Pangra Junction</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<title>Pangra Junction | Premium Digital Menu</title>
+<!-- Google Fonts: Poppins (Professional Headers) & Inter (Clean, Modern Body UI) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 <!-- Real QR Code Generation Engine library integration -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root{--bg:#120c0a;--card:#1d1411;--o:#ff4d1a;--y:#ffcc33;--g:#39ff88}
+:root{
+  --bg: #0d0806;
+  --card: #1a110e;
+  --card-hover: #241915;
+  --o: #ff4d1a;
+  --y: #ffcc33;
+  --g: #2ecc71;
+  --text-muted: #a0a0a0;
+  --border-color: rgba(255, 77, 26, 0.15);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#fff;font-family:Lora,sans-serif}
-nav{position:sticky;top:0;background:#120c0af0;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;z-index:10}
-.brand{font-family:'Archivo Black';color:var(--o)}
-.hero{text-align:center;padding:70px 20px}
-.tire{width:220px;height:220px;margin:auto;border-radius:50%;border:6px solid var(--o);display:flex;align-items:center;justify-content:center;background:repeating-radial-gradient(circle,#111 0 12px,#222 12px 22px);box-shadow:0 0 30px var(--o)}
-.hub{width:90px;height:90px;border-radius:50%;border:3px solid var(--g);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';color:var(--g);font-size:2rem}
-h1{font-family:'Archivo Black';color:var(--o)}
-.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-input,button,a.btn{padding:12px;border-radius:10px;border:none;text-decoration:none;font-weight:bold;cursor:pointer;transition: transform 0.2s, background-color 0.2s;}
-input{background:#222;color:#fff}
-button,a.btn{background:var(--o);color:#fff}
-button:hover, a.btn:hover{transform: scale(1.05); opacity: 0.9;}
-button.active{background:var(--y);color:#000}
-.section{max-width:1200px;margin:auto;padding:40px 20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:var(--card);padding:20px;border-radius:16px}
-.card h2{color:var(--y);font-family:'Archivo Black';margin-top:0}
-.item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #444}
-.price{color:var(--g)}
-.hours,.social{text-align:center}
-iframe{width:100%;height:400px;border:0;border-radius:12px;background: #222;}
-footer{text-align:center;padding:30px}
+body{margin:0;background:var(--bg);color:#f5f5f7;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 
-/* --- FUNCTIONAL SCANNABLE QR DISPLAY WINDOW STYLES --- */
-.qr-trigger-btn {
-  background: linear-gradient(135deg, var(--o), var(--y)) !important;
-  color: #000 !important;
-}
-.qr-modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
-  z-index: 100;
-  align-items: center; justify-content: center;
-  backdrop-filter: blur(6px);
-}
-.qr-modal.show { display: flex; }
-.qr-poster {
-  background: #111;
-  padding: 35px 25px;
-  border-radius: 24px;
-  border: 4px solid var(--o);
-  text-align: center;
-  box-shadow: 0 0 40px rgba(255, 77, 26, 0.5);
-  max-width: 350px;
-  width: 90%;
-  position: relative;
-}
-.qr-poster h3 {
-  font-family: 'Archivo Black', sans-serif;
-  color: var(--y);
-  margin: 0 0 5px 0;
-  letter-spacing: 1.5px;
-  font-size: 1.6rem;
-}
-.qr-poster p { margin: 0 0 25px 0; color: #bbb; font-size: 0.95rem;}
-.qr-wrapper-box {
-  background: #fff;
-  padding: 18px;
-  border-radius: 16px;
-  display: inline-block;
-}
-#qrcode {
-  width: 200px;
-  height: 200px;
-}
-#qrcode img {
-  width: 100%;
-  height: 100%;
-}
-.qr-banner-text {
-  margin-top: 25px;
-  background: var(--o);
-  color: #fff;
-  font-family: 'Archivo Black', sans-serif;
-  padding: 12px 35px;
-  border-radius: 30px;
-  display: inline-block;
-  font-size: 1.3rem;
-  letter-spacing: 3px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-.close-qr {
-  position: absolute; top: -15px; right: -15px;
-  background: var(--o); color: #fff; border: none;
-  width: 36px; height: 36px; border-radius: 50%;
-  font-weight: bold; cursor: pointer; font-size: 1.3rem;
-}
+/* Navigation */
+nav{position:sticky;top:0;background:rgba(13, 8, 6, 0.92);padding:18px 5%;display:flex;justify-content:between;align-items:center;z-index:10;backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between}
+.brand{font-family:'Poppins';font-weight:900;font-size:1.4rem;letter-spacing:1px;color:var(--o)}
+.contact-nav{font-weight:500;color:var(--y);font-size:0.95rem;display:flex;gap:15px;align-items:center}
+
+/* Hero Section */
+.hero{text-align:center;padding:80px 20px 50px 20px;max-width:800px;margin:auto}
+.tire{width:200px;height:200px;margin:0 auto 30px auto;border-radius:50%;border:6px solid var(--o);display:flex;align-items:center;justify-content:center;background:repeating-radial-gradient(circle,#16100e 0 12px,#281d19 12px 22px);box-shadow:0 0 40px rgba(255, 77, 26, 0.25);transition:transform 0.5s ease}
+.tire:hover{transform:rotate(45deg)}
+.hub{width:90px;height:90px;border-radius:50%;border:3px solid var(--g);display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;color:var(--g);font-size:1.8rem;box-shadow:inset 0 0 10px rgba(46,204,113,0.2)}
+h1{font-family:'Poppins';font-weight:900;font-size:3rem;letter-spacing:-1px;margin:0 0 10px 0;background:linear-gradient(to right, #ff4d1a, #ffcc33);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub-tag-1{color:var(--y);font-weight:600;font-size:1.2rem;margin:0 0 5px 0;letter-spacing:0.5px}
+.sub-tag-2{color:var(--text-muted);font-size:1rem;margin:0 0 35px 0}
+
+/* Enhanced Controls Framework */
+.controls{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:600px;margin:0 auto}
+.search-wrapper{position:relative;width:100%}
+.search-wrapper::before{content:"🔍";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:0.95rem;opacity:0.6}
+input#search{width:100%;padding:15px 15px 15px 45px;border-radius:30px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:#fff;font-size:1rem;font-family:'Inter';transition:all 0.3s ease;box-shadow:inset 0 2px 4px rgba(0,0,0,0.2)}
+input#search:focus{outline:none;border-color:var(--o);background:rgba(255,255,255,0.1);box-shadow:0 0 15px rgba(255, 77, 26, 0.2)}
+
+.btn-group{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;width:100%}
+button,a.btn{padding:12px 24px;border-radius:30px;border:none;text-decoration:none;font-weight:600;font-size:0.95rem;font-family:'Inter';cursor:pointer;transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1);display:inline-flex;align-items:center;gap:8px}
+button{background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.05)}
+button:hover{background:rgba(255,255,255,0.15);transform:translateY(-2px)}
+button.active{background:var(--o);color:#fff;border-color:var(--o);box-shadow:0 4px 15px rgba(255, 77, 26, 0.3)}
+.qr-trigger-btn{background:linear-gradient(135deg, var(--y), #e6b800);color:#0d0806;font-weight:700}
+.qr-trigger-btn:hover{box-shadow:0 4px 15px rgba(255, 204, 51, 0.4);transform:translateY(-2px)}
+a.btn{background:transparent;color:#fff;border:2px solid var(--o)}
+a.btn:hover{background:var(--o);transform:translateY(-2px);box-shadow:0 4px 15px rgba(255, 77, 26, 0.3)}
+
+/* Menu Layout */
+.section{max-width:1200px;margin:auto;padding:30px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px}
+.card{background:var(--card);padding:28px;border-radius:24px;border:1px solid var(--border-color);transition:all 0.3s ease;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.card:hover{transform:translateY(-5px);background:var(--card-hover);border-color:rgba(255, 77, 26, 0.3)}
+.card h2{color:var(--y);font-family:'Poppins';font-weight:700;font-size:1.4rem;margin:0 0 20px 0;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:10px}
+.item{display:flex;justify-content:between;align-items:center;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.08);font-size:1rem;font-weight:500;display:flex;justify-content:space-between}
+.item:last-child{border-bottom:none}
+.item span:first-child{color:#e2e2e7}
+.price{color:var(--g);font-family:'Poppins';font-weight:700;background:rgba(46,204,113,0.1);padding:4px 10px;border-radius:12px;font-size:0.95rem}
+
+/* Visual Components */
+.hours,.social{text-align:center;background:var(--card);border-radius:24px;padding:35px;border:1px solid var(--border-color)}
+.hours p{margin:8px 0;font-size:1.1rem}
+.hours h2, .social h2, .section h2[data-key="title-location"] {justify-content:center; font-family:'Poppins'; font-weight:700}
+iframe{width:100%;height:380px;border:0;border-radius:20px;background:#16100e;border:1px solid var(--border-color);margin-top:15px}
+footer{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:0.95rem;border-top:1px solid rgba(255,255,255,0.05)}
+footer p{margin:6px 0}
+
+/* Modal Styling */
+.qr-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(5,3,2,0.95);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.qr-modal.show{display:flex}
+.qr-poster{background:#16100e;padding:40px 30px;border-radius:28px;border:2px solid var(--o);text-align:center;box-shadow:0 0 50px rgba(255, 77, 26, 0.3);max-width:360px;width:90%;position:relative}
+.qr-poster h3{font-family:'Poppins';font-weight:800;color:var(--y);margin:0 0 6px 0;font-size:1.5rem;letter-spacing:0.5px}
+.qr-poster p{margin:0 0 25px 0;color:var(--text-muted);font-size:0.95rem}
+.qr-wrapper-box{background:#fff;padding:20px;border-radius:20px;display:inline-block;box-shadow:0 10px 25px rgba(0,0,0,0.3)}
+#qrcode{width:200px;height:200px}
+#qrcode img{width:100%;height:100%}
+.qr-banner-text{margin-top:25px;background:var(--o);color:#fff;font-family:'Poppins';font-weight:800;padding:10px 40px;border-radius:30px;display:inline-block;font-size:1.2rem;letter-spacing:2px}
+.close-qr{position:absolute;top:-15px;right:-15px;background:var(--o);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-weight:bold;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center}
 </style>
 </head>
 <body>
-<nav><div class="brand">PANGRA JUNCTION</div><div>9861439046 | 9860909026</div></nav>
+
+<nav>
+  <div class="brand">PANGRA JUNCTION</div>
+  <div class="contact-nav">📱 9861439046</div>
+</nav>
 
 <section class="hero">
-<div class="tire"><div class="hub">PJ</div></div>
-<h1 data-key="main-title">PANGRA JUNCTION</h1>
-<p style="color:#ffcc33" data-key="sub-title-1">Your Everyday Junction</p>
-<p data-key="sub-title-2">We Make What You Want</p>
-<div class="controls">
-<input id="search" placeholder="Search menu..." aria-label="Search menu">
-<button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-<button id="btn-np" onclick="setLang('np')">NP</button>
-<button class="qr-trigger-btn" onclick="toggleQR(true)">✨ Share QR</button>
-<a class="btn" href="tel:9861439046" data-key="call-btn">Call Now</a>
-</div>
+  <div class="tire"><div class="hub">PJ</div></div>
+  <h1 data-key="main-title">PANGRA JUNCTION</h1>
+  <p class="sub-tag-1" data-key="sub-title-1">Your Everyday Junction</p>
+  <p class="sub-tag-2" data-key="sub-title-2">We Make What You Want</p>
+  
+  <div class="controls">
+    <div class="search-wrapper">
+      <input id="search" placeholder="Search delicious food..." aria-label="Search menu">
+    </div>
+    <div class="btn-group">
+      <button id="btn-en" class="active" onclick="setLang('en')">🇬🇧 EN</button>
+      <button id="btn-np" onclick="setLang('np')">🇳🇵 NP</button>
+      <button class="qr-trigger-btn" onclick="toggleQR(true)">✨ Share Menu QR</button>
+      <a class="btn" href="tel:9861439046" data-key="call-btn">📞 Call Now</a>
+    </div>
+  </div>
 </section>
 
 <div id="qrModal" class="qr-modal" onclick="toggleQR(false)">
@@ -133,120 +126,129 @@ footer{text-align:center;padding:30px}
 
 <section class="section"><div class="grid">
 
-<div class="card"><h2 data-key="cat-beverages">Beverages</h2>
-<div class="item"><span data-key="hot-milk">Hot Milk</span><span class="price">50</span></div>
-<div class="item"><span data-key="milk-tea">Milk Tea</span><span class="price">35</span></div>
-<div class="item"><span data-key="milk-masala">Milk Masala Tea</span><span class="price">60</span></div>
-<div class="item"><span data-key="mataka-tea">Special Mataka Tea</span><span class="price">60/140</span></div>
-<div class="item"><span data-key="black-tea">Black Tea</span><span class="price">25</span></div>
-<div class="item"><span data-key="black-masala">Black Masala Tea</span><span class="price">30</span></div>
-<div class="item"><span data-key="lemon-tea">Lemon Tea</span><span class="price">30</span></div>
-<div class="item"><span data-key="ginger-tea">Ginger Tea</span><span class="price">30/60</span></div>
-<div class="item"><span data-key="hot-lemon">Hot Lemon With Honey/Ginger</span><span class="price">100</span></div>
-<div class="item"><span data-key="black-coffee">Black Coffee</span><span class="price">80</span></div>
-<div class="item"><span data-key="milk-coffee">Milk Coffee</span><span class="price">100</span></div>
+<div class="card">
+  <h2 data-key="cat-beverages">☕ Beverages</h2>
+  <div class="item"><span data-key="hot-milk">Hot Milk</span><span class="price">रू 50</span></div>
+  <div class="item"><span data-key="milk-tea">Milk Tea</span><span class="price">रू 35</span></div>
+  <div class="item"><span data-key="milk-masala">Milk Masala Tea</span><span class="price">रू 60</span></div>
+  <div class="item"><span data-key="mataka-tea">Special Mataka Tea</span><span class="price">रू 60/140</span></div>
+  <div class="item"><span data-key="black-tea">Black Tea</span><span class="price">रू 25</span></div>
+  <div class="item"><span data-key="black-masala">Black Masala Tea</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="lemon-tea">Lemon Tea</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="ginger-tea">Ginger Tea</span><span class="price">रू 30/60</span></div>
+  <div class="item"><span data-key="hot-lemon">Hot Lemon With Honey/Ginger</span><span class="price">रू 100</span></div>
+  <div class="item"><span data-key="black-coffee">Black Coffee</span><span class="price">रू 80</span></div>
+  <div class="item"><span data-key="milk-coffee">Milk Coffee</span><span class="price">रू 100</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-snacks">Snacks</h2>
-<div class="item"><span data-key="peanuts-sad">Peanuts Sadhenko</span><span class="price">150</span></div>
-<div class="item"><span data-key="bhatmas-sad">Bhatmas Sadhenko</span><span class="price">150</span></div>
-<div class="item"><span data-key="waiwai-sad">Wai Wai Sadhenko</span><span class="price">60/120</span></div>
-<div class="item"><span data-key="chatpate">Chatpate</span><span class="price">50/100</span></div>
-<div class="item"><span data-key="chicken-chat">Chicken Chatpate</span><span class="price">150</span></div>
-<div class="item"><span data-key="sausage-chat">Sausage Chatpate</span><span class="price">150</span></div>
-<div class="item"><span data-key="laphing">Laphing</span><span class="price">80</span></div>
-<div class="item"><span data-key="laphing-chips">Laphing With Chips</span><span class="price">90</span></div>
-<div class="item"><span data-key="panipuri">Panipuri</span><span class="price">50</span></div>
-<div class="item"><span data-key="french-fries">French Fries</span><span class="price">60/120</span></div>
-<div class="item"><span data-key="chips-chilly">Chips Chilly</span><span class="price">150</span></div>
-<div class="item"><span data-key="sausage-chilly">Sausage Chilly</span><span class="price">180</span></div>
-<div class="item"><span data-key="green-salad">Green Salad</span><span class="price">100</span></div>
+<div class="card">
+  <h2 data-key="cat-snacks">🍟 Snacks</h2>
+  <div class="item"><span data-key="peanuts-sad">Peanuts Sadhenko</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="bhatmas-sad">Bhatmas Sadhenko</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="waiwai-sad">Wai Wai Sadhenko</span><span class="price">रू 60/120</span></div>
+  <div class="item"><span data-key="chatpate">Chatpate</span><span class="price">रू 50/100</span></div>
+  <div class="item"><span data-key="chicken-chat">Chicken Chatpate</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="sausage-chat">Sausage Chatpate</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="laphing">Laphing</span><span class="price">रू 80</span></div>
+  <div class="item"><span data-key="laphing-chips">Laphing With Chips</span><span class="price">रू 90</span></div>
+  <div class="item"><span data-key="panipuri">Panipuri</span><span class="price">रू 50</span></div>
+  <div class="item"><span data-key="french-fries">French Fries</span><span class="price">रू 60/120</span></div>
+  <div class="item"><span data-key="chips-chilly">Chips Chilly</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="sausage-chilly">Sausage Chilly</span><span class="price">रू 180</span></div>
+  <div class="item"><span data-key="green-salad">Green Salad</span><span class="price">रू 100</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-lassi">Lassi</h2>
-<div class="item"><span data-key="plain-lassi">Plain Lassi</span><span class="price">100</span></div>
-<div class="item"><span data-key="banana-lassi">Banana Lassi</span><span class="price">150</span></div>
-<div class="item"><span data-key="apple-lassi">Apple Lassi</span><span class="price">150</span></div>
-<div class="item"><span data-key="mango-lassi">Mango Lassi</span><span class="price">150</span></div>
+<div class="card">
+  <h2 data-key="cat-lassi">🥤 Lassi</h2>
+  <div class="item"><span data-key="plain-lassi">Plain Lassi</span><span class="price">रू 100</span></div>
+  <div class="item"><span data-key="banana-lassi">Banana Lassi</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="apple-lassi">Apple Lassi</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="mango-lassi">Mango Lassi</span><span class="price">रू 150</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-milkshakes">Milkshakes</h2>
-<div class="item"><span data-key="banana-shake">Banana Milkshake</span><span class="price">180</span></div>
-<div class="item"><span data-key="vanilla-shake">Vanilla Milkshake</span><span class="price">200</span></div>
-<div class="item"><span data-key="chocolate-shake">Chocolate Milkshake</span><span class="price">200</span></div>
-<div class="item"><span data-key="oreo-shake">Oreo Milkshake</span><span class="price">250</span></div>
-<div class="item"><span data-key="kitkat-shake">Kitkat Milkshake</span><span class="price">270</span></div>
+<div class="card">
+  <h2 data-key="cat-milkshakes">🍫 Milkshakes</h2>
+  <div class="item"><span data-key="banana-shake">Banana Milkshake</span><span class="price">रू 180</span></div>
+  <div class="item"><span data-key="vanilla-shake">Vanilla Milkshake</span><span class="price">रू 200</span></div>
+  <div class="item"><span data-key="chocolate-shake">Chocolate Milkshake</span><span class="price">रू 200</span></div>
+  <div class="item"><span data-key="oreo-shake">Oreo Milkshake</span><span class="price">रू 250</span></div>
+  <div class="item"><span data-key="kitkat-shake">Kitkat Milkshake</span><span class="price">रू 270</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-momo">Mo:Mo</h2>
-<div class="item"><span data-key="buff-momo">Buff Mo:Mo</span><span class="price">140</span></div>
-<div class="item"><span data-key="chicken-momo">Chicken Mo:Mo</span><span class="price">160</span></div>
-<div class="item"><span data-key="jhol-buff">Jhol Buff Mo:Mo</span><span class="price">150</span></div>
-<div class="item"><span data-key="jhol-chicken">Jhol Chicken Mo:Mo</span><span class="price">180</span></div>
-<div class="item"><span data-key="fried-momo">Fried Mo:Mo</span><span class="price">180</span></div>
-<div class="item"><span data-key="buff-fry">Buff Fry Mo:Mo</span><span class="price">170</span></div>
-<div class="item"><span data-key="chicken-fry">Chicken Fry Mo:Mo</span><span class="price">190</span></div>
-<div class="item"><span data-key="buff-chilly">Buff Chilly Mo:Mo</span><span class="price">180</span></div>
-<div class="item"><span data-key="chicken-chilly">Chicken Chilly Mo:Mo</span><span class="price">200</span></div>
-<div class="item"><span data-key="fry-buff-chilly">Fry Buff Chilly Mo:Mo</span><span class="price">200</span></div>
-<div class="item"><span data-key="fry-chicken-chilly">Fry Chicken Chilly Mo:Mo</span><span class="price">220</span></div>
+<div class="card">
+  <h2 data-key="cat-momo">🥟 Mo:Mo</h2>
+  <div class="item"><span data-key="buff-momo">Buff Mo:Mo</span><span class="price">रू 140</span></div>
+  <div class="item"><span data-key="chicken-momo">Chicken Mo:Mo</span><span class="price">रू 160</span></div>
+  <div class="item"><span data-key="jhol-buff">Jhol Buff Mo:Mo</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="jhol-chicken">Jhol Chicken Mo:Mo</span><span class="price">रू 180</span></div>
+  <div class="item"><span data-key="fried-momo">Fried Mo:Mo</span><span class="price">रू 180</span></div>
+  <div class="item"><span data-key="buff-fry">Buff Fry Mo:Mo</span><span class="price">रू 170</span></div>
+  <div class="item"><span data-key="chicken-fry">Chicken Fry Mo:Mo</span><span class="price">रू 190</span></div>
+  <div class="item"><span data-key="buff-chilly">Buff Chilly Mo:Mo</span><span class="price">रू 180</span></div>
+  <div class="item"><span data-key="chicken-chilly">Chicken Chilly Mo:Mo</span><span class="price">रू 200</span></div>
+  <div class="item"><span data-key="fry-buff-chilly">Fry Buff Chilly Mo:Mo</span><span class="price">रू 200</span></div>
+  <div class="item"><span data-key="fry-chicken-chilly">Fry Chicken Chilly Mo:Mo</span><span class="price">रू 220</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-breakfast">Breakfast</h2>
-<div class="item"><span data-key="bread-omelette">Bread With Omelette</span><span class="price">80</span></div>
-<div class="item"><span data-key="sausage-bf">Sausage Boiled/Fried</span><span class="price">50</span></div>
-<div class="item"><span data-key="egg-bf">Egg Boiled/Fried</span><span class="price">50</span></div>
-<div class="item"><span data-key="noodles">Wai Wai Noodles</span><span class="price">80</span></div>
-<div class="item"><span data-key="current-noodles">Current Noodles</span><span class="price">100</span></div>
-<div class="item"><span data-key="current-combo">Current Combo WaiWai Boiled/Fried</span><span class="price">250</span></div>
-<div class="item"><span data-key="chicken-keema">Chicken Keema Noodles</span><span class="price">230</span></div>
+<div class="card">
+  <h2 data-key="cat-breakfast">🍳 Breakfast</h2>
+  <div class="item"><span data-key="bread-omelette">Bread With Omelette</span><span class="price">रू 80</span></div>
+  <div class="item"><span data-key="sausage-bf">Sausage Boiled/Fried</span><span class="price">रू 50</span></div>
+  <div class="item"><span data-key="egg-bf">Egg Boiled/Fried</span><span class="price">रू 50</span></div>
+  <div class="item"><span data-key="noodles">Wai Wai Noodles</span><span class="price">रू 80</span></div>
+  <div class="item"><span data-key="current-noodles">Current Noodles</span><span class="price">रू 100</span></div>
+  <div class="item"><span data-key="current-combo">Current Combo Boiled/Fried</span><span class="price">रू 250</span></div>
+  <div class="item"><span data-key="chicken-keema">Chicken Keema Noodles</span><span class="price">रू 230</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-friedrice">Fried Rice</h2>
-<div class="item"><span data-key="veg-rice">Veg Fried Rice</span><span class="price">180</span></div>
-<div class="item"><span data-key="egg-rice">Egg Fried Rice</span><span class="price">220</span></div>
-<div class="item"><span data-key="chicken-rice">Chicken Fried Rice</span><span class="price">240</span></div>
-<div class="item"><span data-key="mixed-rice">Mixed Fried Rice</span><span class="price">280</span></div>
+<div class="card">
+  <h2 data-key="cat-friedrice">🍚 Fried Rice</h2>
+  <div class="item"><span data-key="veg-rice">Veg Fried Rice</span><span class="price">रू 180</span></div>
+  <div class="item"><span data-key="egg-rice">Egg Fried Rice</span><span class="price">रू 220</span></div>
+  <div class="item"><span data-key="chicken-rice">Chicken Fried Rice</span><span class="price">रू 240</span></div>
+  <div class="item"><span data-key="mixed-rice">Mixed Fried Rice</span><span class="price">रू 280</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-refreshment">Refreshment</h2>
-<div class="item"><span data-key="soda">Coke / Fanta / Sprite</span><span class="price">80</span></div>
-<div class="item"><span data-key="sprite-lemon">Sprite With Lemon</span><span class="price">100</span></div>
-<div class="item"><span data-key="juice">Fruit Juice</span><span class="price">30</span></div>
-<div class="item"><span data-key="redbull">Red Bull</span><span class="price">150</span></div>
-<div class="item"><span data-key="xtreme">X-Treme</span><span class="price">150</span></div>
-<div class="item"><span data-key="lemonade">Cold Lemonade</span><span class="price">60</span></div>
+<div class="card">
+  <h2 data-key="cat-refreshment">⚡ Refreshment</h2>
+  <div class="item"><span data-key="soda">Coke / Fanta / Sprite</span><span class="price">रू 80</span></div>
+  <div class="item"><span data-key="sprite-lemon">Sprite With Lemon</span><span class="price">रू 100</span></div>
+  <div class="item"><span data-key="juice">Fruit Juice</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="redbull">Red Bull</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="xtreme">X-Treme</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="lemonade">Cold Lemonade</span><span class="price">रू 60</span></div>
 </div>
 
-<div class="card"><h2 data-key="cat-cigarettes">Cigarettes</h2>
-<div class="item"><span data-key="shikhar-ice">Shikhar Ice</span><span class="price">25</span></div>
-<div class="item"><span data-key="surya-red">Surya Red</span><span class="price">30</span></div>
-<div class="item"><span data-key="surya-light">Surya Light</span><span class="price">30</span></div>
-<div class="item"><span data-key="surya-fusion">Surya Fusion</span><span class="price">30</span></div>
-<div class="item"><span data-key="black-cig">Black</span><span class="price">35</span></div>
+<div class="card">
+  <h2 data-key="cat-cigarettes">🚬 Cigarettes</h2>
+  <div class="item"><span data-key="shikhar-ice">Shikhar Ice</span><span class="price">रू 25</span></div>
+  <div class="item"><span data-key="surya-red">Surya Red</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="surya-light">Surya Light</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="surya-fusion">Surya Fusion</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="black-cig">Black</span><span class="price">रू 35</span></div>
 </div>
 
 </div></section>
 
 <section class="section hours">
-<h2 data-key="title-hours">Opening Hours</h2>
-<p data-key="hours-weekday">Sunday–Friday: 7:00 AM – 8:00 PM</p>
-<p data-key="hours-sat">Saturday: 3:00 PM – 8:00 PM</p>
+  <h2 data-key="title-hours">🕒 Opening Hours</h2>
+  <p data-key="hours-weekday">📅 Sunday–Friday: 7:00 AM – 8:00 PM</p>
+  <p data-key="hours-sat">📅 Saturday: 3:00 PM – 8:00 PM</p>
 </section>
 
 <section class="section social">
-<h2 data-key="title-insta">Instagram</h2>
-<p><a href="https://www.instagram.com/pangra_junction/" style="color: var(--y);">@pangra_junction</a></p>
+  <h2 data-key="title-insta">📸 Instagram</h2>
+  <p><a href="https://www.instagram.com/pangra_junction/" style="color: var(--y); text-decoration: none; font-weight: 600;">@pangra_junction</a></p>
 </section>
 
 <section class="section">
-<h2 data-key="title-location">Location</h2>
-<iframe src="https://maps.google.com/maps?q=Gopikrishna,%20Kathmandu&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+  <h2 data-key="title-location">📍 Location Map</h2>
+  <iframe src="https://maps.google.com/maps?q=Gopikrishna,%20Kathmandu&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
 </section>
 
 <footer>
-<p>📞 9861439046 | 9860909026</p>
-<p data-key="footer-text">Your Everyday Junction</p>
+  <p>📞 9861439046 | 9860909026</p>
+  <p data-key="footer-text">Your Everyday Junction</p>
 </footer>
 
 <script>
@@ -255,9 +257,9 @@ const translations = {
     "main-title": "PANGRA JUNCTION",
     "sub-title-1": "Your Everyday Junction",
     "sub-title-2": "We Make What You Want",
-    "search-holder": "Search menu...",
-    "call-btn": "Call Now",
-    "cat-beverages": "Beverages",
+    "search-holder": "Search delicious food...",
+    "call-btn": "📞 Call Now",
+    "cat-beverages": "☕ Beverages",
     "hot-milk": "Hot Milk",
     "milk-tea": "Milk Tea",
     "milk-masala": "Milk Masala Tea",
@@ -269,7 +271,7 @@ const translations = {
     "hot-lemon": "Hot Lemon With Honey/Ginger",
     "black-coffee": "Black Coffee",
     "milk-coffee": "Milk Coffee",
-    "cat-snacks": "Snacks",
+    "cat-snacks": "🍟 Snacks",
     "peanuts-sad": "Peanuts Sadhenko",
     "bhatmas-sad": "Bhatmas Sadhenko",
     "waiwai-sad": "Wai Wai Sadhenko",
@@ -283,18 +285,18 @@ const translations = {
     "chips-chilly": "Chips Chilly",
     "sausage-chilly": "Sausage Chilly",
     "green-salad": "Green Salad",
-    "cat-lassi": "Lassi",
+    "cat-lassi": "🥤 Lassi",
     "plain-lassi": "Plain Lassi",
     "banana-lassi": "Banana Lassi",
     "apple-lassi": "Apple Lassi",
     "mango-lassi": "Mango Lassi",
-    "cat-milkshakes": "Milkshakes",
+    "cat-milkshakes": "🍫 Milkshakes",
     "banana-shake": "Banana Milkshake",
     "vanilla-shake": "Vanilla Milkshake",
     "chocolate-shake": "Chocolate Milkshake",
     "oreo-shake": "Oreo Milkshake",
     "kitkat-shake": "Kitkat Milkshake",
-    "cat-momo": "Mo:Mo",
+    "cat-momo": "🥟 Mo:Mo",
     "buff-momo": "Buff Mo:Mo",
     "chicken-momo": "Chicken Mo:Mo",
     "jhol-chicken": "Jhol Chicken Mo:Mo",
@@ -306,37 +308,37 @@ const translations = {
     "chicken-chilly": "Chicken Chilly Mo:Mo",
     "fry-buff-chilly": "Fry Buff Chilly Mo:Mo",
     "fry-chicken-chilly": "Fry Chicken Chilly Mo:Mo",
-    "cat-breakfast": "Breakfast",
+    "cat-breakfast": "🍳 Breakfast",
     "bread-omelette": "Bread With Omelette",
     "sausage-bf": "Sausage Boiled/Fried",
     "egg-bf": "Egg Boiled/Fried",
     "noodles": "Wai Wai Noodles",
     "current-noodles": "Current Noodles",
-    "current-combo": "Current Combo WaiWai Boiled/Fried",
+    "current-combo": "Current Combo Boiled/Fried",
     "chicken-keema": "Chicken Keema Noodles",
-    "cat-friedrice": "Fried Rice",
+    "cat-friedrice": "🍚 Fried Rice",
     "veg-rice": "Veg Fried Rice",
     "egg-rice": "Egg Fried Rice",
     "chicken-rice": "Chicken Fried Rice",
     "mixed-rice": "Mixed Fried Rice",
-    "cat-refreshment": "Refreshment",
+    "cat-refreshment": "⚡ Refreshment",
     "soda": "Coke / Fanta / Sprite",
     "sprite-lemon": "Sprite With Lemon",
     "juice": "Fruit Juice",
     "redbull": "Red Bull",
     "xtreme": "X-Treme",
     "lemonade": "Cold Lemonade",
-    "cat-cigarettes": "Cigarettes",
+    "cat-cigarettes": "🚬 Cigarettes",
     "shikhar-ice": "Shikhar Ice",
     "surya-red": "Surya Red",
     "surya-light": "Surya Light",
     "surya-fusion": "Surya Fusion",
     "black-cig": "Black",
-    "title-hours": "Opening Hours",
-    "hours-weekday": "Sunday–Friday: 7:00 AM – 8:00 PM",
-    "hours-sat": "Saturday: 3:00 PM – 8:00 PM",
-    "title-insta": "Instagram",
-    "title-location": "Location",
+    "title-hours": "🕒 Opening Hours",
+    "hours-weekday": "📅 Sunday–Friday: 7:00 AM – 8:00 PM",
+    "hours-sat": "📅 Saturday: 3:00 PM – 8:00 PM",
+    "title-insta": "📸 Instagram",
+    "title-location": "📍 Location Map",
     "footer-text": "Your Everyday Junction"
   },
   np: {
@@ -344,8 +346,8 @@ const translations = {
     "sub-title-1": "तपाईंको दैनिक जंक्सन",
     "sub-title-2": "तपाईं जे चाहनुहुन्छ हामी त्यही बनाउँछौं",
     "search-holder": "मेनु खोज्नुहोस्...",
-    "call-btn": "कल गर्नुहोस",
-    "cat-beverages": "पेय पदार्थ",
+    "call-btn": "📞 कल गर्नुहोस",
+    "cat-beverages": "☕ पेय पदार्थ",
     "hot-milk": "तातो दूध",
     "milk-tea": "दूध चिया",
     "milk-masala": "दूध मसला चिया",
@@ -357,7 +359,7 @@ const translations = {
     "hot-lemon": "तातो कागती (मह/अदुवा)",
     "black-coffee": "कालो कफी",
     "milk-coffee": "दूध कफी",
-    "cat-snacks": "खाजा",
+    "cat-snacks": "🍟 खाजा",
     "peanuts-sad": "बदाम साधेको",
     "bhatmas-sad": "भटमास साधेको",
     "waiwai-sad": "वाइवाइ साधेको",
@@ -371,18 +373,18 @@ const translations = {
     "chips-chilly": "चिप्स चिली",
     "sausage-chilly": "ससेज चिली",
     "green-salad": "हरियो सलाद",
-    "cat-lassi": "लस्सी",
+    "cat-lassi": "🥤 लस्सी",
     "plain-lassi": "प्लेन लस्सी",
     "banana-lassi": "केराको लस्सी",
     "apple-lassi": "स्याउको लस्सी",
     "mango-lassi": "अँपको लस्सी",
-    "cat-milkshakes": "मिल्कशेक",
+    "cat-milkshakes": "🍫 मिल्कशेक",
     "banana-shake": "केराको मिल्कशेक",
     "vanilla-shake": "भ्यानिला मिल्कशेक",
     "chocolate-shake": "चक्लेट मिल्कशेक",
     "oreo-shake": "ओरियो मिल्कशेक",
     "kitkat-shake": "किटक्याट मिल्कशेक",
-    "cat-momo": "मो:मो",
+    "cat-momo": "🥟 मो:मो",
     "buff-momo": "बफ मो:मो",
     "chicken-momo": "चिकन मो:मो",
     "jhol-chicken": "झोल चिकन मो:मो",
@@ -394,7 +396,7 @@ const translations = {
     "chicken-chilly": "चिकन चिली मो:मो",
     "fry-buff-chilly": "फ्राई बफ चिली मो:मो",
     "fry-chicken-chilly": "फ्राई चिकन चिली मो:मो",
-    "cat-breakfast": "ब्रेकफास्ट",
+    "cat-breakfast": "🍳 ब्रेकफास्ट",
     "bread-omelette": "ब्रेड र अम्लेट",
     "sausage-bf": "ससेज (उसिनेको/फ्राई)",
     "egg-bf": "अण्डा (उसिनेको/फ्राई)",
@@ -402,29 +404,29 @@ const translations = {
     "current-noodles": "करन्ट चाउचाउ",
     "current-combo": "करन्ट कम्बो वाइवाइ (उसिनेको/फ्राई)",
     "chicken-keema": "चिकन किमा चाउमिन",
-    "cat-friedrice": "फ्राइड राइस",
+    "cat-friedrice": "🍚 फ्राइड राइस",
     "veg-rice": "भेज फ्राइड राइस",
     "egg-rice": "अण्डा फ्राइड राइस",
     "chicken-rice": "चिकन फ्राइड राइस",
     "mixed-rice": "मिक्स्ड फ्राइड राइस",
-    "cat-refreshment": "शीतल पेय",
+    "cat-refreshment": "⚡ शीतल पेय",
     "soda": "कोक / फ्यान्टा / स्प्राइट",
     "sprite-lemon": "कागती सहित स्प्राइट",
     "juice": "फलफूलको जुस",
     "redbull": "रेड बुल",
     "xtreme": "एक्स-ट्रीम",
     "lemonade": "चिसो लेमोनेड",
-    "cat-cigarettes": "चुरोट",
+    "cat-cigarettes": "🚬 चुरोट",
     "shikhar-ice": "शिखर आइस",
     "surya-red": "सूर्या रेड",
     "surya-light": "सूर्या लाइट",
     "surya-fusion": "सूर्या फ्युजन",
     "black-cig": "ब्ल्याक",
     "title-hours": "खुल्ने समय",
-    "hours-weekday": "आइतबार–शुक्रबार: बिहान ७:०० - बेलुका ८:००",
-    "hours-sat": "शनिबार: दिउँसो ३:०० - बेलुका ८:००",
-    "title-insta": "इन्स्टाग्राम",
-    "title-location": "स्थान",
+    "hours-weekday": "📅 आइतबार–शुक्रबार: बिहान ७:०० - बेलुका ८:००",
+    "hours-sat": "📅 शनिबार: दिउँसो ३:०० - बेलुका ८:००",
+    "title-insta": "📸 इन्स्टाग्राम",
+    "title-location": "📍 स्थान",
     "footer-text": "तपाईंको दैनिक जंक्सन"
   }
 };
@@ -434,6 +436,11 @@ document.getElementById('search').addEventListener('input',function(){
   let q=this.value.toLowerCase();
   document.querySelectorAll('.item').forEach(i=>{
     i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none';
+  });
+  // Hide cards completely if all their sub-items are hidden
+  document.querySelectorAll('.card').forEach(c=>{
+    let visibleItems = c.querySelectorAll('.item[style="display: flex;"], .item:not([style])');
+    c.style.display = (visibleItems.length === 0 && q !== '') ? 'none' : 'block';
   });
 });
 
@@ -479,4 +486,5 @@ function setLang(lang){
   }
 }
 </script>
-</body></html>
+</body>
+</html>
