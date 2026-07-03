@@ -5,84 +5,89 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Pangra Junction | Premium Digital Menu</title>
 <!-- Google Fonts: Poppins (Professional Headers) & Inter (Clean, Modern Body UI) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 <!-- Real QR Code Generation Engine library integration -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 :root{
-  --bg: #0d0806;
-  --card: #1a110e;
-  --card-hover: #241915;
-  --o: #ff4d1a;
-  --y: #ffcc33;
-  --g: #2ecc71;
-  --text-muted: #a0a0a0;
-  --border-color: rgba(255, 77, 26, 0.15);
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --card-hover: #f9fafb;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --o: #ff4500;
+  --y: #ffaa00;
+  --g: #10b981;
+  --border-color: rgba(255, 69, 0, 0.1);
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#f5f5f7;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text-main);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 
 /* Navigation */
-nav{position:sticky;top:0;background:rgba(13, 8, 6, 0.92);padding:18px 5%;display:flex;justify-content:between;align-items:center;z-index:10;backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between}
+nav{position:sticky;top:0;background:rgba(255, 255, 255, 0.85);padding:18px 5%;display:flex;justify-content:space-between;align-items:center;z-index:10;backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05)}
 .brand{font-family:'Poppins';font-weight:900;font-size:1.4rem;letter-spacing:1px;color:var(--o)}
-.contact-nav{font-weight:500;color:var(--y);font-size:0.95rem;display:flex;gap:15px;align-items:center}
+.contact-nav{font-weight:700;color:var(--text-main);font-size:0.95rem;display:flex;gap:15px;align-items:center;background:rgba(0,0,0,0.04);padding:6px 14px;border-radius:20px}
 
 /* Hero Section */
-.hero{text-align:center;padding:80px 20px 50px 20px;max-width:800px;margin:auto}
-.tire{width:200px;height:200px;margin:0 auto 30px auto;border-radius:50%;border:6px solid var(--o);display:flex;align-items:center;justify-content:center;background:repeating-radial-gradient(circle,#16100e 0 12px,#281d19 12px 22px);box-shadow:0 0 40px rgba(255, 77, 26, 0.25);transition:transform 0.5s ease}
-.tire:hover{transform:rotate(45deg)}
-.hub{width:90px;height:90px;border-radius:50%;border:3px solid var(--g);display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;color:var(--g);font-size:1.8rem;box-shadow:inset 0 0 10px rgba(46,204,113,0.2)}
-h1{font-family:'Poppins';font-weight:900;font-size:3rem;letter-spacing:-1px;margin:0 0 10px 0;background:linear-gradient(to right, #ff4d1a, #ffcc33);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub-tag-1{color:var(--y);font-weight:600;font-size:1.2rem;margin:0 0 5px 0;letter-spacing:0.5px}
-.sub-tag-2{color:var(--text-muted);font-size:1rem;margin:0 0 35px 0}
+.hero{text-align:center;padding:60px 20px 40px 20px;max-width:800px;margin:auto}
+
+/* Premium Minimalist PJ Logo */
+.pj-badge {width:110px;height:110px;margin:0 auto 25px auto;background:linear-gradient(135deg, var(--o), var(--y));border-radius:30px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 10px 25px rgba(255, 69, 0, 0.25);transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.pj-badge:hover {transform:scale(1.08) rotate(8deg);box-shadow:0 15px 30px rgba(255, 69, 0, 0.35)}
+.pj-badge::before {content:'';position:absolute;inset:6px;border:2px dashed rgba(255,255,255,0.4);border-radius:24px}
+.pj-text {font-family:'Poppins';font-weight:900;font-size:2.4rem;color:#fff;letter-spacing:-1px;text-shadow:0 2px 4px rgba(0,0,0,0.15)}
+
+h1{font-family:'Poppins';font-weight:900;font-size:3.2rem;letter-spacing:-1px;margin:0 0 10px 0;background:linear-gradient(to right, var(--o), #ff7a00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub-tag-1{color:var(--o);font-weight:700;font-size:1.2rem;margin:0 0 5px 0;letter-spacing:0.5px}
+.sub-tag-2{color:var(--text-muted);font-weight:500;font-size:1rem;margin:0 0 35px 0}
 
 /* Enhanced Controls Framework */
 .controls{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:600px;margin:0 auto}
 .search-wrapper{position:relative;width:100%}
-.search-wrapper::before{content:"🔍";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:0.95rem;opacity:0.6}
-input#search{width:100%;padding:15px 15px 15px 45px;border-radius:30px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:#fff;font-size:1rem;font-family:'Inter';transition:all 0.3s ease;box-shadow:inset 0 2px 4px rgba(0,0,0,0.2)}
-input#search:focus{outline:none;border-color:var(--o);background:rgba(255,255,255,0.1);box-shadow:0 0 15px rgba(255, 77, 26, 0.2)}
+.search-wrapper::before{content:"🔍";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:0.95rem;opacity:0.5}
+input#search{width:100%;padding:16px 16px 16px 48px;border-radius:30px;border:1px solid rgba(0,0,0,0.08);background:var(--card);color:var(--text-main);font-size:1rem;font-family:'Inter';transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.03)}
+input#search:focus{outline:none;border-color:var(--o);background:var(--card);box-shadow:0 0 20px rgba(255, 69, 0, 0.15)}
 
 .btn-group{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;width:100%}
 button,a.btn{padding:12px 24px;border-radius:30px;border:none;text-decoration:none;font-weight:600;font-size:0.95rem;font-family:'Inter';cursor:pointer;transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1);display:inline-flex;align-items:center;gap:8px}
-button{background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.05)}
-button:hover{background:rgba(255,255,255,0.15);transform:translateY(-2px)}
-button.active{background:var(--o);color:#fff;border-color:var(--o);box-shadow:0 4px 15px rgba(255, 77, 26, 0.3)}
-.qr-trigger-btn{background:linear-gradient(135deg, var(--y), #e6b800);color:#0d0806;font-weight:700}
-.qr-trigger-btn:hover{box-shadow:0 4px 15px rgba(255, 204, 51, 0.4);transform:translateY(-2px)}
-a.btn{background:transparent;color:#fff;border:2px solid var(--o)}
-a.btn:hover{background:var(--o);transform:translateY(-2px);box-shadow:0 4px 15px rgba(255, 77, 26, 0.3)}
+button{background:var(--card);color:var(--text-main);border:1px solid rgba(0,0,0,0.08);box-shadow:0 2px 6px rgba(0,0,0,0.02)}
+button:hover{background:var(--card-hover);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+button.active{background:var(--o);color:#fff;border-color:var(--o);box-shadow:0 4px 15px rgba(255, 69, 0, 0.3)}
+.qr-trigger-btn{background:linear-gradient(135deg, #2c3e50, #1a252f);color:#fff;font-weight:600}
+.qr-trigger-btn:hover{box-shadow:0 4px 15px rgba(44, 62, 80, 0.3);transform:translateY(-2px)}
+a.btn{background:transparent;color:var(--o);border:2px solid var(--o)}
+a.btn:hover{background:var(--o);color:#fff;transform:translateY(-2px);box-shadow:0 4px 15px rgba(255, 69, 0, 0.2)}
 
 /* Menu Layout */
-.section{max-width:1200px;margin:auto;padding:30px 20px}
+.section{max-width:1200px;margin:auto;padding:25px 20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px}
-.card{background:var(--card);padding:28px;border-radius:24px;border:1px solid var(--border-color);transition:all 0.3s ease;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
-.card:hover{transform:translateY(-5px);background:var(--card-hover);border-color:rgba(255, 77, 26, 0.3)}
-.card h2{color:var(--y);font-family:'Poppins';font-weight:700;font-size:1.4rem;margin:0 0 20px 0;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:10px}
-.item{display:flex;justify-content:between;align-items:center;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.08);font-size:1rem;font-weight:500;display:flex;justify-content:space-between}
+.card{background:var(--card);padding:28px;border-radius:24px;border:1px solid rgba(0,0,0,0.04);transition:all 0.3s ease;box-shadow:0 8px 24px rgba(149, 157, 165, 0.1)}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(149, 157, 165, 0.18);border-color:var(--border-color)}
+.card h2{color:var(--o);font-family:'Poppins';font-weight:800;font-size:1.35rem;margin:0 0 20px 0;display:flex;align-items:center;gap:10px;border-bottom:2px solid #f1f5f9;padding-bottom:12px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px dashed #e2e8f0;font-size:1rem;font-weight:600}
 .item:last-child{border-bottom:none}
-.item span:first-child{color:#e2e2e7}
-.price{color:var(--g);font-family:'Poppins';font-weight:700;background:rgba(46,204,113,0.1);padding:4px 10px;border-radius:12px;font-size:0.95rem}
+.item span:first-child{color:var(--text-main)}
+.price{color:var(--g);font-family:'Poppins';font-weight:700;background:rgba(16, 185, 129, 0.1);padding:4px 12px;border-radius:12px;font-size:0.9rem}
 
 /* Visual Components */
-.hours,.social{text-align:center;background:var(--card);border-radius:24px;padding:35px;border:1px solid var(--border-color)}
-.hours p{margin:8px 0;font-size:1.1rem}
-.hours h2, .social h2, .section h2[data-key="title-location"] {justify-content:center; font-family:'Poppins'; font-weight:700}
-iframe{width:100%;height:380px;border:0;border-radius:20px;background:#16100e;border:1px solid var(--border-color);margin-top:15px}
-footer{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:0.95rem;border-top:1px solid rgba(255,255,255,0.05)}
+.hours,.social{text-align:center;background:var(--card);border-radius:24px;padding:35px;border:1px solid rgba(0,0,0,0.04);box-shadow:0 8px 24px rgba(149, 157, 165, 0.08)}
+.hours p{margin:8px 0;font-size:1.1rem;font-weight:500;color:var(--text-muted)}
+.hours h2, .social h2, .section h2[data-key="title-location"] {justify-content:center; font-family:'Poppins'; font-weight:800; color:var(--text-main)}
+iframe{width:100%;height:380px;border:0;border-radius:20px;background:#e2e8f0;border:1px solid rgba(0,0,0,0.05);margin-top:15px}
+footer{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:0.95rem;font-weight:500;border-top:1px solid rgba(0,0,0,0.05);margin-top:40px}
 footer p{margin:6px 0}
 
 /* Modal Styling */
-.qr-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(5,3,2,0.95);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.qr-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15, 23, 42, 0.6);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
 .qr-modal.show{display:flex}
-.qr-poster{background:#16100e;padding:40px 30px;border-radius:28px;border:2px solid var(--o);text-align:center;box-shadow:0 0 50px rgba(255, 77, 26, 0.3);max-width:360px;width:90%;position:relative}
-.qr-poster h3{font-family:'Poppins';font-weight:800;color:var(--y);margin:0 0 6px 0;font-size:1.5rem;letter-spacing:0.5px}
-.qr-poster p{margin:0 0 25px 0;color:var(--text-muted);font-size:0.95rem}
-.qr-wrapper-box{background:#fff;padding:20px;border-radius:20px;display:inline-block;box-shadow:0 10px 25px rgba(0,0,0,0.3)}
+.qr-poster{background:var(--card);padding:40px 30px;border-radius:28px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.15);max-width:360px;width:90%;position:relative}
+.qr-poster h3{font-family:'Poppins';font-weight:900;color:var(--o);margin:0 0 6px 0;font-size:1.5rem;letter-spacing:0.5px}
+.qr-poster p{margin:0 0 25px 0;color:var(--text-muted);font-weight:500;font-size:0.95rem}
+.qr-wrapper-box{background:#fff;padding:20px;border-radius:20px;display:inline-block;box-shadow:0 8px 20px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.05)}
 #qrcode{width:200px;height:200px}
 #qrcode img{width:100%;height:100%}
-.qr-banner-text{margin-top:25px;background:var(--o);color:#fff;font-family:'Poppins';font-weight:800;padding:10px 40px;border-radius:30px;display:inline-block;font-size:1.2rem;letter-spacing:2px}
-.close-qr{position:absolute;top:-15px;right:-15px;background:var(--o);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-weight:bold;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center}
+.qr-banner-text{margin-top:25px;background:var(--o);color:#fff;font-family:'Poppins';font-weight:800;padding:10px 40px;border-radius:30px;display:inline-block;font-size:1.2rem;letter-spacing:2px;box-shadow:0 4px 12px rgba(255, 69, 0, 0.2)}
+.close-qr{position:absolute;top:-15px;right:-15px;background:#1e293b;color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-weight:bold;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 10px rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center}
 </style>
 </head>
 <body>
@@ -93,7 +98,10 @@ footer p{margin:6px 0}
 </nav>
 
 <section class="hero">
-  <div class="tire"><div class="hub">PJ</div></div>
+  <!-- Modernized PJ Badge Monogram Logo -->
+  <div class="pj-badge">
+    <div class="pj-text">PJ</div>
+  </div>
   <h1 data-key="main-title">PANGRA JUNCTION</h1>
   <p class="sub-tag-1" data-key="sub-title-1">Your Everyday Junction</p>
   <p class="sub-tag-2" data-key="sub-title-2">We Make What You Want</p>
@@ -152,7 +160,7 @@ footer p{margin:6px 0}
   <div class="item"><span data-key="laphing">Laphing</span><span class="price">रू 80</span></div>
   <div class="item"><span data-key="laphing-chips">Laphing With Chips</span><span class="price">रू 90</span></div>
   <div class="item"><span data-key="panipuri">Panipuri</span><span class="price">रू 50</span></div>
-  <div class="item"><span data-key="french-fries">French Fries</span><span class="price">रू 60/120</span></div>
+  <div class="item"><span data-key="french-fries">French Fries</span><span class="price">रू 150</span></div>
   <div class="item"><span data-key="chips-chilly">Chips Chilly</span><span class="price">रू 150</span></div>
   <div class="item"><span data-key="sausage-chilly">Sausage Chilly</span><span class="price">रू 180</span></div>
   <div class="item"><span data-key="green-salad">Green Salad</span><span class="price">रू 100</span></div>
@@ -199,6 +207,7 @@ footer p{margin:6px 0}
   <div class="item"><span data-key="current-noodles">Current Noodles</span><span class="price">रू 100</span></div>
   <div class="item"><span data-key="current-combo">Current Combo Boiled/Fried</span><span class="price">रू 250</span></div>
   <div class="item"><span data-key="chicken-keema">Chicken Keema Noodles</span><span class="price">रू 230</span></div>
+  <div class="item"><span data-key="egg-keema">Egg Keema Noodles</span><span class="price">रू 180</span></div>
 </div>
 
 <div class="card">
@@ -238,7 +247,7 @@ footer p{margin:6px 0}
 
 <section class="section social">
   <h2 data-key="title-insta">📸 Instagram</h2>
-  <p><a href="https://www.instagram.com/pangra_junction/" style="color: var(--y); text-decoration: none; font-weight: 600;">@pangra_junction</a></p>
+  <p><a href="https://www.instagram.com/pangra_junction/" style="color: var(--o); text-decoration: none; font-weight: 700;">@pangra_junction</a></p>
 </section>
 
 <section class="section">
@@ -316,6 +325,7 @@ const translations = {
     "current-noodles": "Current Noodles",
     "current-combo": "Current Combo Boiled/Fried",
     "chicken-keema": "Chicken Keema Noodles",
+    "egg-keema": "Egg Keema Noodles",
     "cat-friedrice": "🍚 Fried Rice",
     "veg-rice": "Veg Fried Rice",
     "egg-rice": "Egg Fried Rice",
@@ -404,6 +414,7 @@ const translations = {
     "current-noodles": "करन्ट चाउचाउ",
     "current-combo": "करन्ट कम्बो वाइवाइ (उसिनेको/फ्राई)",
     "chicken-keema": "चिकन किमा चाउमिन",
+    "egg-keema": "अण्डा किमा चाउमिन",
     "cat-friedrice": "🍚 फ्राइड राइस",
     "veg-rice": "भेज फ्राइड राइस",
     "egg-rice": "अण्डा फ्राइड राइस",
@@ -455,7 +466,7 @@ function toggleQR(show) {
         text: window.location.href, 
         width: 200,
         height: 200,
-        colorDark: "#120c0a",
+        colorDark: "#1e293b",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
