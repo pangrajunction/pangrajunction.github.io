@@ -486,17 +486,14 @@ footer p { margin: 8px 0; }
   <div class="item"><span data-key="milk-tea">Milk Tea</span><span class="price">रू 35</span></div>
   <div class="item"><span data-key="milk-masala">Milk Masala Tea</span><span class="price">रू 60</span></div>
   <div class="item"><span data-key="mataka-tea">Special Mataka Tea</span><span class="price">रू 60/140</span></div>
-  <div class="item"><span data-key="black-tea">Black Tea</span><span class="price">रू 25</span></div>
+  <div class="item"><span data-key="black-tea">Black Tea</span><span class="price">रू 25/50</span></div>
   <div class="item"><span data-key="black-masala">Black Masala Tea</span><span class="price">रू 30</span></div>
-  <div class="item"><span data-key="lemon-tea">Lemon Tea</span><span class="price">रू 60</span></div>
+  <div class="item"><span data-key="lemon-tea">Lemon Tea</span><span class="price">रू 30/60</span></div>
   <div class="item"><span data-key="ginger-tea">Ginger Tea</span><span class="price">रू 30/60</span></div>
+  <div class="item"><span data-key="hot-lemon">Hot Lemon</span><span class="price">रू 60</span></div>
+  <div class="item"><span data-key="hot-lemon-honey">Hot Lemon With Honey/Ginger</span><span class="price">रू 100</span></div>
   <div class="item"><span data-key="black-coffee">Black Coffee</span><span class="price">रू 80</span></div>
   <div class="item"><span data-key="milk-coffee">Milk Coffee</span><span class="price">रू 100</span></div>
-</div>
-
-<div class="card">
-  <h2 data-key="cat-specialty">☕ Specialty Tea</h2>
-  <div class="item"><span data-key="hot-lemon">Hot Lemon With Honey/Ginger</span><span class="price">रू 100</span></div>
 </div>
 
 <div class="card">
@@ -535,12 +532,10 @@ footer p { margin: 8px 0; }
 
 <div class="card">
   <h2 data-key="cat-momo">🥟 Mo:Mo</h2>
-  <!-- Regular Mo:Mo ordered ascending -->
   <div class="item"><span data-key="buff-momo">Buff Mo:Mo</span><span class="price">रू 140</span></div>
   <div class="item"><span data-key="jhol-buff">Jhol Buff Mo:Mo</span><span class="price">रू 150</span></div>
   <div class="item"><span data-key="chicken-momo">Chicken Mo:Mo</span><span class="price">रू 160</span></div>
   <div class="item"><span data-key="jhol-chicken">Jhol Chicken Mo:Mo</span><span class="price">रू 180</span></div>
-  <!-- Fried / Chilly Mo:Mo ordered below ascending -->
   <div class="item"><span data-key="buff-fry">Buff Fry Mo:Mo</span><span class="price">रू 170</span></div>
   <div class="item"><span data-key="buff-chilly">Buff Chilly Mo:Mo</span><span class="price">रू 180</span></div>
   <div class="item"><span data-key="chicken-fry">Chicken Fry Mo:Mo</span><span class="price">रू 190</span></div>
@@ -564,8 +559,8 @@ footer p { margin: 8px 0; }
 <div class="card">
   <h2 data-key="cat-friedrice">🍚 Fried Rice</h2>
   <div class="item"><span data-key="veg-rice">Veg Fried Rice</span><span class="price">रू 180</span></div>
-  <div class="item"><span data-key="egg-rice">Egg Fried Rice</span><span class="price">रू 220</span></div>
-  <div class="item"><span data-key="chicken-rice">Chicken Fried Rice</span><span class="price">रू 240</span></div>
+  <div class="item"><span data-key="egg-rice">Egg Fried Rice</span><span class="price">रू 210</span></div>
+  <div class="item"><span data-key="chicken-rice">Chicken Fried Rice</span><span class="price">रू 220</span></div>
   <div class="item"><span data-key="mixed-rice">Mixed Fried Rice</span><span class="price">रू 280</span></div>
 </div>
 
@@ -573,6 +568,7 @@ footer p { margin: 8px 0; }
   <h2 data-key="cat-refreshment">⚡ Refreshment</h2>
   <div class="item"><span data-key="soda">Coke / Fanta / Sprite</span><span class="price">रू 80</span></div>
   <div class="item"><span data-key="sprite-lemon">Sprite With Lemon</span><span class="price">रू 100</span></div>
+  <div class="item"><span data-key="coke-masala">Coke Masala</span><span class="price">रू 100</span></div>
   <div class="item"><span data-key="juice">Fruit Juice</span><span class="price">रू 30</span></div>
   <div class="item"><span data-key="redbull">Red Bull</span><span class="price">रू 150</span></div>
   <div class="item"><span data-key="xtreme">X-Treme</span><span class="price">रू 150</span></div>
@@ -630,8 +626,8 @@ const translations = {
     "black-masala": "Black Masala Tea",
     "lemon-tea": "Lemon Tea",
     "ginger-tea": "Ginger Tea",
-    "cat-specialty": "☕ Specialty Tea",
-    "hot-lemon": "Hot Lemon With Honey/Ginger",
+    "hot-lemon": "Hot Lemon",
+    "hot-lemon-honey": "Hot Lemon With Honey/Ginger",
     "black-coffee": "Black Coffee",
     "milk-coffee": "Milk Coffee",
     "cat-snacks": "🍟 Snacks",
@@ -687,6 +683,7 @@ const translations = {
     "cat-refreshment": "⚡ Refreshment",
     "soda": "Coke / Fanta / Sprite",
     "sprite-lemon": "Sprite With Lemon",
+    "coke-masala": "Coke Masala",
     "juice": "Fruit Juice",
     "redbull": "Red Bull",
     "xtreme": "X-Treme",
@@ -721,8 +718,8 @@ const translations = {
     "black-masala": "कालो मसला चिया",
     "lemon-tea": "कागती चिया",
     "ginger-tea": "अदुवा चिया",
-    "cat-specialty": "☕ विशेष चिया",
-    "hot-lemon": "तातो कागती (मह/अदुवा)",
+    "hot-lemon": "तातो कागती",
+    "hot-lemon-honey": "तातो कागती (मह/अदुवा)",
     "black-coffee": "कालो कफी",
     "milk-coffee": "दूध कफी",
     "cat-snacks": "🍟 खाजा",
@@ -778,6 +775,7 @@ const translations = {
     "cat-refreshment": "⚡ शीतल पेय",
     "soda": "कोक / फ्यान्टा / स्प्राइट",
     "sprite-lemon": "कागती सहित स्प्राइट",
+    "coke-masala": "कोक मसला",
     "juice": "फलफूलको जुस",
     "redbull": "रेड बुल",
     "xtreme": "एक्स-ट्रीम",
