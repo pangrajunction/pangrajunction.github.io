@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pangra Junction | Premium Digital Menu</title>
 <!-- Google Fonts: Outfit (Energetic Headers) & Plus Jakarta Sans (Crisp Modern UI) -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght=600;700;800;900&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
 <!-- Real QR Code Generation Engine library integration -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
@@ -488,11 +488,15 @@ footer p { margin: 8px 0; }
   <div class="item"><span data-key="mataka-tea">Special Mataka Tea</span><span class="price">रू 60/140</span></div>
   <div class="item"><span data-key="black-tea">Black Tea</span><span class="price">रू 25</span></div>
   <div class="item"><span data-key="black-masala">Black Masala Tea</span><span class="price">रू 30</span></div>
-  <div class="item"><span data-key="lemon-tea">Lemon Tea</span><span class="price">रू 30</span></div>
+  <div class="item"><span data-key="lemon-tea">Lemon Tea</span><span class="price">रू 60</span></div>
   <div class="item"><span data-key="ginger-tea">Ginger Tea</span><span class="price">रू 30/60</span></div>
-  <div class="item"><span data-key="hot-lemon">Hot Lemon With Honey/Ginger</span><span class="price">रू 100</span></div>
   <div class="item"><span data-key="black-coffee">Black Coffee</span><span class="price">रू 80</span></div>
   <div class="item"><span data-key="milk-coffee">Milk Coffee</span><span class="price">रू 100</span></div>
+</div>
+
+<div class="card">
+  <h2 data-key="cat-specialty">☕ Specialty Tea</h2>
+  <div class="item"><span data-key="hot-lemon">Hot Lemon With Honey/Ginger</span><span class="price">रू 100</span></div>
 </div>
 
 <div class="card">
@@ -507,7 +511,7 @@ footer p { margin: 8px 0; }
   <div class="item"><span data-key="laphing-chips">Laphing With Chips</span><span class="price">रू 90</span></div>
   <div class="item"><span data-key="panipuri">Panipuri</span><span class="price">रू 50</span></div>
   <div class="item"><span data-key="french-fries">French Fries</span><span class="price">रू 150</span></div>
-  <div class="item"><span data-key="chips-chilly">Chips Chilly</span><span class="price">रू 150</span></div>
+  <div class="item"><span data-key="chips-chilly">Chips Chilly</span><span class="price">रू 200</span></div>
   <div class="item"><span data-key="sausage-chilly">Sausage Chilly</span><span class="price">रू 180</span></div>
   <div class="item"><span data-key="green-salad">Green Salad</span><span class="price">रू 100</span></div>
 </div>
@@ -535,7 +539,6 @@ footer p { margin: 8px 0; }
   <div class="item"><span data-key="chicken-momo">Chicken Mo:Mo</span><span class="price">रू 160</span></div>
   <div class="item"><span data-key="jhol-buff">Jhol Buff Mo:Mo</span><span class="price">रू 150</span></div>
   <div class="item"><span data-key="jhol-chicken">Jhol Chicken Mo:Mo</span><span class="price">रू 180</span></div>
-  <div class="item"><span data-key="fried-momo">Fried Mo:Mo</span><span class="price">रू 180</span></div>
   <div class="item"><span data-key="buff-fry">Buff Fry Mo:Mo</span><span class="price">रू 170</span></div>
   <div class="item"><span data-key="chicken-fry">Chicken Fry Mo:Mo</span><span class="price">रू 190</span></div>
   <div class="item"><span data-key="buff-chilly">Buff Chilly Mo:Mo</span><span class="price">रू 180</span></div>
@@ -623,6 +626,7 @@ const translations = {
     "black-masala": "Black Masala Tea",
     "lemon-tea": "Lemon Tea",
     "ginger-tea": "Ginger Tea",
+    "cat-specialty": "☕ Specialty Tea",
     "hot-lemon": "Hot Lemon With Honey/Ginger",
     "black-coffee": "Black Coffee",
     "milk-coffee": "Milk Coffee",
@@ -656,7 +660,6 @@ const translations = {
     "chicken-momo": "Chicken Mo:Mo",
     "jhol-buff": "Jhol Buff Mo:Mo",
     "jhol-chicken": "Jhol Chicken Mo:Mo",
-    "fried-momo": "Fried Mo:Mo",
     "buff-fry": "Buff Fry Mo:Mo",
     "chicken-fry": "Chicken Fry Mo:Mo",
     "buff-chilly": "Buff Chilly Mo:Mo",
@@ -712,6 +715,7 @@ const translations = {
     "black-masala": "कालो मसला चिया",
     "lemon-tea": "कागती चिया",
     "ginger-tea": "अदुवा चिया",
+    "cat-specialty": "☕ विशेष चिया",
     "hot-lemon": "तातो कागती (मह/अदुवा)",
     "black-coffee": "कालो कफी",
     "milk-coffee": "दूध कफी",
@@ -745,7 +749,6 @@ const translations = {
     "chicken-momo": "चिकन मो:मो",
     "jhol-buff": "झोल बफ मो:मो",
     "jhol-chicken": "झोल चिकन मो:मो",
-    "fried-momo": "फ्राइड मो:मो",
     "buff-fry": "बफ फ्राई मो:मो",
     "chicken-fry": "चिकन फ्राई मो:मो",
     "buff-chilly": "बफ चिली मो:मो",
