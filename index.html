@@ -441,7 +441,7 @@ footer p { margin: 8px 0; }
 
 <nav>
   <div class="brand">PANGRA JUNCTION</div>
-  <div class="contact-nav">📱 9861439046</div>
+  <div class="contact-nav">📱 9763610590</div>
 </nav>
 
 <section class="hero">
@@ -451,7 +451,7 @@ footer p { margin: 8px 0; }
   <h1 data-key="main-title">PANGRA JUNCTION</h1>
   <p class="sub-tag-1" data-key="sub-title-1">Your Everyday Junction</p>
   <p class="sub-tag-2" data-key="sub-title-2">We Make What You Want</p>
-  
+
   <div class="controls">
     <div class="search-wrapper">
       <input id="search" placeholder="Search delicious food..." aria-label="Search menu">
@@ -460,7 +460,7 @@ footer p { margin: 8px 0; }
       <button id="btn-en" class="active" onclick="setLang('en')">🇬🇧 EN</button>
       <button id="btn-np" onclick="setLang('np')">🇳🇵 NP</button>
       <button class="qr-trigger-btn" onclick="toggleQR(true)">✨ Share Menu QR</button>
-      <a class="btn" href="tel:9861439046" data-key="call-btn">📞 Call Now</a>
+      <a class="btn" href="tel:9763610590" data-key="call-btn">📞 Call Now</a>
     </div>
   </div>
 </section>
@@ -605,7 +605,7 @@ footer p { margin: 8px 0; }
 </section>
 
 <footer>
-  <p>📞 9763610590| </p>
+  <p>📞 9763610590 | </p>
   <p data-key="footer-text">Your Everyday Junction</p>
 </footer>
 
@@ -800,7 +800,7 @@ const translations = {
 // Robust Search Engine (Fixed Card Visibility & Browser Compatibility)
 document.getElementById('search').addEventListener('input', function() {
   const query = this.value.toLowerCase().trim();
-  
+
   document.querySelectorAll('.item').forEach(item => {
     const text = item.innerText.toLowerCase();
     item.style.display = text.includes(query) ? 'flex' : 'none';
@@ -841,7 +841,7 @@ function setLang(lang) {
       el.innerText = translations[lang][key];
     }
   });
-  
+
   document.getElementById('search').placeholder = translations[lang]['search-holder'];
   document.documentElement.setAttribute('lang', lang === 'np' ? 'ne' : 'en');
 
