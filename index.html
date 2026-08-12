@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pangra Junction | Premium Digital Menu</title>
-<!-- Google Fonts: Outfit (Energetic Headers) & Plus Jakarta Sans (Crisp Modern UI) -->
+<!-- Google Fonts: Outfit & Plus Jakarta Sans -->
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght=600;700;800;900&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
-<!-- Real QR Code Generation Engine library integration -->
+<!-- QR Code Generation Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 :root {
@@ -81,7 +81,6 @@ nav {
   margin: auto;
 }
 
-/* Vibrant App-Icon Style PJ Logo */
 .pj-badge {
   width: 115px;
   height: 115px;
@@ -137,7 +136,7 @@ h1 {
   margin: 0 0 35px 0;
 }
 
-/* Enhanced Controls Framework */
+/* Controls */
 .controls {
   display: flex;
   flex-direction: column;
@@ -305,30 +304,6 @@ a.btn:hover {
   border: 1px solid rgba(0, 201, 133, 0.2);
 }
 
-/* Visual Components */
-.hours, .social {
-  text-align: center;
-  background: var(--card-bg);
-  border-radius: 28px;
-  padding: 40px 30px;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-}
-.hours p {
-  margin: 10px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-.hours h2, .social h2, .section h2[data-key="title-location"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  color: var(--text-main);
-}
 footer {
   text-align: center;
   padding: 50px 20px;
@@ -575,4 +550,263 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="black-cig">Black</span><span class="price">रू 35</span></div>
       <div class="item"><span data-key="mint-hookah">Mint Hookah</span><span class="price">रू 300</span></div>
       <div class="item"><span data-key="ladykiller-hookah">Ladykiller Hookah</span><span class="price">रू 350</span></div>
-      <div class="
+      <div class="item"><span data-key="cloud-mint-hookah">Cloud Mint Hookah</span><span class="price">रू 450</span></div>
+      <div class="item"><span data-key="cloud-ladykiller-hookah">Cloud Ladykiller Hookah</span><span class="price">रू 500</span></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© Pangra Junction. All Rights Reserved.</p>
+  <p data-key="footer-sub">Crafted with passion for taste & speed.</p>
+</footer>
+
+<script>
+// Translation Dictionary
+const dictionary = {
+  en: {
+    "main-title": "PANGRA JUNCTION",
+    "sub-title-1": "Your Everyday Junction",
+    "sub-title-2": "We Make What You Want",
+    "call-btn": "📞 Call Now",
+    "cat-beverages": "☕ Beverages",
+    "hot-milk": "Hot Milk",
+    "milk-tea": "Milk Tea",
+    "milk-masala": "Milk Masala Tea",
+    "mataka-tea": "Special Mataka Tea",
+    "black-tea": "Black Tea",
+    "black-masala": "Black Masala Tea",
+    "lemon-tea": "Lemon Tea",
+    "ginger-tea": "Ginger Tea",
+    "hot-lemon": "Hot Lemon",
+    "hot-lemon-honey": "Hot Lemon With Honey/Ginger",
+    "black-coffee": "Black Coffee",
+    "milk-coffee": "Milk Coffee",
+    "cat-snacks": "🍟 Snacks",
+    "peanuts-sad": "Peanuts Sadhenko",
+    "bhatmas-sad": "Bhatmas Sadhenko",
+    "waiwai-sad": "Wai Wai Sadhenko",
+    "chatpate": "Chatpate",
+    "chicken-chat": "Chicken Chatpate",
+    "sausage-chat": "Sausage Chatpate",
+    "laphing": "Laphing",
+    "laphing-chips": "Laphing With Chips",
+    "french-fries": "French Fries",
+    "chips-chilly": "Chips Chilly",
+    "sausage-chilly": "Sausage Chilly",
+    "green-salad": "Green Salad",
+    "cat-lassi": "🥤 Lassi",
+    "plain-lassi": "Plain Lassi",
+    "banana-lassi": "Banana Lassi",
+    "apple-lassi": "Apple Lassi",
+    "mango-lassi": "Mango Lassi",
+    "cat-milkshakes": "🍫 Milkshakes",
+    "banana-shake": "Banana Milkshake",
+    "vanilla-shake": "Vanilla Milkshake",
+    "chocolate-shake": "Chocolate Milkshake",
+    "oreo-shake": "Oreo Milkshake",
+    "kitkat-shake": "Kitkat Milkshake",
+    "cat-momo": "🥟 Mo:Mo",
+    "buff-momo": "Buff Mo:Mo",
+    "jhol-buff": "Jhol Buff Mo:Mo",
+    "chicken-momo": "Chicken Mo:Mo",
+    "jhol-chicken": "Jhol Chicken Mo:Mo",
+    "buff-fry": "Buff Fry Mo:Mo",
+    "buff-chilly": "Buff Chilly Mo:Mo",
+    "chicken-fry": "Chicken Fry Mo:Mo",
+    "chicken-chilly": "Chicken Chilly Mo:Mo",
+    "fry-buff-chilly": "Fry Buff Chilly Mo:Mo",
+    "fry-chicken-chilly": "Fry Chicken Chilly Mo:Mo",
+    "cat-breakfast": "🍳 Breakfast",
+    "bread-omelette": "Bread With Omelette",
+    "sausage-bf": "Sausage Boiled/Fried",
+    "egg-bf": "Egg Boiled/Fried",
+    "noodles": "Wai Wai Noodles",
+    "current-noodles": "Current Noodles",
+    "current-combo": "Current Combo Boiled/Fried",
+    "chicken-keema": "Chicken Keema Noodles",
+    "egg-keema": "Egg Keema Noodles",
+    "cat-friedrice": "🍚 Fried Rice",
+    "veg-rice": "Veg Fried Rice",
+    "egg-rice": "Egg Fried Rice",
+    "chicken-rice": "Chicken Fried Rice",
+    "mixed-rice": "Mixed Fried Rice",
+    "cat-refreshment": "⚡ Refreshment",
+    "soda": "Coke / Fanta / Sprite",
+    "sprite-lemon": "Sprite With Lemon",
+    "coke-masala": "Coke Masala",
+    "juice": "Fruit Juice",
+    "redbull": "Red Bull",
+    "xtreme": "X-Treme",
+    "lemonade": "Cold Lemonade",
+    "cat-cigarettes": "🚬 Cigarettes & Hookah",
+    "shikhar-ice": "Shikhar Ice",
+    "surya-red": "Surya Red",
+    "surya-light": "Surya Light",
+    "surya-fusion": "Surya Fusion",
+    "black-cig": "Black",
+    "mint-hookah": "Mint Hookah",
+    "ladykiller-hookah": "Ladykiller Hookah",
+    "cloud-mint-hookah": "Cloud Mint Hookah",
+    "cloud-ladykiller-hookah": "Cloud Ladykiller Hookah",
+    "search-ph": "Search delicious food...",
+    "footer-sub": "Crafted with passion for taste & speed."
+  },
+  np: {
+    "main-title": "पाङ्ग्रा जङ्क्सन",
+    "sub-title-1": "तपाईंको दैनिक जङ्क्सन",
+    "sub-title-2": "हामी तपाईंले चाहेको बनाउँछौं",
+    "call-btn": "📞 फोन गर्नुहोस्",
+    "cat-beverages": "☕ पेय पदार्थ",
+    "hot-milk": "तातो दूध",
+    "milk-tea": "दूध चिया",
+    "milk-masala": "मसला दूध चिया",
+    "mataka-tea": "विशेष मड्का चिया",
+    "black-tea": "कालो चिया",
+    "black-masala": "कालो मसला चिया",
+    "lemon-tea": "कागति चिया",
+    "ginger-tea": "अदुवा चिया",
+    "hot-lemon": "तातो कागती",
+    "hot-lemon-honey": "तातो कागती मह/अदुवा साथ",
+    "black-coffee": "ब्ल्याक कफी",
+    "milk-coffee": "मिल्क कफी",
+    "cat-snacks": "🍟 खाजा",
+    "peanuts-sad": "बदाम साढेको",
+    "bhatmas-sad": "भटमास साढेको",
+    "waiwai-sad": "वाइ वाइ साढेको",
+    "chatpate": "चटपटे",
+    "chicken-chat": "चिकन चटपटे",
+    "sausage-chat": "ससेज चटपटे",
+    "laphing": "लाफिङ",
+    "laphing-chips": "चिप्स लाफिङ",
+    "french-fries": "फ्रेन्च फ्राइज",
+    "chips-chilly": "चिप्स चिली",
+    "sausage-chilly": "ससेज चिली",
+    "green-salad": "ग्रीन सलाद",
+    "cat-lassi": "🥤 लस्सी",
+    "plain-lassi": "प्लेन लस्सी",
+    "banana-lassi": "केरा लस्सी",
+    "apple-lassi": "स्याउ लस्सी",
+    "mango-lassi": "आप लस्सी",
+    "cat-milkshakes": "🍫 मिल्कसेक",
+    "banana-shake": "बनाना मिल्कसेक",
+    "vanilla-shake": "भेनिला मिल्कसेक",
+    "chocolate-shake": "चॉकलेट मिल्कसेक",
+    "oreo-shake": "ओरियो मिल्कसेक",
+    "kitkat-shake": "किटक्याट मिल्कसेक",
+    "cat-momo": "🥟 मो:मो",
+    "buff-momo": "बफ मो:मो",
+    "jhol-buff": "झोल बफ मो:मो",
+    "chicken-momo": "चिकन मो:मो",
+    "jhol-chicken": "झोल चिकन मो:मो",
+    "buff-fry": "बफ फ्राइ मो:मो",
+    "buff-chilly": "बफ चिली मो:मो",
+    "chicken-fry": "चिकन फ्राइ मो:मो",
+    "chicken-chilly": "चिकन चिली मो:मो",
+    "fry-buff-chilly": "फ्राइ बफ चिली मो:मो",
+    "fry-chicken-chilly": "फ्राइ चिकन चिली मो:मो",
+    "cat-breakfast": "🍳 ब्रेकफास्ट",
+    "bread-omelette": "ब्रेड अमलेट",
+    "sausage-bf": "ससेज (उसिनेको/फ्राइ)",
+    "egg-bf": "अण्डा (उसिनेको/फ्राइ)",
+    "noodles": "वाइ वाइ चाउचाउ",
+    "current-noodles": "करन्ट चाउचाउ",
+    "current-combo": "करन्ट कम्बो",
+    "chicken-keema": "चिकन किमा चाउचाउ",
+    "egg-keema": "अण्डा किमा चाउचाउ",
+    "cat-friedrice": "🍚 फ्राइड राइस",
+    "veg-rice": "भेज फ्राइड राइस",
+    "egg-rice": "एग फ्राइड राइस",
+    "chicken-rice": "चिकन फ्राइड राइस",
+    "mixed-rice": "मिक्स फ्राइड राइस",
+    "cat-refreshment": "⚡ रिफ्रेसमेन्ट",
+    "soda": "कोक / फ्यान्टा / स्प्राइट",
+    "sprite-lemon": "स्प्राइट कागती",
+    "coke-masala": "कोक मसला",
+    "juice": "फ्रुट जुस",
+    "redbull": "रेड बुल",
+    "xtreme": "एक्स-स्ट्रिम",
+    "lemonade": "कोल लेमनेड",
+    "cat-cigarettes": "🚬 चुरोट र हुक्का",
+    "shikhar-ice": "शिखर आइस",
+    "surya-red": "सूर्या रेड",
+    "surya-light": "सूर्या लाइट",
+    "surya-fusion": "सूर्या फ्युजन",
+    "black-cig": "ब्ल्याक",
+    "mint-hookah": "मिन्ट हुक्का",
+    "ladykiller-hookah": "लेडीकिलर हुक्का",
+    "cloud-mint-hookah": "क्लाउड मिन्ट हुक्का",
+    "cloud-ladykiller-hookah": "क्लाउड लेडीकिलर हुक्का",
+    "search-ph": "स्वादिष्ट खाना खोज्नुहोस्...",
+    "footer-sub": "स्वाद र गतिको लागि समर्पित।"
+  }
+};
+
+// Set Language Function
+function setLang(lang) {
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (dictionary[lang] && dictionary[lang][key]) {
+      el.textContent = dictionary[lang][key];
+    }
+  });
+
+  const searchInput = document.getElementById('search');
+  if (searchInput && dictionary[lang] && dictionary[lang]['search-ph']) {
+    searchInput.placeholder = dictionary[lang]['search-ph'];
+  }
+
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-np').classList.toggle('active', lang === 'np');
+}
+
+// Real-Time Search Function
+document.getElementById('search').addEventListener('input', function (e) {
+  const query = e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.card').forEach(card => {
+    let cardHasMatch = false;
+    card.querySelectorAll('.item').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (text.includes(query)) {
+        item.style.display = 'flex';
+        cardHasMatch = true;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    const titleText = card.querySelector('h2').textContent.toLowerCase();
+    if (titleText.includes(query)) {
+      cardHasMatch = true;
+      card.querySelectorAll('.item').forEach(item => item.style.display = 'flex');
+    }
+
+    card.style.display = cardHasMatch ? 'block' : 'none';
+  });
+});
+
+// Modal & QR Generator logic
+let qrGenerated = false;
+function toggleQR(show) {
+  const modal = document.getElementById('qrModal');
+  if (show) {
+    modal.classList.add('show');
+    if (!qrGenerated) {
+      new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 200,
+        height: 200,
+        colorDark: "#1E293B",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      qrGenerated = true;
+    }
+  } else {
+    modal.classList.remove('show');
+  }
+}
+</script>
+</body>
+</html>
