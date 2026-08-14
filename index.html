@@ -3,137 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pangra Junction | Premium Digital Menu</title>
-<!-- Google Fonts: Outfit & Plus Jakarta Sans -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght=600;700;800;900&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
+<title>Pangra Junction | Digital Menu</title>
+
+<!-- Fonts: Unbounded (signage-style display) + Work Sans (body) + Noto Sans Devanagari (Nepali) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Work+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <!-- QR Code Generation Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
 :root {
-  --bg: #FFFDF9;
-  --card-bg: #FFFFFF;
-  --card-hover: #FFFBF7;
-  --text-main: #1A1D1F;
-  --text-muted: #6F7782;
-  --primary: #FF4B2B;
-  --primary-gradient: linear-gradient(135deg, #FF4B2B, #FF416C);
-  --accent-gold: #FFB000;
-  --price-bg: linear-gradient(135deg, #E6F9F0, #D1F4E0);
-  --price-text: #008A5E;
-  --border-subtle: rgba(255, 75, 43, 0.1);
+  --bg: #FFF6E4;
+  --surface: #FFFFFF;
+  --ink: #201A12;
+  --ink-muted: #7C7060;
+  --navy: #16233F;
+  --navy-2: #1E2F52;
+  --vermillion: #D6402B;
+  --vermillion-dark: #B7331F;
+  --marigold: #F2A900;
+  --teal: #157A6E;
+  --line: #E9DEC8;
+  --price-bg: #E7F4EF;
+  --price-text: #0E6B57;
+  --radius-card: 20px;
+  --radius-chip: 10px;
 }
 
 * { box-sizing: border-box; }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  background: radial-gradient(circle at 15% 15%, rgba(255, 75, 43, 0.06) 0%, rgba(255, 253, 249, 0) 40%),
-              radial-gradient(circle at 85% 85%, rgba(255, 176, 0, 0.08) 0%, rgba(255, 253, 249, 0) 40%),
-              var(--bg);
-  color: var(--text-main);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(214, 64, 43, 0.05) 0%, rgba(255, 246, 228, 0) 45%),
+    radial-gradient(circle at 90% 10%, rgba(242, 169, 0, 0.09) 0%, rgba(255, 246, 228, 0) 45%),
+    var(--bg);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+
+body.lang-np { font-family: 'Noto Sans Devanagari', 'Work Sans', sans-serif; }
+body.lang-np h1, body.lang-np .pj-text { font-family: 'Noto Sans Devanagari', 'Unbounded', sans-serif; }
+
+/* Road-marking dashed rule, used as a recurring signature motif */
+.road-rule {
+  height: 3px;
+  width: 100%;
+  background-image: repeating-linear-gradient(90deg, var(--marigold) 0 22px, transparent 22px 38px);
+  opacity: 0.7;
 }
 
 /* Navigation */
 nav {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 18px 5%;
+  background: rgba(255, 246, 228, 0.9);
+  padding: 16px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
 }
 .brand {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
   letter-spacing: 0.5px;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand .brand-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--vermillion);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  flex-shrink: 0;
 }
 .contact-nav {
   font-weight: 700;
-  color: var(--text-main);
-  font-size: 0.95rem;
+  color: var(--navy);
+  font-size: 0.9rem;
+  text-decoration: none;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  background: #F4F5F7;
-  padding: 8px 16px;
-  border-radius: 30px;
-  border: 1px solid rgba(0,0,0,0.03);
+  background: var(--surface);
+  padding: 9px 16px;
+  border-radius: var(--radius-chip);
+  border: 1px solid var(--line);
+  transition: all 0.2s ease;
 }
+.contact-nav:hover { border-color: var(--vermillion); color: var(--vermillion); }
 
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 60px 20px 40px 20px;
-  max-width: 800px;
+  padding: 64px 20px 36px 20px;
+  max-width: 760px;
   margin: auto;
 }
 
 .pj-badge {
-  width: 115px;
-  height: 115px;
-  margin: 0 auto 25px auto;
-  background: var(--primary-gradient);
-  border-radius: 32px;
+  width: 108px;
+  height: 108px;
+  margin: 0 auto 28px auto;
+  background: linear-gradient(155deg, var(--vermillion), var(--vermillion-dark));
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 16px 32px rgba(255, 75, 43, 0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 16px 30px rgba(214, 64, 43, 0.28);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.pj-badge:hover {
-  transform: scale(1.08) rotate(-6deg);
-  box-shadow: 0 20px 40px rgba(255, 75, 43, 0.4);
-}
-.pj-badge::before {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  border: 2px dashed rgba(255, 255, 255, 0.5);
-  border-radius: 26px;
-}
+.pj-badge:hover { transform: scale(1.06) rotate(-4deg); }
 .pj-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Unbounded', sans-serif;
   font-weight: 900;
-  font-size: 2.6rem;
+  font-size: 2.1rem;
   color: #fff;
   letter-spacing: -1px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+.eyebrow::before, .eyebrow::after {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--teal);
+  opacity: 0.5;
 }
 
 h1 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Unbounded', sans-serif;
   font-weight: 900;
-  font-size: 3.4rem;
-  letter-spacing: -1.5px;
-  margin: 0 0 8px 0;
-  color: var(--text-main);
-}
-.sub-tag-1 {
-  color: var(--primary);
-  font-weight: 800;
-  font-size: 1.25rem;
-  margin: 0 0 6px 0;
-  letter-spacing: 0.5px;
+  font-size: 2.6rem;
+  letter-spacing: -0.5px;
+  margin: 0 0 10px 0;
+  color: var(--navy);
+  line-height: 1.15;
 }
 .sub-tag-2 {
-  color: var(--text-muted);
-  font-weight: 600;
+  color: var(--ink-muted);
+  font-weight: 500;
   font-size: 1.05rem;
-  margin: 0 0 35px 0;
+  margin: 0 0 34px 0;
 }
 
 /* Controls */
@@ -141,291 +186,262 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   max-width: 600px;
   margin: 0 auto;
 }
-.search-wrapper {
-  position: relative;
-  width: 100%;
-}
-.search-wrapper::before {
-  content: "🔍";
+.search-wrapper { position: relative; width: 100%; }
+.search-wrapper svg {
   position: absolute;
-  left: 20px;
+  left: 18px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1rem;
-  opacity: 0.7;
+  width: 18px;
+  height: 18px;
+  opacity: 0.45;
+  pointer-events: none;
 }
 input#search {
   width: 100%;
-  padding: 18px 20px 18px 52px;
-  border-radius: 35px;
-  border: 2px solid rgba(0, 0, 0, 0.06);
-  background: var(--card-bg);
-  color: var(--text-main);
-  font-size: 1.05rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 16px 20px 16px 48px;
+  border-radius: var(--radius-chip);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem;
+  font-family: inherit;
   font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
 }
 input#search:focus {
   outline: none;
-  border-color: var(--primary);
-  background: #fff;
-  box-shadow: 0 8px 30px rgba(255, 75, 43, 0.15);
+  border-color: var(--marigold);
+  box-shadow: 0 0 0 4px rgba(242, 169, 0, 0.15);
 }
+input#search:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
 
 .btn-group {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   width: 100%;
 }
 button, a.btn {
-  padding: 12px 24px;
-  border-radius: 30px;
+  padding: 11px 20px;
+  border-radius: var(--radius-chip);
   border: none;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.95rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
+}
+button:focus-visible, a.btn:focus-visible, .close-qr:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
 }
 button {
-  background: var(--card-bg);
-  color: var(--text-main);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  background: var(--surface);
+  color: var(--ink);
+  border: 1.5px solid var(--line);
 }
-button:hover {
-  background: var(--card-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-}
+button:hover { border-color: var(--navy); transform: translateY(-2px); }
 button.active {
-  background: var(--primary-gradient);
+  background: var(--navy);
   color: #fff;
-  border: 1px solid transparent;
-  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.35);
+  border-color: var(--navy);
 }
-.qr-trigger-btn {
-  background: #1E293B;
-  color: #fff;
-  font-weight: 700;
-}
-.qr-trigger-btn:hover {
-  background: #0F172A;
-  box-shadow: 0 6px 20px rgba(30, 41, 59, 0.3);
-  transform: translateY(-2px);
-}
+.qr-trigger-btn { background: var(--vermillion); color: #fff; border-color: var(--vermillion); }
+.qr-trigger-btn:hover { background: var(--vermillion-dark); border-color: var(--vermillion-dark); }
 a.btn {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(--vermillion);
+  border: 1.5px solid var(--vermillion);
 }
-a.btn:hover {
-  background: var(--primary-gradient);
-  color: #fff;
-  border-color: transparent;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.25);
-}
+a.btn:hover { background: var(--vermillion); color: #fff; transform: translateY(-2px); }
 
 /* Menu Layout */
-.section {
-  max-width: 1200px;
-  margin: auto;
-  padding: 25px 20px;
-}
+.section { max-width: 1180px; margin: auto; padding: 30px 20px 10px; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 .card {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 28px;
-  border: 1px solid var(--border-subtle);
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  background: var(--surface);
+  padding: 26px 26px 14px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(255, 75, 43, 0.08);
-  border-color: rgba(255, 75, 43, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(22, 35, 63, 0.08);
+  border-color: rgba(214, 64, 43, 0.25);
 }
+.card.hidden { display: none; }
 .card h2 {
-  color: var(--primary);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: 1.45rem;
-  margin: 0 0 20px 0;
+  color: var(--navy);
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 6px 0;
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 2px solid #F4F5F7;
-  padding-bottom: 14px;
 }
+.card .card-rule { margin-bottom: 16px; }
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px dashed #E2E8F0;
-  font-size: 1.02rem;
-  font-weight: 600;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.98rem;
+  font-weight: 500;
 }
-.item:last-child {
-  border-bottom: none;
-  padding-bottom: 5px;
-}
-.item span:first-child {
-  color: var(--text-main);
-  padding-right: 15px;
-}
+.item.hidden { display: none; }
+.item:last-child { border-bottom: none; }
+.item span:first-child { color: var(--ink); }
 .price {
   color: var(--price-text);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
   background: var(--price-bg);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.95rem;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
   white-space: nowrap;
-  border: 1px solid rgba(0, 201, 133, 0.2);
+  flex-shrink: 0;
 }
+
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.no-results.show { display: block; }
 
 footer {
   text-align: center;
-  padding: 50px 20px;
-  color: var(--text-muted);
-  font-size: 1rem;
-  font-weight: 600;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  margin-top: 50px;
+  padding: 50px 20px 40px;
+  color: #fff;
+  background: var(--navy);
+  margin-top: 56px;
 }
-footer p { margin: 8px 0; }
+footer .brand { color: #fff; justify-content: center; margin-bottom: 12px; }
+footer p { margin: 6px 0; font-size: 0.9rem; opacity: 0.75; font-weight: 500; }
 
-/* Modal Styling */
+/* Modal */
 .qr-modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.65);
+  inset: 0;
+  background: rgba(22, 35, 63, 0.7);
   z-index: 100;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
 }
 .qr-modal.show { display: flex; }
 .qr-poster {
-  background: var(--card-bg);
-  padding: 40px 30px;
-  border-radius: 32px;
+  background: var(--surface);
+  padding: 38px 30px 30px;
+  border-radius: 24px;
   text-align: center;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-  max-width: 380px;
-  width: 90%;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  max-width: 360px;
+  width: 100%;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .qr-poster h3 {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0 0 6px 0;
-  font-size: 1.8rem;
-  letter-spacing: 0.5px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 4px 0;
+  font-size: 1.3rem;
 }
-.qr-poster p {
-  margin: 0 0 25px 0;
-  color: var(--text-muted);
-  font-weight: 600;
-  font-size: 1rem;
-}
+.qr-poster p { margin: 0 0 22px 0; color: var(--ink-muted); font-weight: 500; font-size: 0.92rem; }
 .qr-wrapper-box {
   background: #fff;
-  padding: 22px;
-  border-radius: 24px;
+  padding: 18px;
+  border-radius: 16px;
   display: inline-block;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1.5px dashed var(--line);
 }
-#qrcode { width: 200px; height: 200px; }
-#qrcode img { width: 100%; height: 100%; }
+#qrcode { width: 190px; height: 190px; }
+#qrcode img { width: 100%; height: 100%; display: block; }
 .qr-banner-text {
-  margin-top: 25px;
-  background: var(--primary-gradient);
+  margin-top: 22px;
+  background: var(--vermillion);
   color: #fff;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  padding: 10px 40px;
-  border-radius: 30px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  padding: 9px 30px;
+  border-radius: var(--radius-chip);
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 2px;
-  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.3);
 }
 .close-qr {
   position: absolute;
-  top: -15px;
-  right: -15px;
-  background: #1E293B;
+  top: -14px;
+  right: -14px;
+  background: var(--navy);
   color: #fff;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   font-weight: bold;
   cursor: pointer;
-  font-size: 1.4rem;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 .close-qr:hover { transform: scale(1.1); }
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  .contact-nav span.label { display: none; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="brand">PANGRA JUNCTION</div>
-  <div class="contact-nav">📱 9763610590</div>
+  <div class="brand"><span class="brand-mark">PJ</span> PANGRA JUNCTION</div>
+  <a class="contact-nav" href="tel:9763610590">📱 <span class="label">9763610590</span></a>
 </nav>
+<div class="road-rule"></div>
 
 <section class="hero">
-  <div class="pj-badge">
-    <div class="pj-text">PJ</div>
-  </div>
+  <div class="pj-badge"><div class="pj-text">PJ</div></div>
+  <div class="eyebrow" data-key="eyebrow">The Junction Stop</div>
   <h1 data-key="main-title">PANGRA JUNCTION</h1>
-  <p class="sub-tag-1" data-key="sub-title-1">Your Everyday Junction</p>
   <p class="sub-tag-2" data-key="sub-title-2">We Make What You Want</p>
 
   <div class="controls">
     <div class="search-wrapper">
-      <input id="search" placeholder="Search delicious food..." aria-label="Search menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search" data-key-placeholder="search-ph" placeholder="Search delicious food..." aria-label="Search menu">
     </div>
     <div class="btn-group">
       <button id="btn-en" class="active" onclick="setLang('en')">🇬🇧 EN</button>
       <button id="btn-np" onclick="setLang('np')">🇳🇵 NP</button>
-      <button class="qr-trigger-btn" onclick="toggleQR(true)">✨ Share Menu QR</button>
+      <button class="qr-trigger-btn" onclick="toggleQR(true)">✨ <span data-key="qr-btn">Share Menu QR</span></button>
       <a class="btn" href="tel:9763610590" data-key="call-btn">📞 Call Now</a>
     </div>
   </div>
@@ -433,22 +449,21 @@ footer p { margin: 8px 0; }
 
 <div id="qrModal" class="qr-modal" onclick="toggleQR(false)">
   <div class="qr-poster" onclick="event.stopPropagation()">
-    <button class="close-qr" onclick="toggleQR(false)">×</button>
+    <button class="close-qr" onclick="toggleQR(false)" aria-label="Close">×</button>
     <h3 data-key="main-title">PANGRA JUNCTION</h3>
     <p data-key="sub-title-2">We Make What You Want</p>
-    <div class="qr-wrapper-box">
-      <div id="qrcode"></div>
-    </div>
+    <div class="qr-wrapper-box"><div id="qrcode"></div></div>
     <br>
-    <div class="qr-banner-text">MENU</div>
+    <div class="qr-banner-text" data-key="qr-banner">MENU</div>
   </div>
 </div>
 
 <section class="section">
-  <div class="grid">
+  <div class="grid" id="menuGrid">
 
-    <div class="card">
+    <div class="card" data-cat="beverages">
       <h2 data-key="cat-beverages">☕ Beverages</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="hot-milk">Hot Milk</span><span class="price">रू 50</span></div>
       <div class="item"><span data-key="milk-tea">Milk Tea</span><span class="price">रू 35</span></div>
       <div class="item"><span data-key="milk-masala">Milk Masala Tea</span><span class="price">रू 60</span></div>
@@ -463,8 +478,9 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="milk-coffee">Milk Coffee</span><span class="price">रू 100</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="snacks">
       <h2 data-key="cat-snacks">🍟 Snacks</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="peanuts-sad">Peanuts Sadhenko</span><span class="price">रू 150</span></div>
       <div class="item"><span data-key="bhatmas-sad">Bhatmas Sadhenko</span><span class="price">रू 150</span></div>
       <div class="item"><span data-key="waiwai-sad">Wai Wai Sadhenko</span><span class="price">रू 60/120</span></div>
@@ -479,16 +495,18 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="green-salad">Green Salad</span><span class="price">रू 100</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="lassi">
       <h2 data-key="cat-lassi">🥤 Lassi</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="plain-lassi">Plain Lassi</span><span class="price">रू 100</span></div>
       <div class="item"><span data-key="banana-lassi">Banana Lassi</span><span class="price">रू 150</span></div>
       <div class="item"><span data-key="apple-lassi">Apple Lassi</span><span class="price">रू 150</span></div>
       <div class="item"><span data-key="mango-lassi">Mango Lassi</span><span class="price">रू 150</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="milkshakes">
       <h2 data-key="cat-milkshakes">🍫 Milkshakes</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="banana-shake">Banana Milkshake</span><span class="price">रू 180</span></div>
       <div class="item"><span data-key="vanilla-shake">Vanilla Milkshake</span><span class="price">रू 200</span></div>
       <div class="item"><span data-key="chocolate-shake">Chocolate Milkshake</span><span class="price">रू 200</span></div>
@@ -496,8 +514,9 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="kitkat-shake">Kitkat Milkshake</span><span class="price">रू 270</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="momo">
       <h2 data-key="cat-momo">🥟 Mo:Mo</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="buff-momo">Buff Mo:Mo</span><span class="price">रू 140</span></div>
       <div class="item"><span data-key="jhol-buff">Jhol Buff Mo:Mo</span><span class="price">रू 160</span></div>
       <div class="item"><span data-key="chicken-momo">Chicken Mo:Mo</span><span class="price">रू 160</span></div>
@@ -510,8 +529,9 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="fry-chicken-chilly">Fry Chicken Chilly Mo:Mo</span><span class="price">रू 220</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="breakfast">
       <h2 data-key="cat-breakfast">🍳 Breakfast</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="bread-omelette">Bread With Omelette</span><span class="price">रू 80</span></div>
       <div class="item"><span data-key="sausage-bf">Sausage Boiled/Fried</span><span class="price">रू 50</span></div>
       <div class="item"><span data-key="egg-bf">Egg Boiled/Fried</span><span class="price">रू 50</span></div>
@@ -522,16 +542,18 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="egg-keema">Egg Keema Noodles</span><span class="price">रू 210</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="friedrice">
       <h2 data-key="cat-friedrice">🍚 Fried Rice</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="veg-rice">Veg Fried Rice</span><span class="price">रू 180</span></div>
       <div class="item"><span data-key="egg-rice">Egg Fried Rice</span><span class="price">रू 210</span></div>
       <div class="item"><span data-key="chicken-rice">Chicken Fried Rice</span><span class="price">रू 220</span></div>
       <div class="item"><span data-key="mixed-rice">Mixed Fried Rice</span><span class="price">रू 280</span></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-cat="refreshment">
       <h2 data-key="cat-refreshment">⚡ Refreshment</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="soda">Coke / Fanta / Sprite</span><span class="price">रू 80</span></div>
       <div class="item"><span data-key="sprite-lemon">Sprite With Lemon</span><span class="price">रू 100</span></div>
       <div class="item"><span data-key="coke-masala">Coke Masala</span><span class="price">रू 100</span></div>
@@ -541,8 +563,9 @@ footer p { margin: 8px 0; }
       <div class="item"><span data-key="lemonade">Cold Lemonade</span><span class="price">रू 60</span></div>
     </div>
 
-    <div class="card">
-      <h2 data-key="cat-cigarettes">🚬 Cigarettes & Hookah</h2>
+    <div class="card" data-cat="cigarettes">
+      <h2 data-key="cat-cigarettes">🚬 Cigarettes &amp; Hookah</h2>
+      <div class="road-rule card-rule"></div>
       <div class="item"><span data-key="shikhar-ice">Shikhar Ice</span><span class="price">रू 25</span></div>
       <div class="item"><span data-key="surya-red">Surya Red</span><span class="price">रू 30</span></div>
       <div class="item"><span data-key="surya-light">Surya Light</span><span class="price">रू 30</span></div>
@@ -555,258 +578,201 @@ footer p { margin: 8px 0; }
     </div>
 
   </div>
+
+  <p class="no-results" id="noResults" data-key="no-results">No items match your search.</p>
 </section>
 
 <footer>
-  <p>© Pangra Junction. All Rights Reserved.</p>
-  <p data-key="footer-sub">Crafted with passion for taste & speed.</p>
+  <div class="brand"><span class="brand-mark">PJ</span> PANGRA JUNCTION</div>
+  <p>© 2026 Pangra Junction. All Rights Reserved.</p>
+  <p data-key="footer-sub">Crafted with passion for taste &amp; speed.</p>
 </footer>
 
 <script>
-// Translation Dictionary
+// ---------- Translation Dictionary ----------
 const dictionary = {
   en: {
+    "eyebrow": "The Junction Stop",
     "main-title": "PANGRA JUNCTION",
-    "sub-title-1": "Your Everyday Junction",
     "sub-title-2": "We Make What You Want",
-    "call-btn": "📞 Call Now",
-    "cat-beverages": "☕ Beverages",
-    "hot-milk": "Hot Milk",
-    "milk-tea": "Milk Tea",
-    "milk-masala": "Milk Masala Tea",
-    "mataka-tea": "Special Mataka Tea",
-    "black-tea": "Black Tea",
-    "black-masala": "Black Masala Tea",
-    "lemon-tea": "Lemon Tea",
-    "ginger-tea": "Ginger Tea",
-    "hot-lemon": "Hot Lemon",
-    "hot-lemon-honey": "Hot Lemon With Honey/Ginger",
-    "black-coffee": "Black Coffee",
-    "milk-coffee": "Milk Coffee",
-    "cat-snacks": "🍟 Snacks",
-    "peanuts-sad": "Peanuts Sadhenko",
-    "bhatmas-sad": "Bhatmas Sadhenko",
-    "waiwai-sad": "Wai Wai Sadhenko",
-    "chatpate": "Chatpate",
-    "chicken-chat": "Chicken Chatpate",
-    "sausage-chat": "Sausage Chatpate",
-    "laphing": "Laphing",
-    "laphing-chips": "Laphing With Chips",
-    "french-fries": "French Fries",
-    "chips-chilly": "Chips Chilly",
-    "sausage-chilly": "Sausage Chilly",
-    "green-salad": "Green Salad",
-    "cat-lassi": "🥤 Lassi",
-    "plain-lassi": "Plain Lassi",
-    "banana-lassi": "Banana Lassi",
-    "apple-lassi": "Apple Lassi",
-    "mango-lassi": "Mango Lassi",
-    "cat-milkshakes": "🍫 Milkshakes",
-    "banana-shake": "Banana Milkshake",
-    "vanilla-shake": "Vanilla Milkshake",
-    "chocolate-shake": "Chocolate Milkshake",
-    "oreo-shake": "Oreo Milkshake",
-    "kitkat-shake": "Kitkat Milkshake",
-    "cat-momo": "🥟 Mo:Mo",
-    "buff-momo": "Buff Mo:Mo",
-    "jhol-buff": "Jhol Buff Mo:Mo",
-    "chicken-momo": "Chicken Mo:Mo",
-    "jhol-chicken": "Jhol Chicken Mo:Mo",
-    "buff-fry": "Buff Fry Mo:Mo",
-    "buff-chilly": "Buff Chilly Mo:Mo",
-    "chicken-fry": "Chicken Fry Mo:Mo",
-    "chicken-chilly": "Chicken Chilly Mo:Mo",
-    "fry-buff-chilly": "Fry Buff Chilly Mo:Mo",
-    "fry-chicken-chilly": "Fry Chicken Chilly Mo:Mo",
-    "cat-breakfast": "🍳 Breakfast",
-    "bread-omelette": "Bread With Omelette",
-    "sausage-bf": "Sausage Boiled/Fried",
-    "egg-bf": "Egg Boiled/Fried",
-    "noodles": "Wai Wai Noodles",
-    "current-noodles": "Current Noodles",
-    "current-combo": "Current Combo Boiled/Fried",
-    "chicken-keema": "Chicken Keema Noodles",
-    "egg-keema": "Egg Keema Noodles",
-    "cat-friedrice": "🍚 Fried Rice",
-    "veg-rice": "Veg Fried Rice",
-    "egg-rice": "Egg Fried Rice",
-    "chicken-rice": "Chicken Fried Rice",
-    "mixed-rice": "Mixed Fried Rice",
-    "cat-refreshment": "⚡ Refreshment",
-    "soda": "Coke / Fanta / Sprite",
-    "sprite-lemon": "Sprite With Lemon",
-    "coke-masala": "Coke Masala",
-    "juice": "Fruit Juice",
-    "redbull": "Red Bull",
-    "xtreme": "X-Treme",
-    "lemonade": "Cold Lemonade",
-    "cat-cigarettes": "🚬 Cigarettes & Hookah",
-    "shikhar-ice": "Shikhar Ice",
-    "surya-red": "Surya Red",
-    "surya-light": "Surya Light",
-    "surya-fusion": "Surya Fusion",
-    "black-cig": "Black",
-    "mint-hookah": "Mint Hookah",
-    "ladykiller-hookah": "Ladykiller Hookah",
-    "cloud-mint-hookah": "Cloud Mint Hookah",
-    "cloud-ladykiller-hookah": "Cloud Ladykiller Hookah",
     "search-ph": "Search delicious food...",
-    "footer-sub": "Crafted with passion for taste & speed."
+    "qr-btn": "Share Menu QR",
+    "call-btn": "📞 Call Now",
+    "qr-banner": "MENU",
+    "no-results": "No items match your search.",
+    "footer-sub": "Crafted with passion for taste & speed.",
+
+    "cat-beverages": "☕ Beverages",
+    "hot-milk": "Hot Milk", "milk-tea": "Milk Tea", "milk-masala": "Milk Masala Tea",
+    "mataka-tea": "Special Mataka Tea", "black-tea": "Black Tea", "black-masala": "Black Masala Tea",
+    "lemon-tea": "Lemon Tea", "ginger-tea": "Ginger Tea", "hot-lemon": "Hot Lemon",
+    "hot-lemon-honey": "Hot Lemon With Honey/Ginger", "black-coffee": "Black Coffee", "milk-coffee": "Milk Coffee",
+
+    "cat-snacks": "🍟 Snacks",
+    "peanuts-sad": "Peanuts Sadhenko", "bhatmas-sad": "Bhatmas Sadhenko", "waiwai-sad": "Wai Wai Sadhenko",
+    "chatpate": "Chatpate", "chicken-chat": "Chicken Chatpate", "sausage-chat": "Sausage Chatpate",
+    "laphing": "Laphing", "laphing-chips": "Laphing With Chips", "french-fries": "French Fries",
+    "chips-chilly": "Chips Chilly", "sausage-chilly": "Sausage Chilly", "green-salad": "Green Salad",
+
+    "cat-lassi": "🥤 Lassi",
+    "plain-lassi": "Plain Lassi", "banana-lassi": "Banana Lassi", "apple-lassi": "Apple Lassi", "mango-lassi": "Mango Lassi",
+
+    "cat-milkshakes": "🍫 Milkshakes",
+    "banana-shake": "Banana Milkshake", "vanilla-shake": "Vanilla Milkshake", "chocolate-shake": "Chocolate Milkshake",
+    "oreo-shake": "Oreo Milkshake", "kitkat-shake": "Kitkat Milkshake",
+
+    "cat-momo": "🥟 Mo:Mo",
+    "buff-momo": "Buff Mo:Mo", "jhol-buff": "Jhol Buff Mo:Mo", "chicken-momo": "Chicken Mo:Mo",
+    "jhol-chicken": "Jhol Chicken Mo:Mo", "buff-fry": "Buff Fry Mo:Mo", "buff-chilly": "Buff Chilly Mo:Mo",
+    "chicken-fry": "Chicken Fry Mo:Mo", "chicken-chilly": "Chicken Chilly Mo:Mo",
+    "fry-buff-chilly": "Fry Buff Chilly Mo:Mo", "fry-chicken-chilly": "Fry Chicken Chilly Mo:Mo",
+
+    "cat-breakfast": "🍳 Breakfast",
+    "bread-omelette": "Bread With Omelette", "sausage-bf": "Sausage Boiled/Fried", "egg-bf": "Egg Boiled/Fried",
+    "noodles": "Wai Wai Noodles", "current-noodles": "Current Noodles", "current-combo": "Current Combo Boiled/Fried",
+    "chicken-keema": "Chicken Keema Noodles", "egg-keema": "Egg Keema Noodles",
+
+    "cat-friedrice": "🍚 Fried Rice",
+    "veg-rice": "Veg Fried Rice", "egg-rice": "Egg Fried Rice", "chicken-rice": "Chicken Fried Rice", "mixed-rice": "Mixed Fried Rice",
+
+    "cat-refreshment": "⚡ Refreshment",
+    "soda": "Coke / Fanta / Sprite", "sprite-lemon": "Sprite With Lemon", "coke-masala": "Coke Masala",
+    "juice": "Fruit Juice", "redbull": "Red Bull", "xtreme": "X-Treme", "lemonade": "Cold Lemonade",
+
+    "cat-cigarettes": "🚬 Cigarettes & Hookah",
+    "shikhar-ice": "Shikhar Ice", "surya-red": "Surya Red", "surya-light": "Surya Light", "surya-fusion": "Surya Fusion",
+    "black-cig": "Black", "mint-hookah": "Mint Hookah", "ladykiller-hookah": "Ladykiller Hookah",
+    "cloud-mint-hookah": "Cloud Mint Hookah", "cloud-ladykiller-hookah": "Cloud Ladykiller Hookah"
   },
   np: {
-    "main-title": "पाङ्ग्रा जङ्क्सन",
-    "sub-title-1": "तपाईंको दैनिक जङ्क्सन",
-    "sub-title-2": "हामी तपाईंले चाहेको बनाउँछौं",
+    "eyebrow": "जंक्शनको ठेगाना",
+    "main-title": "पाङ्ग्रा जंक्शन",
+    "sub-title-2": "तपाईंले चाहेको हामी बनाउँछौं",
+    "search-ph": "मीठो खाना खोज्नुहोस्...",
+    "qr-btn": "मेनु QR सेयर गर्नुहोस्",
     "call-btn": "📞 फोन गर्नुहोस्",
+    "qr-banner": "मेनु",
+    "no-results": "कुनै वस्तु मेल खाएन।",
+    "footer-sub": "स्वाद र गतिको लागि जोशका साथ बनाइएको।",
+
     "cat-beverages": "☕ पेय पदार्थ",
-    "hot-milk": "तातो दूध",
-    "milk-tea": "दूध चिया",
-    "milk-masala": "मसला दूध चिया",
-    "mataka-tea": "विशेष मड्का चिया",
-    "black-tea": "कालो चिया",
-    "black-masala": "कालो मसला चिया",
-    "lemon-tea": "कागति चिया",
-    "ginger-tea": "अदुवा चिया",
-    "hot-lemon": "तातो कागती",
-    "hot-lemon-honey": "तातो कागती मह/अदुवा साथ",
-    "black-coffee": "ब्ल्याक कफी",
-    "milk-coffee": "मिल्क कफी",
-    "cat-snacks": "🍟 खाजा",
-    "peanuts-sad": "बदाम साढेको",
-    "bhatmas-sad": "भटमास साढेको",
-    "waiwai-sad": "वाइ वाइ साढेको",
-    "chatpate": "चटपटे",
-    "chicken-chat": "चिकन चटपटे",
-    "sausage-chat": "ससेज चटपटे",
-    "laphing": "लाफिङ",
-    "laphing-chips": "चिप्स लाफिङ",
-    "french-fries": "फ्रेन्च फ्राइज",
-    "chips-chilly": "चिप्स चिली",
-    "sausage-chilly": "ससेज चिली",
-    "green-salad": "ग्रीन सलाद",
+    "hot-milk": "तातो दूध", "milk-tea": "दूध चिया", "milk-masala": "मसला दूध चिया",
+    "mataka-tea": "स्पेशल मटका चिया", "black-tea": "कालो चिया", "black-masala": "कालो मसला चिया",
+    "lemon-tea": "कागती चिया", "ginger-tea": "अदुवा चिया", "hot-lemon": "तातो कागती",
+    "hot-lemon-honey": "मह/अदुवा सहितको तातो कागती", "black-coffee": "कालो कफी", "milk-coffee": "दूध कफी",
+
+    "cat-snacks": "🍟 नास्ता",
+    "peanuts-sad": "बदाम सादेको", "bhatmas-sad": "भटमास सादेको", "waiwai-sad": "वाई वाई सादेको",
+    "chatpate": "चटपटे", "chicken-chat": "चिकन चटपटे", "sausage-chat": "ससेज चटपटे",
+    "laphing": "लाफिङ", "laphing-chips": "चिप्स सहित लाफिङ", "french-fries": "फ्रेन्च फ्राइज",
+    "chips-chilly": "चिप्स चिली", "sausage-chilly": "ससेज चिली", "green-salad": "हरियो सलाद",
+
     "cat-lassi": "🥤 लस्सी",
-    "plain-lassi": "प्लेन लस्सी",
-    "banana-lassi": "केरा लस्सी",
-    "apple-lassi": "स्याउ लस्सी",
-    "mango-lassi": "आप लस्सी",
-    "cat-milkshakes": "🍫 मिल्कसेक",
-    "banana-shake": "बनाना मिल्कसेक",
-    "vanilla-shake": "भेनिला मिल्कसेक",
-    "chocolate-shake": "चॉकलेट मिल्कसेक",
-    "oreo-shake": "ओरियो मिल्कसेक",
-    "kitkat-shake": "किटक्याट मिल्कसेक",
-    "cat-momo": "🥟 मो:मो",
-    "buff-momo": "बफ मो:मो",
-    "jhol-buff": "झोल बफ मो:मो",
-    "chicken-momo": "चिकन मो:मो",
-    "jhol-chicken": "झोल चिकन मो:मो",
-    "buff-fry": "बफ फ्राइ मो:मो",
-    "buff-chilly": "बफ चिली मो:मो",
-    "chicken-fry": "चिकन फ्राइ मो:मो",
-    "chicken-chilly": "चिकन चिली मो:मो",
-    "fry-buff-chilly": "फ्राइ बफ चिली मो:मो",
-    "fry-chicken-chilly": "फ्राइ चिकन चिली मो:मो",
-    "cat-breakfast": "🍳 ब्रेकफास्ट",
-    "bread-omelette": "ब्रेड अमलेट",
-    "sausage-bf": "ससेज (उसिनेको/फ्राइ)",
-    "egg-bf": "अण्डा (उसिनेको/फ्राइ)",
-    "noodles": "वाइ वाइ चाउचाउ",
-    "current-noodles": "करन्ट चाउचाउ",
-    "current-combo": "करन्ट कम्बो",
-    "chicken-keema": "चिकन किमा चाउचाउ",
-    "egg-keema": "अण्डा किमा चाउचाउ",
+    "plain-lassi": "सादा लस्सी", "banana-lassi": "केरा लस्सी", "apple-lassi": "स्याउ लस्सी", "mango-lassi": "आँप लस्सी",
+
+    "cat-milkshakes": "🍫 मिल्कशेक",
+    "banana-shake": "केरा मिल्कशेक", "vanilla-shake": "भेनिला मिल्कशेक", "chocolate-shake": "चकलेट मिल्कशेक",
+    "oreo-shake": "ओरियो मिल्कशेक", "kitkat-shake": "किटक्याट मिल्कशेक",
+
+    "cat-momo": "🥟 मःम",
+    "buff-momo": "भैंसी मःम", "jhol-buff": "झोल भैंसी मःम", "chicken-momo": "चिकन मःम",
+    "jhol-chicken": "झोल चिकन मःम", "buff-fry": "भैंसी फ्राई मःम", "buff-chilly": "भैंसी चिली मःम",
+    "chicken-fry": "चिकन फ्राई मःम", "chicken-chilly": "चिकन चिली मःम",
+    "fry-buff-chilly": "फ्राई भैंसी चिली मःम", "fry-chicken-chilly": "फ्राई चिकन चिली मःम",
+
+    "cat-breakfast": "🍳 बिहानको खाजा",
+    "bread-omelette": "अमलेट सहित पाउरोटी", "sausage-bf": "ससेज उमालेको/भुटेको", "egg-bf": "अन्डा उमालेको/भुटेको",
+    "noodles": "वाई वाई नुडल्स", "current-noodles": "करेन्ट नुडल्स", "current-combo": "करेन्ट कम्बो उमालेको/भुटेको",
+    "chicken-keema": "चिकन किमा नुडल्स", "egg-keema": "अन्डा किमा नुडल्स",
+
     "cat-friedrice": "🍚 फ्राइड राइस",
-    "veg-rice": "भेज फ्राइड राइस",
-    "egg-rice": "एग फ्राइड राइस",
-    "chicken-rice": "चिकन फ्राइड राइस",
-    "mixed-rice": "मिक्स फ्राइड राइस",
+    "veg-rice": "तरकारी फ्राइड राइस", "egg-rice": "अन्डा फ्राइड राइस", "chicken-rice": "चिकन फ्राइड राइस", "mixed-rice": "मिक्स फ्राइड राइस",
+
     "cat-refreshment": "⚡ रिफ्रेसमेन्ट",
-    "soda": "कोक / फ्यान्टा / स्प्राइट",
-    "sprite-lemon": "स्प्राइट कागती",
-    "coke-masala": "कोक मसला",
-    "juice": "फ्रुट जुस",
-    "redbull": "रेड बुल",
-    "xtreme": "एक्स-स्ट्रिम",
-    "lemonade": "कोल लेमनेड",
+    "soda": "कोक / फ्यान्टा / स्प्राइट", "sprite-lemon": "कागती सहित स्प्राइट", "coke-masala": "कोक मसला",
+    "juice": "फलफूल जुस", "redbull": "रेड बुल", "xtreme": "एक्स-ट्रिम", "lemonade": "चिसो लेमोनेड",
+
     "cat-cigarettes": "🚬 चुरोट र हुक्का",
-    "shikhar-ice": "शिखर आइस",
-    "surya-red": "सूर्या रेड",
-    "surya-light": "सूर्या लाइट",
-    "surya-fusion": "सूर्या फ्युजन",
-    "black-cig": "ब्ल्याक",
-    "mint-hookah": "मिन्ट हुक्का",
-    "ladykiller-hookah": "लेडीकिलर हुक्का",
-    "cloud-mint-hookah": "क्लाउड मिन्ट हुक्का",
-    "cloud-ladykiller-hookah": "क्लाउड लेडीकिलर हुक्का",
-    "search-ph": "स्वादिष्ट खाना खोज्नुहोस्...",
-    "footer-sub": "स्वाद र गतिको लागि समर्पित।"
+    "shikhar-ice": "शिखर आइस", "surya-red": "सूर्य रेड", "surya-light": "सूर्य लाइट", "surya-fusion": "सूर्य फ्युजन",
+    "black-cig": "ब्ल्याक", "mint-hookah": "मिन्ट हुक्का", "ladykiller-hookah": "लेडीकिलर हुक्का",
+    "cloud-mint-hookah": "क्लाउड मिन्ट हुक्का", "cloud-ladykiller-hookah": "क्लाउड लेडीकिलर हुक्का"
   }
 };
 
-// Set Language Function
+let currentLang = 'en';
+
 function setLang(lang) {
+  currentLang = lang;
+  const dict = dictionary[lang];
+
   document.querySelectorAll('[data-key]').forEach(el => {
     const key = el.getAttribute('data-key');
-    if (dictionary[lang] && dictionary[lang][key]) {
-      el.textContent = dictionary[lang][key];
-    }
+    if (dict[key]) el.textContent = dict[key];
   });
-
-  const searchInput = document.getElementById('search');
-  if (searchInput && dictionary[lang] && dictionary[lang]['search-ph']) {
-    searchInput.placeholder = dictionary[lang]['search-ph'];
-  }
+  document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-key-placeholder');
+    if (dict[key]) el.setAttribute('placeholder', dict[key]);
+  });
 
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-np').classList.toggle('active', lang === 'np');
+  document.body.classList.toggle('lang-np', lang === 'np');
+
+  // Re-run search filter so hidden/shown state follows the new language text
+  filterMenu();
 }
 
-// Real-Time Search Function
-document.getElementById('search').addEventListener('input', function (e) {
-  const query = e.target.value.toLowerCase().trim();
-  document.querySelectorAll('.card').forEach(card => {
-    let cardHasMatch = false;
-    card.querySelectorAll('.item').forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (text.includes(query)) {
-        item.style.display = 'flex';
-        cardHasMatch = true;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-
-    const titleText = card.querySelector('h2').textContent.toLowerCase();
-    if (titleText.includes(query)) {
-      cardHasMatch = true;
-      card.querySelectorAll('.item').forEach(item => item.style.display = 'flex');
-    }
-
-    card.style.display = cardHasMatch ? 'block' : 'none';
-  });
-});
-
-// Modal & QR Generator logic
+// ---------- QR Code ----------
 let qrGenerated = false;
 function toggleQR(show) {
   const modal = document.getElementById('qrModal');
-  if (show) {
-    modal.classList.add('show');
-    if (!qrGenerated) {
-      new QRCode(document.getElementById("qrcode"), {
-        text: window.location.href,
-        width: 200,
-        height: 200,
-        colorDark: "#1E293B",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-      qrGenerated = true;
-    }
-  } else {
-    modal.classList.remove('show');
+  modal.classList.toggle('show', show);
+  if (show && !qrGenerated) {
+    new QRCode(document.getElementById('qrcode'), {
+      text: window.location.href,
+      width: 190,
+      height: 190,
+      colorDark: '#16233F',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    qrGenerated = true;
   }
 }
+
+// ---------- Search / Filter ----------
+function filterMenu() {
+  const query = document.getElementById('search').value.trim().toLowerCase();
+  const cards = document.querySelectorAll('.card');
+  let anyVisible = false;
+
+  cards.forEach(card => {
+    const items = card.querySelectorAll('.item');
+    let cardHasMatch = false;
+
+    items.forEach(item => {
+      const label = item.querySelector('span:first-child').textContent.toLowerCase();
+      const match = query === '' || label.includes(query);
+      item.classList.toggle('hidden', !match);
+      if (match) cardHasMatch = true;
+    });
+
+    card.classList.toggle('hidden', !cardHasMatch);
+    if (cardHasMatch) anyVisible = true;
+  });
+
+  document.getElementById('noResults').classList.toggle('show', !anyVisible);
+}
+
+document.getElementById('search').addEventListener('input', filterMenu);
+
+// Close QR modal on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') toggleQR(false);
+});
+
+// Initialize
+setLang('en');
 </script>
 </body>
 </html>
